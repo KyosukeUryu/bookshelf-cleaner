@@ -43,6 +43,9 @@ Rails 5.2.4.1
 https://docs.google.com/spreadsheets/d/1FxiO1FihAKIjsRw-vhQIcL8uOGJ-oz3ICu9lxOljVJY/edit?usp=sharing
 
 ## テーブル定義
+https://docs.google.com/spreadsheets/d/1FxiO1FihAKIjsRw-vhQIcL8uOGJ-oz3ICu9lxOljVJY/edit?usp=sharing
+
+## ER図
 https://docs.google.com/spreadsheets/d/1n1gz3bYi3JSoaTQxoqjjWctxKcjJMbjfuQ8sEZpzTpw/edit?usp=sharing
 
 ## 画面遷移図
