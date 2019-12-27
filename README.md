@@ -40,16 +40,16 @@ Rails 5.2.4.1
 - ActiveStorage利用による書籍の画像投稿機能
 
 ## カタログ設計
-https://docs.google.com/spreadsheets/d/1FxiO1FihAKIjsRw-vhQIcL8uOGJ-oz3ICu9lxOljVJY/edit#gid=1134021267
+https://docs.google.com/spreadsheets/d/1FxiO1FihAKIjsRw-vhQIcL8uOGJ-oz3ICu9lxOljVJY/edit?usp=sharing
 
 ## テーブル定義
-https://docs.google.com/spreadsheets/d/1n1gz3bYi3JSoaTQxoqjjWctxKcjJMbjfuQ8sEZpzTpw/edit#gid=0
+https://docs.google.com/spreadsheets/d/1n1gz3bYi3JSoaTQxoqjjWctxKcjJMbjfuQ8sEZpzTpw/edit?usp=sharing
 
 ## 画面遷移図
-https://docs.google.com/spreadsheets/d/1-zrzpAww1QnUnshkKZjk5W1KEXGBbZ5HjsxpAj2UvBY/edit#gid=0
+https://docs.google.com/spreadsheets/d/1-zrzpAww1QnUnshkKZjk5W1KEXGBbZ5HjsxpAj2UvBY/edit?usp=sharing
 
 ## 画面ワイヤーフレーム
-https://docs.google.com/spreadsheets/d/1vpbeY-X3w0Qf0KAufQdF1JF0Nr1tizwA8exRgMM9NTw/edit#gid=0
+https://docs.google.com/spreadsheets/d/1vpbeY-X3w0Qf0KAufQdF1JF0Nr1tizwA8exRgMM9NTw/edit?usp=sharing
 
 ## 使用予定Gem
 * carrierwave
