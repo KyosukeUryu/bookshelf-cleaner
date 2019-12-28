@@ -1,0 +1,30 @@
+<% if @not_done_book.errors.present? %>
+  <ul>
+    <% @not_done_book.errors.full_messages.each do |msg|%>
+      <li><%= msg%></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @not_done_book, local: true do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :author %>
+  <%= f.text_field :author %>
+
+  <%= f.label :status %>
+  <%= f.select :status, NotDoneBook.statuses.keys, selected: NotDoneBook.statuses[@not_done_book.status] %>
+
+  <%= f.label :reading_expired %>
+  <%= f.date_select(
+                  :reading_expired,
+                  use_year_number: true,
+                  use_month_number: true,
+                  use_day_number: true,
+                  start_year: Time.now.year,
+                  end_year: Time.now.year + 10
+  ) %>
+
+  <%= f.submit %>
+<% end %>
