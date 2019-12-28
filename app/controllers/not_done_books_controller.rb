@@ -32,7 +32,8 @@ class NotDoneBooksController < ApplicationController
   end
 
   def destroy
-
+    @not_done_book.destroy
+    redirect_to not_done_books_path, notice: '書籍情報を削除しました'
   end
 
   private

@@ -15,6 +15,7 @@
         <td><%= book.status%></td>
         <td><%= book.reading_expired %></td>
         <td><%= link_to '編集する', edit_not_done_book_path(book) %></td>
+        <td><%= link_to '削除する', not_done_book_path(book), method: :delete, data: {confirm: '本当に削除しますか？'} %></td>
       </tr>
     <% end %>
   </table>
