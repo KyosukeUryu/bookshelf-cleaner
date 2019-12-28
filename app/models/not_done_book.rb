@@ -1,3 +1,3 @@
 class NotDoneBook < ApplicationRecord
-  enum status: %i[積読 読書中]
+  enum status: %i[not_yet reading]
 end

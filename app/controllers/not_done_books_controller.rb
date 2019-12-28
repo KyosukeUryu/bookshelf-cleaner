@@ -1,4 +1,5 @@
 class NotDoneBooksController < ApplicationController
+  before_action :set_book, only: %i[show edit update destroy]
   def tops
 
   end
@@ -20,6 +21,10 @@ class NotDoneBooksController < ApplicationController
     end
   end
 
+  def show
+
+  end
+
   def edit
 
   end
@@ -36,5 +41,9 @@ class NotDoneBooksController < ApplicationController
 
   def book_params
     params.require(:not_done_book).permit(:title, :author, :status, :reading_expired)
+  end
+
+  def set_book
+    @not_done_book = NotDoneBook.find(params[:id])
   end
 end
