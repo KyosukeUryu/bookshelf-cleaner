@@ -1,0 +1,2 @@
+class NotDoneBook < ApplicationRecord
+end
