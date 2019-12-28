@@ -1,8 +1,6 @@
 class NotDoneBooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
-  def tops
-
-  end
+  def tops; end
 
   def index
     @not_done_books = NotDoneBook.all
@@ -21,16 +19,16 @@ class NotDoneBooksController < ApplicationController
     end
   end
 
-  def show
+  def show; end
 
-  end
-
-  def edit
-
-  end
+  def edit; end
 
   def update
-
+    if @not_done_book.update(book_params)
+      redirect_to not_done_books_path, notice: '未読書籍情報を更新しました'
+    else
+      render :edit
+    end
   end
 
   def destroy
