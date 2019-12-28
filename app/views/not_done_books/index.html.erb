@@ -1,0 +1,19 @@
+<div class="books_wrapper">
+  <h2>未読書籍一覧はこちら</h2>
+  <table>
+    <tr>
+      <th>書籍名</th>
+      <th>著者名</th>
+      <th>ステータス</th>
+      <th>読破予定期間</th>
+    </tr>
+    <% @not_done_books.each do |book| %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.author %></td>
+        <td><%= book.status%></td>
+        <td><%= book.reading_expired %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
