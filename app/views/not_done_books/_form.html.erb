@@ -7,24 +7,32 @@
 <% end %>
 
 <%= form_with model: book, local: true do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
 
-  <%= f.label :author %>
-  <%= f.text_field :author %>
+  <div>
+    <%= f.label :author %>
+    <%= f.text_field :author %>
+  </div>
 
-  <%= f.label :status %>
-  <%= f.select :status, NotDoneBook.statuses.keys, selected: NotDoneBook.statuses[book.status] %>
+  <div>
+    <%= f.label :status %>
+    <%= f.select :status, NotDoneBook.statuses.keys, selected: NotDoneBook.statuses[book.status] %>
+  </div>
 
-  <%= f.label :reading_expired %>
-  <%= f.date_select(
+  <div>
+    <%= f.label :reading_expired %>
+    <%= f.date_select(
                   :reading_expired,
                   use_year_number: true,
                   use_month_number: true,
                   use_day_number: true,
                   start_year: Time.now.year,
                   end_year: Time.now.year + 10
-  ) %>
+    ) %>
+  </div>
 
   <%= f.submit %>
 <% end %>
