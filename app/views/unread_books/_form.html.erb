@@ -19,7 +19,7 @@
 
   <div>
     <%= f.label :status %>
-    <%= f.select :status, NotDoneBook.statuses.keys, selected: NotDoneBook.statuses[book.status] %>
+    <%= f.select :status, UnreadBook.statuses.keys, selected: UnreadBook.statuses[book.status] %>
   </div>
 
   <div>
