@@ -1,5 +1,7 @@
 class UnreadBooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
+  before_action :authenticate_user!, except: :tops
+
   def tops; end
 
   def index
