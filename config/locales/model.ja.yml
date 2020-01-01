@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      unread_book: 未読書籍
+      user: ユーザー
+    attributes:
+      unread_book:
+        title: タイトル
+        author: 著者名
+        status: ステータス
+        reading_expired: 読破期限
+      user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
