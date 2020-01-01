@@ -1,3 +1,5 @@
 <h2>トップページ</h2>
 
-<%= link_to '一覧画面へ', unread_books_path %>
+<% if user_signed_in? %>
+  <%= link_to '一覧画面へ', unread_books_path %>
+<% end %>
