@@ -5,15 +5,15 @@ class UnreadBooksController < ApplicationController
   def tops; end
 
   def index
-    @unread_books = UnreadBook.all
+    @unread_books = current_user.unread_books
   end
 
   def new
-    @unread_book = UnreadBook.new
+    @unread_book = current_user.unread_books.new
   end
 
   def create
-    @unread_book = UnreadBook.new(book_params)
+    @unread_book = current_user.unread_books.new(book_params)
     if @unread_book.save
       redirect_to root_path, notice: '未読書籍を登録しました'
     else
@@ -45,6 +45,6 @@ class UnreadBooksController < ApplicationController
   end
 
   def set_book
-    @unread_book = UnreadBook.find(params[:id])
+    @unread_book = current_user.unread_books.find(params[:id])
   end
 end
