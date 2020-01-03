@@ -12,14 +12,18 @@ describe '未読書籍の管理機能', type: :system do
     click_button 'Log in'
   end
 
+  shared_examples_for 'ユーザーAが登録した書籍が表示される' do
+    it { expect(page).to have_content '最初の本' }
+  end
+
   describe '未読書籍一覧表示機能' do
     context 'ユーザーAがログインしている時' do
       let(:login_user) { user_a }
-
-      it 'ユーザーAが登録した書籍が表示される' do
+      before do
         visit unread_books_path
-        expect(page).to have_content '最初の本'
       end
+
+      it_behaves_like 'ユーザーAが登録した書籍が表示される'
     end
 
     context 'ユーザーBがログインしている時' do
@@ -39,8 +43,6 @@ describe '未読書籍の管理機能', type: :system do
       visit unread_book_path(unread_book_a)
     end
 
-    it 'ユーザーAが作成したタスクの詳細が表示される' do
-      expect(page).to have_content '最初の本'
-    end
+    it_behaves_like 'ユーザーAが登録した書籍が表示される'
   end
 end
