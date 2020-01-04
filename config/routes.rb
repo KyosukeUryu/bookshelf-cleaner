@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     get :reading_books, on: :collection
     patch :return, on: :member
   end
+
+  resources :finished_books
 end

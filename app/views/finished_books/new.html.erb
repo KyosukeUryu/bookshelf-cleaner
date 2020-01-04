@@ -1,12 +1,12 @@
-<% if book.errors.present? %>
+<% if @finished_book.errors.present? %>
   <ul>
-    <% book.errors.full_messages.each do |msg|%>
+    <% @finished_book.errors.full_messages.each do |msg|%>
       <li><%= msg %></li>
     <% end %>
   </ul>
 <% end %>
 
-<%= form_with model: book, local: true do |f| %>
+<%= form_with model: @finished_book, local: true do |f| %>
   <div>
     <%= f.label :title %>
     <%= f.text_field :title %>
@@ -19,19 +19,24 @@
 
   <div>
     <%= f.label :status %>
-    <%= f.select :status, UnreadBook.statuses.keys, selected: UnreadBook.statuses[book.status] %>
+    <%= f.select :status, FinishedBook.statuses.keys, selected: FinishedBook.statuses[@finished_book.status] %>
   </div>
 
   <div>
-    <%= f.label :reading_expired %>
+    <%= f.label :desposal_expired %>
     <%= f.date_select(
-                  :reading_expired,
+                  :desposal_expired,
                   use_year_number: true,
                   use_month_number: true,
                   use_day_number: true,
                   start_year: Time.now.year,
                   end_year: Time.now.year + 10
     ) %>
+  </div>
+
+  <div>
+    <%= f.label :impression %>
+    <%= f.text_area :impression %>
   </div>
 
   <%= f.submit %>
