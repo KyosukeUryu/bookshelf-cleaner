@@ -8,6 +8,10 @@ class UnreadBooksController < ApplicationController
     @unread_books = current_user.unread_books
   end
 
+  def reading
+    @reading_books = current_user.unread_books.where(status: 1)
+  end
+
   def new
     @unread_book = current_user.unread_books.new
   end

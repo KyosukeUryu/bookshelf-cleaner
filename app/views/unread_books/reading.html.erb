@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th>書籍名</th>
+    <th>著者名</th>
+    <th>読破期限</th>
+    <th>読破ボタン</th>
+  </tr>
+  <% @reading_books.each do |book| %>
+    <tr>
+      <td><%= book.title %></td>
+      <td><%= book.author %></td>
+      <td><%= book.reading_expired %></td>
+      <td></td>
+    </tr>
+  <% end %>
+</table>
