@@ -76,23 +76,23 @@ describe '未読書籍の管理機能', type: :system do
     end
   end
 
-  describe '未読書籍作成機能' do
+  describe '未読書籍編集機能' do
     let(:login_user) { user_a }
 
     before do
-      visit new_unread_book_path
+      visit edit_unread_book_path(unread_book_a)
       fill_in 'タイトル', with: book_name
       fill_in '著者名', with: book_author
       select 'reading', from: 'ステータス'
-      click_button '登録する'
+      click_button '更新する'
     end
 
     context '正しく書籍情報が入力されている' do
-      let(:book_name) { '正しい書籍' }
+      let(:book_name) { '編集された書籍' }
       let(:book_author) { '正しい著者' }
 
-      it '書籍情報が登録される' do
-        expect(page).to have_content '未読書籍を登録しました'
+      it '書籍情報が更新される' do
+        expect(page).to have_content '未読書籍情報を更新しました'
       end
     end
 
