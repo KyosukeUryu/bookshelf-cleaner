@@ -1,0 +1,2 @@
+class FinishedBook < ApplicationRecord
+end

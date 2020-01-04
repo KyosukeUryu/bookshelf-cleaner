@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_04_022229) do
+ActiveRecord::Schema.define(version: 2020_01_04_054700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "finished_books", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "author", null: false
+    t.integer "status", default: 0, null: false
+    t.date "desposal_expired"
+    t.text "impression"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_finished_books_on_user_id"
+  end
 
   create_table "unread_books", force: :cascade do |t|
     t.string "title", null: false
@@ -49,5 +61,6 @@ ActiveRecord::Schema.define(version: 2020_01_04_022229) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "finished_books", "users"
   add_foreign_key "unread_books", "users"
 end
