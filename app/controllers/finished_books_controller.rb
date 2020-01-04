@@ -1,4 +1,6 @@
 class FinishedBooksController < ApplicationController
+  before_action :set_book, only: %i[show edit update destroy]
+
   def index
     @finished_books = current_user.finished_books
   end
@@ -21,9 +23,15 @@ class FinishedBooksController < ApplicationController
     end
   end
 
+  def edit; end
+
   private
 
   def book_params
     params.require(:finished_book).permit(:title, :author, :status, :desposal_expired, :impression, :unread_book)
+  end
+
+  def set_book
+    @finished_book = FinishedBook.find(params[:id])
   end
 end
