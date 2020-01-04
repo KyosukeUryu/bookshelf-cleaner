@@ -12,6 +12,12 @@ class UnreadBooksController < ApplicationController
     @reading_books = current_user.unread_books.where(status: 1)
   end
 
+  def return
+    reading_book = UnreadBook.find(params[:id])
+    reading_book.update(status: 0)
+    redirect_to reading_unread_books_path, notice: '未読書籍に戻しました'
+  end
+
   def new
     @unread_book = current_user.unread_books.new
   end
