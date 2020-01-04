@@ -9,13 +9,23 @@ class UnreadBooksController < ApplicationController
   end
 
   def reading
+    @reading_book = UnreadBook.find(params[:id])
+    if @reading_book.not_yet?
+      @reading_book.update(status: 1)
+      redirect_to unread_books_path, notice: '読書中書籍に登録しました'
+    else
+      redirect_to unread_books_path, notice: 'すでに読書中の書籍です'
+    end
+  end
+
+  def reading_books
     @reading_books = current_user.unread_books.where(status: 1)
   end
 
   def return
-    reading_book = UnreadBook.find(params[:id])
-    reading_book.update(status: 0)
-    redirect_to reading_unread_books_path, notice: '未読書籍に戻しました'
+    @reading_book = UnreadBook.find(params[:id])
+    @reading_book.update(status: 0)
+    redirect_to reading_books_unread_books_path, notice: '未読書籍に戻しました'
   end
 
   def new

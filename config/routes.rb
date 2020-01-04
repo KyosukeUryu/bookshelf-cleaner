@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   root to: 'unread_books#tops'
 
   resources :unread_books do
-    get :reading, on: :collection
+    patch :reading, on: :member
+    get :reading_books, on: :collection
     patch :return, on: :member
   end
 end
