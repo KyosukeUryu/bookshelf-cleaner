@@ -12,7 +12,7 @@
       <td><%= book.author %></td>
       <td><%= book.reading_expired %></td>
       <td><%= link_to '未読へ', return_unread_book_path(book), method: :patch, data: { confirm: '本当に未読に戻しますか？'}  %></td>
-      <td><%= link_to '読破', new_finished_book_path(params: { title: book.title, author: book.author }) %></td>
+      <td><%= link_to '読破', new_finished_book_path(params: { id: book.id, title: book.title, author: book.author }), data: {confirm: '書籍を既読に移しますがよろしいですか？'} %></td>
     </tr>
   <% end %>
 </table>

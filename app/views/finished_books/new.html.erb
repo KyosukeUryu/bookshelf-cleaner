@@ -39,5 +39,8 @@
     <%= f.text_area :impression %>
   </div>
 
+  <%= f.fields_for @unread_book do |i| %>
+    <%= i.hidden_field :id %>
+  <% end %>
   <%= f.submit %>
 <% end %>
