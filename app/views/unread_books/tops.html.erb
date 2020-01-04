@@ -3,4 +3,5 @@
 <% if user_signed_in? %>
   <%= link_to '一覧画面へ', unread_books_path %>
   <%= link_to '読書中書籍一覧へ', reading_books_unread_books_path %>
+  <%= link_to '既読書籍一覧へ', finished_books_path %>
 <% end %>

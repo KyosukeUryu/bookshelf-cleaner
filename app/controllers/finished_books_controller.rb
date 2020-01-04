@@ -1,6 +1,6 @@
 class FinishedBooksController < ApplicationController
   def index
-
+    @finished_books = current_user.finished_books
   end
 
   def new
