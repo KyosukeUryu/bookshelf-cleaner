@@ -25,6 +25,21 @@ class FinishedBooksController < ApplicationController
 
   def edit; end
 
+  def show; end
+
+  def update
+    if @finished_book.update(book_params)
+      redirect_to finished_books_path, notice: '既読書籍情報を更新しました'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @finished_book.destroy
+    redirect_to finished_books_path, notice: '既読書籍を削除しました'
+  end
+
   private
 
   def book_params
