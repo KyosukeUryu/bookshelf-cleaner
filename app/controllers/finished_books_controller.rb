@@ -2,7 +2,8 @@ class FinishedBooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
 
   def index
-    @finished_books = current_user.finished_books
+    @q = current_user.finished_books.ransack(params[:q])
+    @finished_books = @q.result(distinct: true)
   end
 
   def new
