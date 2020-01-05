@@ -1,5 +1,16 @@
 <div class="books_wrapper">
   <h2>未読書籍一覧はこちら</h2>
+
+  <%= search_form_for @q do |f| %>
+    <%= f.label :title_or_author_cont, 'タイトルか著者名' %>
+    <%= f.search_field :title_or_author_cont %>
+
+    <%= f.label :status_eq, 'ステータス' %>
+    <%= f.select :status_eq, UnreadBook.statuses, include_blank: true, selected: '' %>
+
+    <%= f.submit %>
+  <% end %>
+
   <table>
     <tr>
       <th>書籍名</th>

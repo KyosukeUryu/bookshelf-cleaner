@@ -5,7 +5,8 @@ class UnreadBooksController < ApplicationController
   def tops; end
 
   def index
-    @unread_books = current_user.unread_books
+    @q = current_user.unread_books.ransack(params[:q])
+    @unread_books = @q.result(distinct: true)
   end
 
   def reading
