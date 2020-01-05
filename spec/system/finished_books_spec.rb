@@ -37,15 +37,15 @@ describe '既読書籍の管理機能', type: :system do
     end
   end
 
-#  describe '未読書籍詳細機能' do
-#    let(:login_user) { user_a }
-#
-#    before do
-#      visit unread_book_path(unread_book_a)
-#    end
-#
-#    it_behaves_like 'ユーザーAが登録した書籍が表示される'
-#  end
+  describe '既読書籍詳細機能' do
+    let(:login_user) { user_a }
+
+    before do
+      visit finished_book_path(finished_book_a)
+    end
+
+    it_behaves_like 'ユーザーAが登録した書籍が表示される'
+  end
 #
 #  describe '未読書籍作成機能' do
 #    let(:login_user) { user_a }
