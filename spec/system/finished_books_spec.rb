@@ -46,37 +46,39 @@ describe '既読書籍の管理機能', type: :system do
 
     it_behaves_like 'ユーザーAが登録した書籍が表示される'
   end
-#
-#  describe '未読書籍作成機能' do
-#    let(:login_user) { user_a }
-#
-#    before do
-#      visit new_unread_book_path
-#      fill_in 'タイトル', with: book_name
-#      fill_in '著者名', with: book_author
-#      select 'reading', from: 'ステータス'
-#      click_button '登録する'
-#    end
-#
-#    context '正しく書籍情報が入力されている' do
-#      let(:book_name) { '正しい書籍' }
-#      let(:book_author) { '正しい著者' }
-#
-#      it '書籍情報が登録される' do
-#        expect(page).to have_content '未読書籍を登録しました'
-#      end
-#    end
-#
-#    context '書籍情報が入力されていない' do
-#      let(:book_name) { '' }
-#      let(:book_author) { '正しい著者' }
-#
-#      it 'エラー情報が表示される' do
-#        expect(page).to have_content 'タイトルを入力してください'
-#      end
-#    end
-#  end
-#
+
+  describe '未読書籍を既読書籍に移し替える機能' do
+    let(:login_user) { user_a }
+
+    before do
+      visit reading_books_unread_books_path
+      click_on '読破'
+      fill_in 'タイトル', with: book_name
+      fill_in '著者名', with: book_author
+      select 'reread', from: 'ステータス'
+      fill_in '感想等', with: 'very good'
+      click_button '登録する'
+    end
+
+    context '正しく書籍情報が入力されている' do
+      let(:book_name) { '正しい既読書籍' }
+      let(:book_author) { '正しい著者' }
+
+      it '書籍情報が登録される' do
+        expect(page).to have_content '書籍読破おめでとうございます！'
+      end
+    end
+
+    context '書籍情報が入力されていない' do
+      let(:book_name) { '' }
+      let(:book_author) { '正しい著者' }
+
+      it 'エラー情報が表示される' do
+        expect(page).to have_content 'タイトルを入力してください'
+      end
+    end
+  end
+
 #  describe '未読書籍編集機能' do
 #    let(:login_user) { user_a }
 #
