@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     patch :return, on: :member
   end
 
-  resources :conversations
+  resources :conversations do
+    resources :messages
+  end
 
   resources :finished_books
 end
