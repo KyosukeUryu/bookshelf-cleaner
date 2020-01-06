@@ -25,6 +25,18 @@ describe '既読書籍の管理機能', type: :system do
       end
 
       it_behaves_like 'ユーザーAが登録した書籍が表示される'
+
+      it '検索欄に適切に入力したときに正しく表示される' do
+        fill_in 'タイトルか著者名', with: '最初に読み終わった本'
+        click_button '検索'
+        expect(page).to have_content '最初に読み終わった本'
+      end
+
+      it '検索ワードが違うとき' do
+        fill_in 'タイトルか著者名', with: '違う本'
+        click_button '検索'
+        expect(page).not_to have_content '最初に読み終わった本'
+      end
     end
 
     context 'ユーザーBがログインしている時' do
