@@ -11,6 +11,7 @@ ja:
         status: ステータス
         reading_expired: 読破期限
       user:
+        name: 名前
         email: メールアドレス
         password: パスワード
         password_confirmation: 確認用パスワード
