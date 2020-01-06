@@ -3,6 +3,7 @@ ja:
     models:
       unread_book: 未読書籍
       user: ユーザー
+      finished_book: 既読書籍
     attributes:
       unread_book:
         title: タイトル
@@ -13,3 +14,9 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: 確認用パスワード
+      finished_book:
+        title: タイトル
+        author: 著者名
+        status: ステータス
+        desposal_expired: 処分期限
+        impression: 感想等
