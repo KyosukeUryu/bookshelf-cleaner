@@ -13,5 +13,7 @@ Rails.application.routes.draw do
     resources :messages
   end
 
-  resources :finished_books
+  resources :finished_books do
+    get :others_books, on: :collection
+  end
 end

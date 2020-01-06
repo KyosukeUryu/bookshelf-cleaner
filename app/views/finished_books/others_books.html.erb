@@ -1,0 +1,23 @@
+<div class="books_wrapper">
+  <h2>他ユーザーが読んだ書籍</h2>
+
+  <table>
+    <tr>
+      <th>書籍名</th>
+      <th>著者名</th>
+      <th>ユーザー名</th>
+      <th>ステータス</th>
+      <th>処分予定時期</th>
+    </tr>
+    <% @finished_books.each do |book| %>
+      <tr>
+        <td><%= link_to book.title, finished_book_path(book) %></td>
+        <td><%= book.author %></td>
+        <td><%= book.user.name %></td>
+        <td><%= book.status %></td>
+        <td><%= book.desposal_expired %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= link_to '新規未読書籍登録', new_unread_book_path %>
+</div>

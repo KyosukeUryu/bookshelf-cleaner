@@ -7,6 +7,10 @@ class FinishedBooksController < ApplicationController
     @finished_books = @q.result(distinct: true)
   end
 
+  def others_books
+    @finished_books = FinishedBook.where.not(user_id: current_user.id)
+  end
+
   def new
     @unread_book = current_user.unread_books.find(params[:id])
     @finished_book = current_user.finished_books.new
