@@ -79,34 +79,33 @@ describe '既読書籍の管理機能', type: :system do
     end
   end
 
-#  describe '未読書籍編集機能' do
-#    let(:login_user) { user_a }
-#
-#    before do
-#      visit edit_unread_book_path(unread_book_a)
-#      fill_in 'タイトル', with: book_name
-#      fill_in '著者名', with: book_author
-#      select 'reading', from: 'ステータス'
-#      click_button '更新する'
-#    end
-#
-#    context '正しく書籍情報が入力されている' do
-#      let(:book_name) { '編集された書籍' }
-#      let(:book_author) { '正しい著者' }
-#
-#      it '書籍情報が更新される' do
-#        expect(page).to have_content '未読書籍情報を更新しました'
-#      end
-#    end
-#
-#    context '書籍情報が入力されていない' do
-#      let(:book_name) { '' }
-#      let(:book_author) { '正しい著者' }
-#
-#      it 'エラー情報が表示される' do
-#        expect(page).to have_content 'タイトルを入力してください'
-#      end
-#    end
-#  end
+  describe '既読書籍編集画面' do
+    let(:login_user) { user_a }
+
+    before do
+      visit edit_finished_book_path(finished_book_a)
+      fill_in 'タイトル', with: book_name
+      fill_in '著者名', with: book_author
+      click_button '更新する'
+    end
+
+    context '正しく書籍情報が入力されている' do
+      let(:book_name) { '編集された書籍' }
+      let(:book_author) { '正しい著者' }
+
+      it '書籍情報が更新される' do
+        expect(page).to have_content '既読書籍情報を更新しました'
+      end
+    end
+
+    context '書籍情報が入力されていない' do
+      let(:book_name) { '' }
+      let(:book_author) { '正しい著者' }
+
+      it 'エラー情報が表示される' do
+        expect(page).to have_content 'タイトルを入力してください'
+      end
+    end
+  end
 end
 
