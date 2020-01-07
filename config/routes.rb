@@ -19,4 +19,5 @@ Rails.application.routes.draw do
 
   resources :comments, only: [:create]
   resources :users, only: [:show]
+  resources :concern_books, only: [:create, :destroy]
 end

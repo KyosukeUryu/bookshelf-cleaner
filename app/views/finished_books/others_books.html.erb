@@ -19,6 +19,7 @@
       <th>ステータス</th>
       <th>処分予定時期</th>
       <th>メッセージを送る</th>
+      <th>お気に入り</th>
     </tr>
     <% @finished_books.each do |book| %>
       <tr>
@@ -28,6 +29,11 @@
         <td><%= book.status %></td>
         <td><%= book.desposal_expired %></td>
         <td><%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: book.user.id), method: :post %></td>
+        <% if current_user.concerned?(book) %>
+          <td><%= link_to '気になる書籍から外す', concern_book_path(current_user.concern_books.find_by(finished_book_id: book.id)), method: :delete %></td>
+        <% else %>
+          <td><%= link_to '気になる書籍に追加する', concern_books_path(finished_book_id: book.id), method: :post %></td>
+        <% end %>
       </tr>
     <% end %>
   </table>
