@@ -1,0 +1,2 @@
+class ConcernBook < ApplicationRecord
+end
