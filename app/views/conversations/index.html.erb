@@ -3,10 +3,11 @@
     <h2>メッセージスレッド</h2>
   </thead>
   <tbody>
+    <% i = 1 %>
     <% @conversations.each do |conversation| %>
       <td>
         <% if conversation.target_user(current_user).present? %>
-          <%= 'メッセージへ' %>
+          <%= "#{i}. " %> <%= link_to conversation.target_user(current_user).name, conversation_messages_path(conversation) %><%= "さんとのメッセージ" %>
         <% end %>
       </td>
     <% end %>

@@ -1,0 +1,29 @@
+<% if @over_fifteen %>
+  <%= link_to '以前のメッセージ', '?=all' %>
+<% end %>
+
+<div class="segment">
+  <% @messages.each do |message| %>
+    <% if message.body.present? %>
+      <div class="item">
+        <div class="content">
+          <div class="header"><strong><%= message.user.name %></strong><%= message.message_time %></div>
+          <div class="item">
+            <%= message.body %>
+            <% if message.user == current_user %>
+              <%= message.read ? '既読' : '未読' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<%= form_with(model: [@conversation, @message]) do |f| %>
+  <div>
+    <%= f.text_area :body %>
+  </div>
+  <%= f.text_field :user_id, value: current_user.id, type: 'hidden' %>
+  <%= f.submit "メッセージを送る" %>
+<% end %>

@@ -17,6 +17,7 @@
       <th>ユーザー名</th>
       <th>ステータス</th>
       <th>処分予定時期</th>
+      <th>メッセージを送る</th>
     </tr>
     <% @finished_books.each do |book| %>
       <tr>
@@ -25,6 +26,7 @@
         <td><%= link_to book.user.name, user_path(book.user) %></td>
         <td><%= book.status %></td>
         <td><%= book.desposal_expired %></td>
+        <td><%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: book.user.id), method: :post %></td>
       </tr>
     <% end %>
   </table>
