@@ -32,7 +32,10 @@ class FinishedBooksController < ApplicationController
 
   def edit; end
 
-  def show; end
+  def show
+    @comment = @finished_book.comments.new
+    @comments = @finished_book.comments
+  end
 
   def update
     if @finished_book.update(book_params)

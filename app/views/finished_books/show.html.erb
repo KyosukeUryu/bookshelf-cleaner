@@ -5,3 +5,21 @@
   <li>処分予定日：<%= @finished_book.desposal_expired %></li>
   <li>ステータス：<%= @finished_book.status %></li>
 </ul>
+
+<% if @comments.present? %>
+  <ul>
+    <% @comments.each do |comment| %>
+      <li><%= comment.content %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model: @comment) do |f| %>
+  <%= f.label :content, 'コメント' %>
+  <%= f.text_area :content %>
+
+  <%= f.text_field :user_id, value: current_user.id, type: 'hidden' %>
+  <%= f.text_field :finished_book_id, value: @finished_book.id, type: 'hidden' %>
+
+  <%= f.submit %>
+<% end %>
