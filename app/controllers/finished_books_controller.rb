@@ -8,7 +8,8 @@ class FinishedBooksController < ApplicationController
   end
 
   def others_books
-    @finished_books = FinishedBook.where.not(user_id: current_user.id)
+    @q = FinishedBook.where.not(user_id: current_user.id).ransack(params[:q])
+    @finished_books = @q.result(distinct: true)
   end
 
   def new

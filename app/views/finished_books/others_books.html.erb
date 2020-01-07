@@ -22,7 +22,7 @@
       <tr>
         <td><%= link_to book.title, finished_book_path(book) %></td>
         <td><%= book.author %></td>
-        <td><%= book.user.name %></td>
+        <td><%= link_to book.user.name, user_path(book.user) %></td>
         <td><%= book.status %></td>
         <td><%= book.desposal_expired %></td>
       </tr>

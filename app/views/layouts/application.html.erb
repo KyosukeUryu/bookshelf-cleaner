@@ -11,6 +11,7 @@
 
   <body>
     <% if user_signed_in? %>
+      <%= link_to 'トップページへ', root_path %>
       <%= link_to '書籍登録へ', new_unread_book_path %>
       <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
     <% else %>
