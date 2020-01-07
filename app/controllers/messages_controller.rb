@@ -28,6 +28,9 @@ class MessagesController < ApplicationController
   def create
     @message = @conversation.messages.build(message_params)
     if @message.save
+      sender = current_user
+      recipient = @conversation.target_user(current_user)
+      MessageNotifyMailer.message_notify_mail(sender, recipient).deliver
       redirect_to conversation_messages_path(@conversation)
     else
       render :index

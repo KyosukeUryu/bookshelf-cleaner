@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :unread_books, dependent: :destroy
   has_many :finished_books, dependent: :destroy
+  has_many :messages, dependent: :destroy
 end
