@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_07_102744) do
+ActiveRecord::Schema.define(version: 2020_01_07_111147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,14 @@ ActiveRecord::Schema.define(version: 2020_01_07_102744) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "progresses", force: :cascade do |t|
+    t.text "content", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_progresses_on_user_id"
+  end
+
   create_table "unread_books", force: :cascade do |t|
     t.string "title", null: false
     t.string "author", null: false
@@ -109,5 +117,6 @@ ActiveRecord::Schema.define(version: 2020_01_07_102744) do
   add_foreign_key "finished_books", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
+  add_foreign_key "progresses", "users"
   add_foreign_key "unread_books", "users"
 end
