@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :users, only: [:show]
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   root to: 'unread_books#tops'
@@ -19,4 +18,5 @@ Rails.application.routes.draw do
   end
 
   resources :comments, only: [:create]
+  resources :users, only: [:show]
 end
