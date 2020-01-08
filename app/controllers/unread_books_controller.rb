@@ -13,7 +13,7 @@ class UnreadBooksController < ApplicationController
     @reading_book = UnreadBook.find(params[:id])
     if @reading_book.not_yet?
       @reading_book.update(status: 1)
-      redirect_to unread_books_path, notice: '読書中書籍に登録しました'
+      redirect_to unread_books_path, notice: "#{@reading_book.title}を読書中書籍に登録しました"
     else
       redirect_to unread_books_path, notice: 'すでに読書中の書籍です'
     end
@@ -38,7 +38,7 @@ class UnreadBooksController < ApplicationController
   def create
     @unread_book = current_user.unread_books.new(book_params)
     if @unread_book.save
-      redirect_to root_path, notice: '未読書籍を登録しました'
+      redirect_to root_path, notice: "#{@unread_book.title}を未読書籍に登録しました"
     else
       render :new
     end
