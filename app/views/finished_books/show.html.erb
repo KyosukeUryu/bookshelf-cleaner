@@ -7,13 +7,13 @@
   <li>感想等：<%= @finished_book.impression %></li>
 </ul>
 
-<% if @comments.present? %>
-  <ul>
-    <% @comments.each do |comment| %>
+<ul>
+  <% @comments.each do |comment| %>
+    <% if comment.id.present? %>
       <li><%= comment.content %></li>
     <% end %>
-  </ul>
-<% end %>
+  <% end %>
+</ul>
 
 <%= form_with(model: @comment) do |f| %>
   <%= f.label :content, 'コメント' %>
