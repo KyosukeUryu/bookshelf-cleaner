@@ -20,6 +20,8 @@ class UnreadBooksController < ApplicationController
   end
 
   def reading_books
+    @progresses = current_user.progresses
+    @progress = Progress.new
     @reading_books = current_user.unread_books.where(status: 1)
   end
 

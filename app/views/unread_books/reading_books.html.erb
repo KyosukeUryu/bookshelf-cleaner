@@ -16,3 +16,18 @@
     </tr>
   <% end %>
 </table>
+
+<ul>
+  <% @progresses.each do |progress| %>
+    <% if progress.id.present? %>
+      <li><%= progress.content %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<%= form_with(model: @progress) do |f| %>
+  <%= f.label :content, '進捗メモ' %>
+  <%= f.text_area :content %>
+
+  <%= f.submit %>
+<% end %>
