@@ -30,6 +30,7 @@ gem 'devise'
 gem 'rails_admin'
 gem 'cancancan'
 gem 'ransack'
+gem 'acts-as-taggable-on'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
