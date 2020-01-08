@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :concern_books, dependent: :destroy
+  has_many :progresses, dependent: :destroy
 
   def concerned?(book)
     concern_books.find_by(finished_book_id: book.id)
