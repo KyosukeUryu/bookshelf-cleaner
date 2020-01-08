@@ -34,5 +34,10 @@
     ) %>
   </div>
 
+  <div>
+    <%= f.label :tag_list %>
+    <%= text_field_tag 'unread_book[tag_list]', @unread_book.tag_list.join(",") %>
+  </div>
+
   <%= f.submit %>
 <% end %>

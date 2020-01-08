@@ -3,4 +3,5 @@ class UnreadBook < ApplicationRecord
   enum status: %i[not_yet reading]
   validates :title, presence: true
   validates :author, presence: true
+  acts_as_taggable
 end

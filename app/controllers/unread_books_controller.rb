@@ -64,7 +64,7 @@ class UnreadBooksController < ApplicationController
   private
 
   def book_params
-    params.require(:unread_book).permit(:title, :author, :status, :reading_expired)
+    params.require(:unread_book).permit(:title, :author, :status, :reading_expired, :tag_list)
   end
 
   def set_book
