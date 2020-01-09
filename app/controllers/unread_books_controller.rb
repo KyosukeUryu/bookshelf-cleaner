@@ -1,4 +1,7 @@
 class UnreadBooksController < ApplicationController
+  require 'net/http'
+  require 'uri'
+  require 'json'
   before_action :set_book, only: %i[show edit update destroy]
   before_action :authenticate_user!, except: :tops
 
@@ -32,6 +35,20 @@ class UnreadBooksController < ApplicationController
   end
 
   def search
+    if params[:looking_for]
+      @search_term = params[:looking_for]
+      uri = URI.parse(URI.encode("https://www.googleapis.com/books/v1/volumes?q=#{@search_term}"))
+      json = Net::HTTP.get(uri)
+      result = JSON.parse(json)
+      @books = result['items'] if result['totalItems'] != 0
+      @search_books = []
+      @books.each do |book|
+        @search_books << {
+          title: book['volumeInfo']['title'],
+          author: book['volumeInfo']['authors']
+        }
+      end
+    end
   end
 
   def new

@@ -1,0 +1,15 @@
+<h2>登録書籍検索</h2>
+<%= form_tag search_unread_books_path, method: :get do |f| %>
+  <%= search_field_tag :looking_for %>
+
+  <%= submit_tag '検索' %>
+<% end %>
+
+<% if @search_books.present? %>
+  <ul>
+    <% @search_books.each do |book| %>
+      <li>書籍名：<%= book[:title] %></li>
+      <li>著者名：<%= book[:author] %></li>
+    <% end %>
+  </ul>
+<% end %>
