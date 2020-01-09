@@ -10,6 +10,8 @@
     <% @search_books.each do |book| %>
       <li>書籍名：<%= book[:title] %></li>
       <li>著者名：<%= book[:author] %></li>
+      <li><%= image_tag book[:image] %></li>
+      <br>
     <% end %>
   </ul>
 <% end %>

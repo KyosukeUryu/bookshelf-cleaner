@@ -45,7 +45,8 @@ class UnreadBooksController < ApplicationController
       @books.each do |book|
         @search_books << {
           title: book['volumeInfo']['title'],
-          author: book['volumeInfo']['authors']
+          author: book['volumeInfo']['authors'],
+          image: book['volumeInfo']['imageLinks']['smallThumbnail']
         }
       end
     end
