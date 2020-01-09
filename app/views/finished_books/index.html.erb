@@ -32,5 +32,6 @@
       </tr>
     <% end %>
   </table>
+  <%= paginate @finished_books %>
   <%= link_to '新規未読書籍登録', new_unread_book_path %>
 </div>

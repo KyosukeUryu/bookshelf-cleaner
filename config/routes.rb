@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     patch :reading, on: :member
     get :reading_books, on: :collection
     patch :return, on: :member
+    get :search, on: :collection
   end
 
   resources :conversations do

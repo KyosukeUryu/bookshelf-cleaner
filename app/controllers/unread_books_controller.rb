@@ -6,7 +6,7 @@ class UnreadBooksController < ApplicationController
 
   def index
     @q = current_user.unread_books.ransack(params[:q])
-    @unread_books = @q.result(distinct: true)
+    @unread_books = @q.result(distinct: true).page(params[:pate]).per(10)
   end
 
   def reading
@@ -22,13 +22,16 @@ class UnreadBooksController < ApplicationController
   def reading_books
     @progresses = current_user.progresses
     @progress = Progress.new
-    @reading_books = current_user.unread_books.where(status: 1)
+    @reading_books = current_user.unread_books.where(status: 1).page(params[:page]).per(10)
   end
 
   def return
     @reading_book = UnreadBook.find(params[:id])
     @reading_book.update(status: 0)
     redirect_to reading_books_unread_books_path, notice: '未読書籍に戻しました'
+  end
+
+  def search
   end
 
   def new
@@ -38,7 +41,7 @@ class UnreadBooksController < ApplicationController
   def create
     @unread_book = current_user.unread_books.new(book_params)
     if @unread_book.save
-      redirect_to root_path, notice: "#{@unread_book.title}を未読書籍に登録しました"
+      redirect_to unread_books_path, notice: "#{@unread_book.title}を未読書籍に登録しました"
     else
       render :new
     end
