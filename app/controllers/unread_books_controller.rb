@@ -47,9 +47,8 @@ class UnreadBooksController < ApplicationController
         @search_books = []
         @books.each do |book|
           @search_books << {
-            # nilの時のエラー解消の必要あり
             title: book['volumeInfo']['title'],
-            author: book['volumeInfo']['authors'],
+            author: book['volumeInfo']['authors']&.join(','),
             image: book['volumeInfo']['imageLinks'] && book['volumeInfo']['imageLinks']['smallThumbnail']
           }
         end
@@ -58,7 +57,7 @@ class UnreadBooksController < ApplicationController
   end
 
   def new
-    @unread_book = current_user.unread_books.new
+    @unread_book = current_user.unread_books.new(search_params)
   end
 
   def create
@@ -88,6 +87,10 @@ class UnreadBooksController < ApplicationController
   end
 
   private
+
+  def search_params
+    params.permit(:title, :author)
+  end
 
   def book_params
     params.require(:unread_book).permit(:title, :author, :status, :reading_expired, :tag_list)
