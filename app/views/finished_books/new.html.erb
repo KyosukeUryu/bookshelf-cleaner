@@ -18,6 +18,11 @@
   </div>
 
   <div>
+    <%= tag_image @finished_book.image.url, if @finished_book.image.present? %>
+    <%= f.text_field :author %>
+  </div>
+
+  <div>
     <%= f.label :status %>
     <%= f.select :status, FinishedBook.statuses.keys, selected: FinishedBook.statuses[@finished_book.status] %>
   </div>

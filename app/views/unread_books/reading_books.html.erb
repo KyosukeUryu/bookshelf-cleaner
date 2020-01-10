@@ -19,7 +19,7 @@
         <td></td>
       <% end %>
       <td><%= link_to '未読へ', return_unread_book_path(book), method: :patch, data: { confirm: '本当に未読に戻しますか？'}  %></td>
-      <td><%= link_to '読破', new_finished_book_path(params: { id: book.id, title: book.title, author: book.author }) %></td>
+      <td><%= link_to '読破', new_finished_book_path(params: { id: book.id, title: book.title, author: book.author, image: book.image }) %></td>
     </tr>
   <% end %>
 </table>
