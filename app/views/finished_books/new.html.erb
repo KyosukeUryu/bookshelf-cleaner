@@ -18,8 +18,9 @@
   </div>
 
   <div>
-    <%= tag_image @finished_book.image.url, if @finished_book.image.present? %>
-    <%= f.text_field :author %>
+    <%= image_tag @image if @image.present? %>
+    画像
+    <%= f.hidden_field :image_cache, value: @image %>
   </div>
 
   <div>

@@ -5,4 +5,5 @@ class FinishedBook < ApplicationRecord
   validates :title, presence: true
   validates :author, presence: true
   enum status: %i[reread keep disposal_soon disposal]
+  mount_uploader :image, ImageUploader
 end
