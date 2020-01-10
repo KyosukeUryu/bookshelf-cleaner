@@ -4,4 +4,8 @@
   <li>著者名：<%= @unread_book.author %></li>
   <li>読破期限：<%= @unread_book.reading_expired %></li>
   <li>ステータス：<%= @unread_book.status %></li>
+  <% if @unread_book.image.present? %>
+    <li>画像<%= image_tag @unread_book.image.url %><br>
+    by Google Search</li>
+  <% end %>
 </ul>
