@@ -1,11 +1,17 @@
 <h2>登録書籍検索</h2>
-<%= form_tag search_unread_books_path, method: :get do |f| %>
+<%= form_tag search_unread_books_path, method: :get do %>
   <%= search_field_tag :looking_for %>
+  <%= hidden_field_tag :number, 0 %>
 
   <%= submit_tag '検索' %>
 <% end %>
 
 <% if @search_books.present? %>
+  <% if @max_books > 15 %>
+    <%= link_to '最初へ', search_unread_books_path(looking_for: @search_term, number: 0) if @number >= 1 %>
+    <%= link_to '戻る', search_unread_books_path(looking_for: @search_term, number: @number - 10) if @number >= 1 %>
+    <%= link_to '次へ', search_unread_books_path(looking_for: @search_term, number: @number + 10) %>
+  <% end %>
   <ul>
     <% @search_books.each do |book| %>
       <li>書籍名：<%= book[:title] %></li>
