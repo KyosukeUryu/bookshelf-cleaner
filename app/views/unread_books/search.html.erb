@@ -19,7 +19,7 @@
       <li>著者名：<%= book[:author] %></li>
       <li><%= image_tag book[:image] if book[:image].present? %></li>
       <li>by Google Search</li>
-      <li><%= link_to 'この書籍を登録', new_unread_book_path(title: book[:title], author: book[:author]) %></li>
+      <li><%= link_to 'この書籍を登録', new_unread_book_path(title: book[:title], author: book[:author], image: book[:image]) %></li>
       <br>
     <% end %>
   </ul>

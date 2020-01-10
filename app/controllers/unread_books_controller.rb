@@ -63,7 +63,9 @@ class UnreadBooksController < ApplicationController
 
   def create
     @unread_book = current_user.unread_books.new(book_params)
+    @unread_book.remote_image_url = params[:unread_book][:image]
     if @unread_book.save
+      binding.irb
       redirect_to unread_books_path, notice: "#{@unread_book.title}を未読書籍に登録しました"
     else
       render :new

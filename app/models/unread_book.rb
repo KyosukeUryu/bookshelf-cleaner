@@ -4,7 +4,7 @@ class UnreadBook < ApplicationRecord
   validates :title, presence: true
   validates :author, presence: true
   acts_as_taggable
-  has_one_attached :image
+  mount_uploader :image, ImageUploader
 
   #def self.search(term)
   #  base_uri 'https://www.googleapis.com/books/v1/volumes'

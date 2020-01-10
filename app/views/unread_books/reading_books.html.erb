@@ -3,6 +3,7 @@
     <th>書籍名</th>
     <th>著者名</th>
     <th>読破期限</th>
+    <th>書影</th>
     <th>未読書籍に戻す</th>
     <th>読破ボタン</th>
   </tr>
@@ -11,6 +12,10 @@
       <td><%= book.title %></td>
       <td><%= book.author %></td>
       <td><%= book.reading_expired %></td>
+      <% if book.image.present? %>
+        <td><%= image_tag book.image.url %><br>
+        by Google Search</td>
+      <% end %>
       <td><%= link_to '未読へ', return_unread_book_path(book), method: :patch, data: { confirm: '本当に未読に戻しますか？'}  %></td>
       <td><%= link_to '読破', new_finished_book_path(params: { id: book.id, title: book.title, author: book.author }) %></td>
     </tr>
