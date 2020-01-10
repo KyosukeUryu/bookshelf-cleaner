@@ -10,8 +10,10 @@
     <% @search_books.each do |book| %>
       <li>書籍名：<%= book[:title] %></li>
       <li>著者名：<%= book[:author] %></li>
-      <li><%= image_tag book[:image] %></li>
+      <li><%= image_tag book[:image] if book[:image].present? %></li>
       <br>
     <% end %>
   </ul>
+<% elsif @search_term.present? %>
+  <p><%= @search_term %>による書籍は見つかりませんでした。</p>
 <% end %>

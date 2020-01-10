@@ -37,17 +37,20 @@ class UnreadBooksController < ApplicationController
   def search
     if params[:looking_for]
       @search_term = params[:looking_for]
-      uri = URI.parse(URI.encode("https://www.googleapis.com/books/v1/volumes?q=#{@search_term}"))
+      uri = URI.parse(URI.encode("https://www.googleapis.com/books/v1/volumes?q=#{@search_term}&maxResults=15&startIndex=0"))
       json = Net::HTTP.get(uri)
       result = JSON.parse(json)
-      @books = result['items'] if result['totalItems'] != 0
-      @search_books = []
-      @books.each do |book|
-        @search_books << {
-          title: book['volumeInfo']['title'],
-          author: book['volumeInfo']['authors'],
-          image: book['volumeInfo']['imageLinks']['smallThumbnail']
-        }
+      unless result['totalItems'] == 0
+        @books = result['items'] if result['totalItems'] != 0
+        @search_books = []
+        @books.each do |book|
+          @search_books << {
+            # nilの時のエラー解消の必要あり
+            title: book['volumeInfo']['title'],
+            author: book['volumeInfo']['authors'],
+            image: book['volumeInfo']['imageLinks'] && book['volumeInfo']['imageLinks']['smallThumbnail']
+          }
+        end
       end
     end
   end
