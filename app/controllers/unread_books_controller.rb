@@ -57,6 +57,7 @@ class UnreadBooksController < ApplicationController
   end
 
   def new
+    @book_image = params[:image]
     @unread_book = current_user.unread_books.new(search_params)
   end
 

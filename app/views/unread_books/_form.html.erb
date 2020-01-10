@@ -18,6 +18,11 @@
   </div>
 
   <div>
+    <%= image_tag @image %>
+    <%= f.hidden_field :image, value: @image %>
+  </div>
+
+  <div>
     <%= f.label :status %>
     <%= f.select :status, UnreadBook.statuses.keys, selected: UnreadBook.statuses[book.status] %>
   </div>
