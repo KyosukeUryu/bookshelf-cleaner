@@ -1,3 +1,45 @@
 <h2>未読書籍編集画面</h2>
 
-<%= render 'form', book: @unread_book %>
+<% if @unread_book.errors.present? %>
+  <ul>
+    <% @unread_book.errors.full_messages.each do |msg|%>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @unread_book, local: true do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :author %>
+    <%= f.text_field :author %>
+  </div>
+
+  <div>
+    <%= f.label :status %>
+    <%= f.select :status, UnreadBook.statuses.keys, selected: UnreadBook.statuses[@unread_book.status] %>
+  </div>
+
+  <div>
+    <%= f.label :reading_expired %>
+    <%= f.date_select(
+                  :reading_expired,
+                  use_year_number: true,
+                  use_month_number: true,
+                  use_day_number: true,
+                  start_year: Time.now.year,
+                  end_year: Time.now.year + 10
+    ) %>
+  </div>
+
+  <div>
+    <%= f.label :tag_list %>
+    <%= text_field_tag 'unread_book[tag_list]', @unread_book.tag_list.join(",") %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
