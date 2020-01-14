@@ -23,6 +23,7 @@ class FinishedBooksController < ApplicationController
   def create
     @unread_book = current_user.unread_books.find(params[:finished_book][:unread_book][:id])
     @finished_book = current_user.finished_books.new(book_params)
+    @finished_book.image = @unread_book.image if @unread_book.image.present?
     if @finished_book.save
       @unread_book.destroy
       redirect_to root_path, notice: '書籍読破おめでとうございます！'

@@ -3,6 +3,10 @@
   <li>書籍名：<%= @finished_book.title %></li>
   <li>著者名：<%= @finished_book.author %></li>
   <li>処分予定日：<%= @finished_book.desposal_expired %></li>
+  <% if @finished_book.image.present? %>
+    <li><%= image_tag @finished_book.image.url %><br>
+    by Google Search</li>
+  <% end %>
   <li>ステータス：<%= @finished_book.status %></li>
   <li>感想等：<%= @finished_book.impression %></li>
 </ul>
