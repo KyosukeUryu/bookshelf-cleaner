@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: conversations
+#
+#  id           :bigint           not null, primary key
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  recipient_id :integer
+#  sender_id    :integer
+#
+# Indexes
+#
+#  index_conversations_on_recipient_id                (recipient_id)
+#  index_conversations_on_sender_id                   (sender_id)
+#  index_conversations_on_sender_id_and_recipient_id  (sender_id,recipient_id) UNIQUE
+#
+
 class Conversation < ApplicationRecord
   belongs_to :sender, foreign_key: :sender_id, class_name: 'User'
   belongs_to :recipient, foreign_key: :recipient_id, class_name: 'User'
