@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
-  root to: 'unread_books#tops'
+  root to: 'statics#top'
 
   resources :unread_books do
     patch :reading, on: :member
@@ -10,17 +10,17 @@ Rails.application.routes.draw do
     get :search, on: :collection
   end
 
-  resources :conversations do
-    resources :messages
+  resources :conversations, only: %i[index create] do
+    resources :messages, only: %i[index create]
   end
 
   resources :finished_books do
-    get :others_books, on: :collection
-    get :planning_disposal_books, on: :collection
+    get :others, on: :collection
+    get :disposal, on: :collection
   end
 
-  resources :comments, only: [:create]
-  resources :users, only: [:show]
+  resources :comments, only: :create
+  resources :users, only: :show
   resources :concern_books, only: [:create, :destroy]
   resources :progresses, only: [:create, :destroy]
 end

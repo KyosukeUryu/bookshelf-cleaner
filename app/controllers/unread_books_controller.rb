@@ -5,8 +5,6 @@ class UnreadBooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
   before_action :authenticate_user!, except: :tops
 
-  def tops; end
-
   def index
     @q = current_user.unread_books.ransack(params[:q])
     @unread_books = @q.result(distinct: true).page(params[:page]).per(10)
@@ -64,7 +62,6 @@ class UnreadBooksController < ApplicationController
   def create
     @unread_book = current_user.unread_books.new(book_params)
     @unread_book.remote_image_url = params[:unread_book][:image]
-    binding.irb
     if @unread_book.save
       redirect_to unread_books_path, notice: "#{@unread_book.title}を未読書籍に登録しました"
     else
