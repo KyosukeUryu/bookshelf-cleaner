@@ -12,6 +12,11 @@ class FinishedBooksController < ApplicationController
     @finished_books = @q.result(distinct: true).page(params[:page]).per(10)
   end
 
+  def planning_disposal_books
+    @q = FinishedBook.where.not(user_id: current_user.id).where(status: 2).ransack(params[:q])
+    @finished_books = @q.result(distinct: true).page(params[:page]).per(10)
+  end
+
   def new
     @unread_book = current_user.unread_books.find(params[:id])
     @finished_book = current_user.finished_books.new

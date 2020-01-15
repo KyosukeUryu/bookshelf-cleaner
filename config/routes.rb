@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :finished_books do
     get :others_books, on: :collection
+    get :planning_disposal_books, on: :collection
   end
 
   resources :comments, only: [:create]
