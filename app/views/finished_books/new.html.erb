@@ -24,7 +24,7 @@
 
   <div>
     <%= f.label :status %>
-    <%= f.select :status, FinishedBook.statuses.keys, selected: FinishedBook.statuses[@finished_book.status] %>
+    <%= f.select :status, FinishedBook.statuses.keys.map {|k| [I18n.t("enums.finished_book.status.#{k}"), k]}, selected: FinishedBook.statuses[@finished_book.status] %>
   </div>
 
   <div>

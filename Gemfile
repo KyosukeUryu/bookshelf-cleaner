@@ -32,6 +32,7 @@ gem 'cancancan'
 gem 'ransack'
 gem 'acts-as-taggable-on'
 gem 'kaminari'
+gem 'enum_help'
 
 # Use ActiveStorage variant
 gem 'carrierwave'

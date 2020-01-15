@@ -21,3 +21,20 @@ ja:
         status: ステータス
         desposal_expired: 処分期限
         impression: 感想等
+      comment:
+        content: コメント
+      message:
+        body: メッセージ
+      progress:
+        content: 進捗情報
+  enums:
+    unread_book:
+      status:
+        not_yet: 積読
+        reading: 読書中
+    finished_book:
+      status:
+        reread: 要再読
+        keep: 要保管
+        disposal_soon: 処分予定
+        disposal: 処分済み

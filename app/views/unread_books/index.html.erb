@@ -26,7 +26,7 @@
       <tr>
         <td><%= link_to book.title, unread_book_path(book) %></td>
         <td><%= book.author %></td>
-        <td><%= book.status%></td>
+        <td><%= book.status_i18n %></td>
         <td><%= book.reading_expired %></td>
         <td><%= link_to '編集する', edit_unread_book_path(book) %></td>
         <td><%= link_to '削除する', unread_book_path(book), method: :delete, data: {confirm: '本当に削除しますか？'} %></td>

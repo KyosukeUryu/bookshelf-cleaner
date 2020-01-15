@@ -27,7 +27,7 @@
 
   <div>
     <%= f.label :status %>
-    <%= f.select :status, UnreadBook.statuses.keys, selected: UnreadBook.statuses[@unread_book.status] %>
+    <%= f.select :status, UnreadBook.statuses.keys.map {|k| [I18n.t("enums.unread_book.status.#{k}"), k]}, selected: UnreadBook.statuses[@unread_book.status] %>
   </div>
 
   <div>
