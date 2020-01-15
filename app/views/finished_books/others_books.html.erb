@@ -4,9 +4,6 @@
     <%= f.label :title_or_author_cont, 'タイトルか著者名' %>
     <%= f.search_field :title_or_author_cont %>
 
-    <%= f.label :status_eq, 'ステータス' %>
-    <%= f.select :status_eq, FinishedBook.statuses, include_blank: true, selected: '' %>
-
     <%= f.submit %>
   <% end %>
   <%= link_to '元に戻す', others_books_finished_books_path %>
@@ -16,8 +13,6 @@
       <th>書籍名</th>
       <th>著者名</th>
       <th>ユーザー名</th>
-      <th>ステータス</th>
-      <th>処分予定時期</th>
       <th>メッセージを送る</th>
       <th>お気に入り</th>
     </tr>
@@ -26,8 +21,6 @@
         <td><%= link_to book.title, finished_book_path(book) %></td>
         <td><%= book.author %></td>
         <td><%= link_to book.user.name, user_path(book.user) %></td>
-        <td><%= book.status %></td>
-        <td><%= book.desposal_expired %></td>
         <td><%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: book.user.id), method: :post %></td>
         <% if current_user.concerned?(book) %>
           <td><%= link_to '気になる書籍から外す', concern_book_path(current_user.concern_books.find_by(finished_book_id: book.id)), method: :delete %></td>

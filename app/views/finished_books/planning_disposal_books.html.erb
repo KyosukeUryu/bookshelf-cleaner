@@ -13,7 +13,6 @@
       <th>書籍名</th>
       <th>著者名</th>
       <th>ユーザー名</th>
-      <th>ステータス</th>
       <th>処分予定時期</th>
       <th>メッセージを送る</th>
       <th>お気に入り</th>
@@ -23,7 +22,6 @@
         <td><%= link_to book.title, finished_book_path(book) %></td>
         <td><%= book.author %></td>
         <td><%= link_to book.user.name, user_path(book.user) %></td>
-        <td><%= book.status %></td>
         <td><%= book.desposal_expired %></td>
         <td><%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: book.user.id), method: :post %></td>
         <% if current_user.concerned?(book) %>
