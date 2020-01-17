@@ -20,4 +20,8 @@
 class Progress < ApplicationRecord
   belongs_to :user
   validates :content, presence: true
+
+  def content_time
+    created_at.strftime("%m月%d日 %l:%M %p")
+  end
 end

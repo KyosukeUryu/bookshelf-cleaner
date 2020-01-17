@@ -24,4 +24,8 @@ class Comment < ApplicationRecord
   belongs_to :finished_book
   belongs_to :user
   validates :content, presence: true
+
+  def comment_time
+    created_at.strftime("%m月%d日 %l:%M %p")
+  end
 end

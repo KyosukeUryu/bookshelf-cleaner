@@ -14,7 +14,7 @@
 <ul>
   <% @comments.each do |comment| %>
     <% if comment.id.present? %>
-      <li><%= comment.content %></li>
+      <li><%= comment.content %>  <%= comment.comment_time %>  投稿者：<%= comment.user.name %></li>
     <% end %>
   <% end %>
 </ul>

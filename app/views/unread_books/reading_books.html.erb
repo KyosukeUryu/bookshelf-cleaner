@@ -28,7 +28,7 @@
 <ul>
   <% @progresses.each do |progress| %>
     <% if progress.id.present? %>
-      <li><%= progress.content %><%= link_to '削除', progress_path(progress), method: :delete, data: { confirm: '削除してよろしいですか？' } %></li>
+      <li><%= progress.content %></br><%= progress.content_time %><%= link_to '削除', progress_path(progress), method: :delete, data: { confirm: '削除してよろしいですか？' } %></li>
     <% end %>
   <% end %>
 </ul>
