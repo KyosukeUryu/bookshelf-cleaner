@@ -1,5 +1,3 @@
-<h2>トップページ</h2>
-
 <% if user_signed_in? %>
   <%= link_to '未読書籍一覧画面へ', unread_books_path %>
   <%= link_to '読書中書籍一覧へ', reading_books_unread_books_path %>
@@ -10,4 +8,7 @@
   <%= link_to 'マイページ', user_path(current_user) %>
   <%= link_to '未読書籍検索', search_unread_books_path %>
   <%= link_to 'みんなが処分予定の書籍', disposal_finished_books_path %>
+<% else %>
+  <div class="top-image">
+  </div>
 <% end %>

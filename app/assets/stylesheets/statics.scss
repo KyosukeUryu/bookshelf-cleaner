@@ -1,3 +1,20 @@
+.main {
+  min-height: 720px;
+}
+ol.breadcrumb {
+  margin-bottom: 0;
+}
+.top-image {
+  background: #151515 image-url('bookshelf.jpg');
+  background-size: cover;
+  height: 720px;
+}
+.top-image::before {
+  content: "";
+  height: 720px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: block;
+}
 .devise-card {
   width: 35rem;
   height: 35rem;
