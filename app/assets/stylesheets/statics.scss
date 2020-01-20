@@ -4,6 +4,9 @@
 ol.breadcrumb {
   margin-bottom: 0;
 }
+.footer-name {
+  margin: 0 auto;
+}
 .top-image {
   background: #151515 image-url('bookshelf.jpg');
   background-size: cover;
@@ -12,7 +15,7 @@ ol.breadcrumb {
 .top-image::before {
   content: "";
   height: 720px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   display: block;
 }
 .devise-card {
