@@ -31,7 +31,7 @@ class FinishedBooksController < ApplicationController
     @finished_book.image = @unread_book.image if @unread_book.image.present?
     if @finished_book.save
       @unread_book.destroy
-      redirect_to root_path, notice: '書籍読破おめでとうございます！'
+      redirect_to root_path, success: '書籍読破おめでとうございます！'
     else
       render :new
     end
@@ -46,7 +46,7 @@ class FinishedBooksController < ApplicationController
 
   def update
     if @finished_book.update(book_params)
-      redirect_to finished_books_path, notice: '既読書籍情報を更新しました'
+      redirect_to finished_books_path, info: '既読書籍情報を更新しました'
     else
       render :edit
     end
@@ -54,7 +54,7 @@ class FinishedBooksController < ApplicationController
 
   def destroy
     @finished_book.destroy
-    redirect_to finished_books_path, notice: '既読書籍を削除しました'
+    redirect_to finished_books_path, danger: '既読書籍を削除しました'
   end
 
   private

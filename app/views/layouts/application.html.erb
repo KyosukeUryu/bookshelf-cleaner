@@ -26,7 +26,7 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                既読書籍
+                未読書籍
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="/unread_books">未読書籍一覧</a>
@@ -76,11 +76,10 @@
       <% end %>
     </nav>
 
-    <% if notice %>
-      <p class="alert alert-notice"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-error"><%= alert %></p>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>">
+        <%= value.html_safe %>
+      </div>
     <% end %>
     <div class="main">
       <%= yield %>

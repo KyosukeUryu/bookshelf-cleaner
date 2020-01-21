@@ -14,9 +14,9 @@ class UnreadBooksController < ApplicationController
     @reading_book = UnreadBook.find(params[:id])
     if @reading_book.not_yet?
       @reading_book.update(status: 1)
-      redirect_to unread_books_path, notice: "#{@reading_book.title}を読書中書籍に登録しました"
+      redirect_to unread_books_path, info: "#{@reading_book.title}を読書中書籍に登録しました"
     else
-      redirect_to unread_books_path, notice: 'すでに読書中の書籍です'
+      redirect_to unread_books_path, warning: 'すでに読書中の書籍です'
     end
   end
 
@@ -29,7 +29,7 @@ class UnreadBooksController < ApplicationController
   def return
     @reading_book = UnreadBook.find(params[:id])
     @reading_book.update(status: 0)
-    redirect_to reading_books_unread_books_path, notice: '未読書籍に戻しました'
+    redirect_to reading_books_unread_books_path, warning: '未読書籍に戻しました'
   end
 
   def search
@@ -63,7 +63,7 @@ class UnreadBooksController < ApplicationController
     @unread_book = current_user.unread_books.new(book_params)
     @unread_book.remote_image_url = params[:unread_book][:image]
     if @unread_book.save
-      redirect_to unread_books_path, notice: "#{@unread_book.title}を未読書籍に登録しました"
+      redirect_to unread_books_path, success: "#{@unread_book.title}を未読書籍に登録しました"
     else
       render :new
     end
@@ -75,7 +75,7 @@ class UnreadBooksController < ApplicationController
 
   def update
     if @unread_book.update(book_params)
-      redirect_to unread_books_path, notice: '未読書籍情報を更新しました'
+      redirect_to unread_books_path, info: '未読書籍情報を更新しました'
     else
       render :edit
     end
@@ -83,7 +83,7 @@ class UnreadBooksController < ApplicationController
 
   def destroy
     @unread_book.destroy
-    redirect_to unread_books_path, notice: '書籍情報を削除しました'
+    redirect_to unread_books_path, danger: '書籍情報を削除しました'
   end
 
   private

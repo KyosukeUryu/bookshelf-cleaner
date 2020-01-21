@@ -2,9 +2,9 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      redirect_to finished_book_path(@comment.finished_book), notice: 'コメントを投稿しました'
+      redirect_to finished_book_path(@comment.finished_book), success: 'コメントを投稿しました'
     else
-      redirect_to finished_book_path(@comment.finished_book), notice: '投稿できませんでした'
+      redirect_to finished_book_path(@comment.finished_book), danger: '投稿できませんでした'
     end
   end
 
