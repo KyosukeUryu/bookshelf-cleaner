@@ -13,16 +13,29 @@
     <%= link_to '次へ', search_unread_books_path(looking_for: @search_term, number: @number + 10) %>
     <%# 最終ページ設定追加の必要あり %>
   <% end %>
-  <ul>
-    <% @search_books.each do |book| %>
-      <li>書籍名：<%= book[:title] %></li>
-      <li>著者名：<%= book[:author] %></li>
-      <li><%= image_tag book[:image] if book[:image].present? %></li>
-      <li>by Google Search</li>
-      <li><%= link_to 'この書籍を登録', new_unread_book_path(title: book[:title], author: book[:author], image: book[:image]) %></li>
-      <br>
-    <% end %>
-  </ul>
+  <div class="container">
+    <div class="row">
+        <% @search_books.each do |book| %>
+          <div class="col-sm-6 mb-5">
+            <div class="card" style="min-height: 310px">
+              <div class="image-wrapper">
+                <% if book[:image].present? %>
+                  <%= image_tag book[:image], class: 'mr-3 search-image' %>
+                  <span class="google-note">by Google Search</span>
+                <% else %>
+                  <%= image_tag "no_image.png", size: '128x201', class: 'mr-3 search-image' %>
+                <% end %>
+              </div>
+              <div class="media-body">
+                <h6 class="mt-0 mb-1">書籍名：<%= book[:title] %></h5>
+                <h6 class="mt-0 mb-1">著者名：<%= book[:author] %></h5>
+                <p><%= link_to 'この書籍を登録', new_unread_book_path(title: book[:title], author: book[:author], image: book[:image]) %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+    </div>
+  </div>
 <% elsif @search_term.present? %>
   <p><%= @search_term %>による書籍は見つかりませんでした。</p>
 <% end %>
