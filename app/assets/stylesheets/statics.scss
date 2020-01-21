@@ -38,6 +38,12 @@ ol.breadcrumb {
     opacity: 1;
   }
 }
+.login-image {
+  background: #151515 image-url('library.jpg');
+  background-size: cover;
+  height: 300px;
+  position: relative;
+}
 .top-image > .btn.btn-lg.btn-primary {
   position: absolute;
   top: 60%;
