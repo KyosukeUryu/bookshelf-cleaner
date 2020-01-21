@@ -10,5 +10,8 @@
   <%= link_to 'みんなが処分予定の書籍', disposal_finished_books_path %>
 <% else %>
   <div class="top-image">
+    <h1>快適な読書ライフを送る</h1>
+    <%= link_to 'ログインへ', new_user_session_path, class: 'btn btn-raised btn-primary btn-lg' %>
+    <%= link_to '新規登録', new_user_registration_path, class: 'btn btn-raised btn-success btn-lg' %>
   </div>
 <% end %>

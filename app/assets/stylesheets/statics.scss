@@ -11,12 +11,53 @@ ol.breadcrumb {
   background: #151515 image-url('bookshelf.jpg');
   background-size: cover;
   height: 720px;
+  position: relative;
 }
 .top-image::before {
   content: "";
   height: 720px;
   background-color: rgba(0, 0, 0, 0.7);
   display: block;
+}
+.top-image > h1 {
+  position: absolute;
+  top: 30%;
+  left: 22%;
+  color: #fff;
+  font-size: 4.2rem;
+  letter-spacing: 5px;
+  opacity: 0;
+  font-family: "M PLUS 1p";
+  animation: example 0.5s ease 0.5s 1 forwards;
+}
+@keyframes example {
+  100% {
+    opacity: 1;
+  }
+}
+.top-image > .btn.btn-lg.btn-primary {
+  position: absolute;
+  top: 60%;
+  left: 27%;
+  display: block;
+  width: 250px;
+  height: 80px;
+  font-size: 2rem;
+  padding-top: 15px;
+  letter-spacing: 2px;
+  padding: auto;
+}
+.top-image > .btn.btn-lg.btn-success {
+  position: absolute;
+  top: 60%;
+  left: 55%;
+  display: block;
+  width: 250px;
+  height: 80px;
+  font-size: 2rem;
+  padding-top: 15px;
+  letter-spacing: 4px;
+  padding: auto;
 }
 .devise-card {
   width: 35rem;
