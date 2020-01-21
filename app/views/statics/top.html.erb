@@ -1,15 +1,9 @@
 <% if user_signed_in? %>
-  <div class="login-image">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4"></div>
+    </div>
   </div>
-  <%= link_to '未読書籍一覧画面へ', unread_books_path %>
-  <%= link_to '読書中書籍一覧へ', reading_books_unread_books_path %>
-  <%= link_to '既読書籍一覧へ', finished_books_path %>
-  <%= link_to 'メッセージスレッドへ', conversations_path %>
-  <%= link_to 'プロフィール編集', edit_user_registration_path %>
-  <%= link_to '他ユーザーが読んだ書籍一覧', others_finished_books_path %>
-  <%= link_to 'マイページ', user_path(current_user) %>
-  <%= link_to '未読書籍検索', search_unread_books_path %>
-  <%= link_to 'みんなが処分予定の書籍', disposal_finished_books_path %>
 <% else %>
   <div class="top-image">
     <h1>快適な読書ライフを送る</h1>

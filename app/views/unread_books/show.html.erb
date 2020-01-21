@@ -7,5 +7,7 @@
   <% if @unread_book.image.present? %>
     <li>画像<%= image_tag @unread_book.image.url %><br>
     by Google Search</li>
+  <% else %>
+    <li><%= image_tag "no_image.png", size: '128x201' %> </li>
   <% end %>
 </ul>

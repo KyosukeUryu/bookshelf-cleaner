@@ -6,6 +6,8 @@
   <% if @finished_book.image.present? %>
     <li><%= image_tag @finished_book.image.url %><br>
     by Google Search</li>
+  <% else %>
+    <li><%= image_tag "no_image.png", size: '128x201' %> </li>
   <% end %>
   <li>ステータス：<%= @finished_book.status %></li>
   <li>感想等：<%= @finished_book.impression %></li>

@@ -20,7 +20,11 @@
   </div>
 
   <div>
-    <%= image_tag @book_image if @book_image.present? %>
+    <% if @book_image.present? %>
+      <%= image_tag @book_image %>
+    <% else %>
+      <%= image_tag "no_image.png", size: '128x201' %>
+    <% end %>
     画像
     <%= f.hidden_field :image, value: @book_image %>
   </div>
