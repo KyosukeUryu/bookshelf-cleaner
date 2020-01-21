@@ -53,7 +53,7 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <%= link_to 'マイページ', user_path(current_user), class: 'dropdown-item' %>
                 <%= link_to '登録情報変更', edit_user_registration_path(current_user), class: 'dropdown-item' %>
-                <%= link_to 'ログアウト', destroy_user_session_path(current_user), method: :delete, class: 'dropdown-item', data: { confirm: 'ログアウトしますか？' } %>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item', data: { confirm: 'ログアウトしますか？' } %>
               </div>
             </li>
           </ul>
