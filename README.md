@@ -1,6 +1,6 @@
 # README
 
-# Clean Bookshelf
+# Bookshelf Cleaner
 
 ## 概要
 読んでいる書籍の記録はもちろん、読み終わったあと処分する書籍まで

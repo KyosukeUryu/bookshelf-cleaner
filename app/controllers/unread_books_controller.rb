@@ -39,9 +39,9 @@ class UnreadBooksController < ApplicationController
       uri = URI.parse(URI.encode("https://www.googleapis.com/books/v1/volumes?q=#{@search_term}&startIndex=#{@number}"))
       json = Net::HTTP.get(uri)
       result = JSON.parse(json)
-      unless result['totalItems'] == 0
+      if result['totalItems'] != 0 && result['totalItems'].present?
         @max_books = result['totalItems']
-        @books = result['items'] if result['totalItems'] != 0
+        @books = result['items']
         @search_books = []
         @books.each do |book|
           @search_books << {

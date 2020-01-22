@@ -12,7 +12,7 @@
             <li class="list-group-item list-alert">処分期限超過書籍数: <%= current_user.finished_books.where('status = ? AND desposal_expired < ?', 2, DateTime.now).count %>冊</li>
           </ul>
           <div class="card-footer">
-            <small class="text-muted"><%= link_to 'マイページ', user_path(current_user), class: 'btn btn-primary' %> </small>
+            <small><%= link_to 'マイページ', user_path(current_user), class: 'btn btn-primary' %> </small>
           </div>
         </div>
       </div>
