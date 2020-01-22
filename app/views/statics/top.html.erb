@@ -1,7 +1,21 @@
 <% if user_signed_in? %>
   <div class="container">
     <div class="row">
-      <div class="col-sm-4"></div>
+      <div class="col-sm-3">
+        <div class="card top-card">
+          <div class="card-header">
+            <%= "#{current_user.name} さんのステータス" %>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">直近30日の読破数: <%= current_user.finished_books.where(created_at: DateTime.now - 30..DateTime.now).count %>冊 </li>
+            <li class="list-group-item">読破済み書籍数: <%= current_user.finished_books.count %>冊</li>
+            <li class="list-group-item list-alert">処分期限超過書籍数: <%= current_user.finished_books.where('status = ? AND desposal_expired < ?', 2, DateTime.now).count %>冊</li>
+          </ul>
+          <div class="card-footer">
+            <small class="text-muted"><%= link_to 'マイページ', user_path(current_user), class: 'btn btn-primary' %> </small>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 <% else %>
