@@ -1,3 +1,33 @@
+.search-top {
+  text-align: center;
+  font-family: "M PLUS 1p";
+  letter-spacing: 3px;
+  margin-top: 20px;
+}
+.search-info {
+  text-align: center;
+  font-family: "M PLUS 1p";
+  letter-spacing: 3px;
+  margin-top: 20px;
+}
+.google-phrase {
+  text-align: center;
+  padding-top: 10px;
+  letter-spacing: 1px;
+}
+.search-wrapper {
+  width: 450px;
+  margin: 20px auto;
+}
+.input-search {
+  width: 300px;
+}
+.form-search {
+  display: inline-flex;
+}
 .google-note {
   display: block;
+}
+.search-link {
+  text-align: center;
 }

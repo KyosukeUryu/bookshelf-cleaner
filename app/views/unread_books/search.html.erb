@@ -1,41 +1,71 @@
-<h2>登録書籍検索</h2>
+<h2 class="search-top">登録書籍検索</h2>
+<p class="google-phrase text-muted">本サービスはGoogleBooksAPIを使用しております</p>
 <%= form_tag search_unread_books_path, method: :get do %>
-  <%= search_field_tag :looking_for %>
-  <%= hidden_field_tag :number, 0 %>
+  <div class="search-wrapper">
+    <div class="form-search">
+      <div class="form-group input-search">
+        <%= search_field_tag :looking_for, nil, { class: 'form-control', placeholder: '書籍名'} %>
+        <%= hidden_field_tag :number, 0 %>
+      </div>
 
-  <%= submit_tag '検索' %>
+      <%= submit_tag '検索', class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
+<% if @search_term.nil? %>
+  <h3 class="search-info">購入した書籍を検索しましょう！</h3>
 <% end %>
 
 <% if @search_books.present? %>
   <% if @max_books > 15 %>
-    <%= link_to '最初へ', search_unread_books_path(looking_for: @search_term, number: 0) if @number >= 1 %>
-    <%= link_to '戻る', search_unread_books_path(looking_for: @search_term, number: @number - 10) if @number >= 1 %>
-    <%= link_to '次へ', search_unread_books_path(looking_for: @search_term, number: @number + 10) %>
-    <%# 最終ページ設定追加の必要あり %>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <%= link_to '戻る', search_unread_books_path(looking_for: @search_term, number: @number - 10), class: 'page-link' if @number >= 1 %>
+        </li>
+        <li class="page-item">
+          <%= link_to '次へ', search_unread_books_path(looking_for: @search_term, number: @number + 10), class: 'page-link' %>
+        </li>
+      </ul>
+    </nav>
   <% end %>
   <div class="container">
     <div class="row">
         <% @search_books.each do |book| %>
           <div class="col-sm-6 mb-5">
-            <div class="card" style="min-height: 310px">
-              <div class="image-wrapper">
-                <% if book[:image].present? %>
-                  <%= image_tag book[:image], class: 'mr-3 search-image' %>
-                  <span class="google-note">by Google Search</span>
-                <% else %>
-                  <%= image_tag "no_image.png", size: '128x201', class: 'mr-3 search-image' %>
-                <% end %>
-              </div>
-              <div class="media-body">
-                <h6 class="mt-0 mb-1">書籍名：<%= book[:title] %></h5>
-                <h6 class="mt-0 mb-1">著者名：<%= book[:author] %></h5>
-                <p><%= link_to 'この書籍を登録', new_unread_book_path(title: book[:title], author: book[:author], image: book[:image]) %></p>
+            <div class="card">
+              <div class="row">
+                <div class="image-wrapper col-4">
+                  <% if book[:image].present? %>
+                    <%= image_tag book[:image],size: '140x200', class: 'mr-3 search-image' %>
+                    <span class="google-note">by Google Search</span>
+                  <% else %>
+                    <%= image_tag "no_image.png", size: '140x200', class: 'mr-3 search-image' %>
+                  <% end %>
+                </div>
+                <div class="media-body col-8">
+                  <h6 class="mt-2 mb-1">書籍名：<%= book[:title] %></h5>
+                  <h6 class="mt-2 mb-1">著者名：<%= book[:author] %></h5>
+                  <p class="search-link"><%= link_to '未読書籍へ登録', new_unread_book_path(title: book[:title], author: book[:author], image: book[:image]), class: 'btn btn-success' %></p>
+                </div>
               </div>
             </div>
           </div>
         <% end %>
     </div>
   </div>
+  <% if @max_books > 15 %>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <%= link_to '戻る', search_unread_books_path(looking_for: @search_term, number: @number - 10), class: 'page-link' if @number >= 1 %>
+        </li>
+        <li class="page-item">
+          <%= link_to '次へ', search_unread_books_path(looking_for: @search_term, number: @number + 10), class: 'page-link' %>
+        </li>
+      </ul>
+    </nav>
+  <% end %>
 <% elsif @search_term.present? %>
   <p><%= @search_term %>による書籍は見つかりませんでした。</p>
 <% end %>
