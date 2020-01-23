@@ -1,4 +1,5 @@
-.search-top {
+/* 検索画面 */
+.unread-top {
   text-align: center;
   font-family: "M PLUS 1p";
   letter-spacing: 3px;
@@ -31,3 +32,18 @@
 .search-link {
   text-align: center;
 }
+/* ここから書籍登録 */
+.unread_form_wrapper {
+  text-align: center;
+  margin: 30px auto;
+  width: 500px;
+}
+.select-form {
+  width: 200px;
+  margin: 20px auto;
+}
+.select-date {
+  width: 150px;
+  margin: 20px auto;
+}
+
