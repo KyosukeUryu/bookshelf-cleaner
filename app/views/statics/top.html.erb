@@ -16,6 +16,39 @@
           </div>
         </div>
       </div>
+      <div class="offset-sm-1 col-sm-8 top-main">
+        <div class="card top-main-card">
+          <div class="card-body main-card">
+            <h5 class="card-title">Step1 購入した書籍の登録</h5>
+            <p class="card-text">購入した書籍を検索しましょう！</p>
+            <p class="card-text">書籍情報がない場合は<%= link_to 'こちら', new_unread_book_path %></p>
+            <%= link_to '書籍検索', search_unread_books_path, class: 'btn btn-primary' %>
+          </div>
+        </div>
+        <div class="card top-main-card">
+          <div class="card-body main-card">
+            <h5 class="card-title">Step2 読書中の書籍を管理</h5>
+            <p class="card-text">現在読書中の書籍は読書書籍として管理しましょう！</p>
+            <p class="card-text">進捗状況を記入してメモ書きもできます</p>
+            <%= link_to '読書中書籍確認', reading_books_unread_books_path, class: 'btn btn-primary' %>
+          </div>
+        </div>
+        <div class="card top-main-card">
+          <div class="card-body main-card">
+            <h5 class="card-title">Step3 読破した書籍を管理</h5>
+            <p class="card-text">読み終わった書籍は既読書籍に移しましょう！</p>
+            <p class="card-text">保管する書籍と処分する書籍に分けて本棚を綺麗に管理しましょう！</p>
+            <%= link_to '既読書籍確認', finished_books_path, class: 'btn btn-primary' %>
+          </div>
+        </div>
+        <div class="card top-main-card">
+          <div class="card-body main-card">
+            <h5 class="card-title">And more 他のユーザーと交流しよう！</h5>
+            <p class="card-text">気になるユーザー、興味のある本を探してみましょう！</p>
+            <%= link_to '他ユーザーの書籍一覧', others_finished_books_path, class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 <% else %>

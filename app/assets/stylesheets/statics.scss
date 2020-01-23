@@ -94,11 +94,19 @@ ol.breadcrumb {
 }
 /* ログイン画面*/
 .top-card {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 50px;
+  margin-top: 30px;
 }
 .list-alert {
   color: #EA1D4E;
   font-weight: bold;
+}
+.top-main > .top-main-card:first-child {
+  margin-top: 50px;
+}
+.top-main > .top-main-card:last-child {
+  margin-bottom: 50px;
+}
+.main-card > .card-title {
+  border-left: solid 5px #4946e3;
+  padding-left: 8px;
 }
