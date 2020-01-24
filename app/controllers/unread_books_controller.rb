@@ -23,7 +23,7 @@ class UnreadBooksController < ApplicationController
   def reading_books
     @progresses = current_user.progresses
     @progress = Progress.new
-    @reading_books = current_user.unread_books.where(status: 1).page(params[:page]).per(10)
+    @reading_books = current_user.unread_books.where(status: 1).page(params[:page]).per(4)
   end
 
   def return
