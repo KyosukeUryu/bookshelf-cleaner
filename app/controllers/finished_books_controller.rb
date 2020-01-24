@@ -61,7 +61,7 @@ class FinishedBooksController < ApplicationController
   private
 
   def book_params
-    params.require(:finished_book).permit(:title, :author, :status, :desposal_expired, :impression, :unread_book, :image, :tag_list)
+    params.require(:finished_book).permit(:title, :author, :status, :desposal_expired, :impression, :unread_book, :image, :tag_list, :image_cache)
   end
 
   def set_book

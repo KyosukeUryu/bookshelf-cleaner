@@ -40,6 +40,7 @@
                   <% end %>
                 </li>
               <% end %>
+              <li class="unread-content">感想：<%= @finished_book.impression %></li>
             </ul>
             <%= link_to '編集する', edit_finished_book_path(@finished_book), class: 'btn btn-info' %>
             <%= link_to '削除する', finished_book_path(@finished_book), method: :delete, data: {confirm: '本当に削除しますか？'}, class: 'btn btn-danger' %>

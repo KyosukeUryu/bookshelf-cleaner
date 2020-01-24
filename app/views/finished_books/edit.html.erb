@@ -1,3 +1,5 @@
+<h2 class="unread-top">読破書籍登録画面</h2>
+
 <% if @finished_book.errors.present? %>
   <ul>
     <% @finished_book.errors.full_messages.each do |msg|%>
@@ -6,38 +8,57 @@
   </ul>
 <% end %>
 
-<%= form_with model: @finished_book, local: true do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
+<div class="unread_form_wrapper">
+  <%= form_with model: @finished_book, local: true do |f| %>
+    <div>
+      <% if @finished_book.image && @finished_book.image.url %>
+        <%= image_tag @finished_book.image.url, size: '140x200' %>
+        <p>by Google Search </p>
+      <% else %>
+        <%= image_tag "no_image.png", size: '140x200' %>
+      <% end %>
+      <%= f.hidden_field :image_cache %>
+    </div>
 
-  <div>
-    <%= f.label :author %>
-    <%= f.text_field :author %>
-  </div>
+    <div class="form-group">
+      <%= f.label :title, class: 'bmd-label-floating' %>
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
 
-  <div>
-    <%= f.label :status %>
-    <%= f.select :status, FinishedBook.statuses.keys, selected: FinishedBook.statuses[@finished_book.status] %>
-  </div>
+    <div class="form-group">
+      <%= f.label :author, class: 'bmd-label-floating' %>
+      <%= f.text_field :author, class: 'form-control' %>
+    </div>
 
-  <div>
-    <%= f.label :desposal_expired %>
-    <%= f.date_select(
-                  :desposal_expired,
-                  use_year_number: true,
-                  use_month_number: true,
-                  use_day_number: true,
-                  start_year: Time.now.year,
-                  end_year: Time.now.year + 10
-    ) %>
-  </div>
 
-  <div>
-    <%= f.label :impression %>
-    <%= f.text_area :impression %>
-  </div>
+    <div class="form-group select-form">
+      <%= f.label :status, class: 'bmd-label-floating' %>
+      <%= f.select :status, FinishedBook.statuses.keys.map {|k| [I18n.t("enums.finished_book.status.#{k}"), k]}, { selected: FinishedBook.statuses[@finished_book.status] }, {class: 'custom-select'} %>
+    </div>
 
-  <%= f.submit %>
-<% end %>
+    <div class="form-group select-date">
+      <%= f.label :desposal_expired, class: 'bmd-label-floating' %>
+      <%= f.date_select(
+                    :desposal_expired,
+                    {use_year_number: true,
+                    use_month_number: true,
+                    use_day_number: true,
+                    start_year: Time.now.year,
+                    end_year: Time.now.year + 10},
+                    {class: 'custom-select'}
+      ) %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :tag_list, class: 'bmd-label-floating' %>
+      <%= text_field_tag 'finished_book[tag_list]', @finished_book.tag_list.join(","), class: 'form-control', placeholder: 'タグを複数入力する場合は「,」で区切ってください' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :impression, class: 'bmd-label-floating' %>
+      <%= f.text_area :impression, class: 'form-control', rows: '5' %>
+    </div>
+
+    <%= f.submit '更新する', class: 'btn btn-primary' %>
+  <% end %>
+</div>
