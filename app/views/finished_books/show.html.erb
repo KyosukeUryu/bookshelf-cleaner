@@ -61,7 +61,7 @@
     <%= f.text_field :user_id, value: current_user.id, type: 'hidden' %>
     <%= f.text_field :finished_book_id, value: @finished_book.id, type: 'hidden' %>
 
-    <%= f.submit %>
+    <%= f.submit '投稿する', class: 'btn btn-primary' %>
   <% end %>
 
   <ul class="progress-list">
