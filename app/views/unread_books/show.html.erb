@@ -33,6 +33,13 @@
               <li class="unread-content">著者名：<%= @unread_book.author %></li>
               <li class="unread-content">読破期限：<%= @unread_book.reading_expired %></li>
               <li class="unread-content">ステータス：<%= I18n.t("enums.unread_book.status")[:"#{@unread_book.status}"] %></li>
+              <% if @unread_book.tags.present? %>
+                <li class="unread-content">
+                  タグ：<% @unread_book.tags.each do |tag|%>
+                    <span class="book-tag badge badge-pill badge-primary"><%= tag %></span>
+                  <% end %>
+                </li>
+              <% end %>
             </ul>
             <%= link_to '編集する', edit_unread_book_path(@unread_book), class: 'btn btn-info' %>
             <%= link_to '削除する', unread_book_path(@unread_book), method: :delete, data: {confirm: '本当に削除しますか？'}, class: 'btn btn-danger' %>
