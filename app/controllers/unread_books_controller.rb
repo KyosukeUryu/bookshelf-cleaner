@@ -7,7 +7,7 @@ class UnreadBooksController < ApplicationController
 
   def index
     @q = current_user.unread_books.ransack(params[:q])
-    @unread_books = @q.result(distinct: true).page(params[:page]).per(10)
+    @unread_books = @q.result(distinct: true).page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def reading
