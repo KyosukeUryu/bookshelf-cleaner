@@ -68,3 +68,15 @@ td {
   overflow: hidden;
   max-width: 0;
 }
+/* ここから詳細画面 */
+.unread-list {
+  list-style: none;
+}
+.unread-card {
+  padding: 30px 0;
+}
+.unread-content {
+  font-size: 1.2rem;
+  margin: 20px 0;
+  letter-spacing: 2px;
+}

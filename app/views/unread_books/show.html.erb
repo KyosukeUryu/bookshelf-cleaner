@@ -1,15 +1,44 @@
-<h2>書籍詳細画面</h2>
-<ul>
-  <li>書籍名：<%= @unread_book.title %></li>
-  <li>著者名：<%= @unread_book.author %></li>
-  <li>読破期限：<%= @unread_book.reading_expired %></li>
-  <li>ステータス：<%= @unread_book.status %></li>
-  <% if @unread_book.image.present? %>
-    <li>画像<%= image_tag @unread_book.image.url %><br>
-    by Google Search</li>
-  <% else %>
-    <li><%= image_tag "no_image.png", size: '128x201' %> </li>
-  <% end %>
-</ul>
-                  <td><%= link_to '編集する', edit_unread_book_path(book) %></td>
-                  <td><%= link_to '削除する', unread_book_path(book), method: :delete, data: {confirm: '本当に削除しますか？'} %></td>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="card top-card">
+        <div class="card-header">
+          <%= "#{current_user.name} さんのステータス" %>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">直近30日の読破数: <%= current_user.finished_books.where(created_at: DateTime.now - 30..DateTime.now).count %>冊 </li>
+          <li class="list-group-item">読破済み書籍数: <%= current_user.finished_books.count %>冊</li>
+          <li class="list-group-item list-alert">処分期限超過書籍数: <%= current_user.finished_books.where('status = ? AND desposal_expired < ?', 2, DateTime.now).count %>冊</li>
+        </ul>
+        <div class="card-footer">
+          <small><%= link_to 'マイページ', user_path(current_user), class: 'btn btn-primary' %> </small>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <h2 class="unread-top">書籍詳細画面</h2>
+      <div class="card unread-card">
+        <div class="row">
+          <div class="col-4">
+            <% if @unread_book.image.present? %>
+              <%= image_tag @unread_book.image.url, size: '140x200' %><br>
+              <span class="google-note">by Google Search</span>
+            <% else %>
+              <%= image_tag "no_image.png", size: '140x200' %>
+            <% end %>
+          </div>
+          <div class="col-8">
+            <ul class="unread-list">
+              <li class="unread-content">書籍名：<%= @unread_book.title %></li>
+              <li class="unread-content">著者名：<%= @unread_book.author %></li>
+              <li class="unread-content">読破期限：<%= @unread_book.reading_expired %></li>
+              <li class="unread-content">ステータス：<%= I18n.t("enums.unread_book.status")[:"#{@unread_book.status}"] %></li>
+            </ul>
+            <%= link_to '編集する', edit_unread_book_path(@unread_book), class: 'btn btn-info' %>
+            <%= link_to '削除する', unread_book_path(@unread_book), method: :delete, data: {confirm: '本当に削除しますか？'}, class: 'btn btn-danger' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
