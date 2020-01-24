@@ -11,3 +11,5 @@
     <li><%= image_tag "no_image.png", size: '128x201' %> </li>
   <% end %>
 </ul>
+                  <td><%= link_to '編集する', edit_unread_book_path(book) %></td>
+                  <td><%= link_to '削除する', unread_book_path(book), method: :delete, data: {confirm: '本当に削除しますか？'} %></td>
