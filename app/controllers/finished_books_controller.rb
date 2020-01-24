@@ -4,7 +4,7 @@ class FinishedBooksController < ApplicationController
 
   def index
     @q = current_user.finished_books.ransack(params[:q])
-    @finished_books = @q.result(distinct: true).page(params[:page]).per(10)
+    @finished_books = @q.result(distinct: true).page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def others
@@ -42,7 +42,7 @@ class FinishedBooksController < ApplicationController
 
   def show
     @comment = @finished_book.comments.new
-    @comments = @finished_book.comments
+    @comments = @finished_book.comments.page(params[:page]).per(5).order(created_at: :desc)
   end
 
   def update
