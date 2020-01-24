@@ -58,7 +58,8 @@
   border-left: solid 3px #de5a35;
   padding-left: 5px;
 }
-.index-table {
+.row > .index-table {
+  min-height: 720px;
   border-left: solid 2px #def2dc;
 }
 .index-table-content {
