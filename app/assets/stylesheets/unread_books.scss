@@ -88,3 +88,22 @@ td {
 .book-tag.badge{
   font-weight: normal;
 }
+/* ここから読書中画面 */
+.progress-wrapper {
+  margin: 0 auto;
+  text-align: center;
+  width: 500px;
+}
+.progress-list {
+  list-style: none;
+}
+.progress-content {
+  white-space: pre-wrap;
+  word-wrap:  break-word;
+}
+.progress-icon {
+  padding-right: 8px;
+}
+.progress-paginate {
+  color: #6298f5;
+}

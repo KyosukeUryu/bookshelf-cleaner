@@ -28,17 +28,27 @@
 </div>
 <%= paginate @reading_books %>
 
-<ul>
-  <% @progresses.each do |progress| %>
-    <% if progress.id.present? %>
-      <li><%= progress.content %></br><%= progress.content_time %><%= link_to '削除', progress_path(progress), method: :delete, data: { confirm: '削除してよろしいですか？' } %></li>
-    <% end %>
+<div class="progress-wrapper">
+  <h3 class="unread-top"><i class="material-icons progress-icon"> event_note </i>進捗メモ一覧</h3>
+  <%= form_with(model: @progress) do |f| %>
+    <div class="form-group">
+      <%= f.label :content, '進捗メモ', class: 'bmd-label-floating'  %>
+      <%= f.text_area :content, class: 'form-control', rows: '5' %>
+    </div>
+
+    <%= f.submit %>
   <% end %>
-</ul>
 
-<%= form_with(model: @progress) do |f| %>
-  <%= f.label :content, '進捗メモ' %>
-  <%= f.text_area :content %>
+  <ul class="progress-list">
+    <% @progresses.each do |progress| %>
+      <% if progress.id.present? %>
+        <i class="material-icons">
+          event_note
+        </i>
+        <li class="progress-content"><%= progress.content %></br><%= progress.content_time %><%= link_to '削除', progress_path(progress), method: :delete, data: { confirm: '削除してよろしいですか？' } %></li>
+      <% end %>
+    <% end %>
+  </ul>
+  <%= paginate @progresses, class: 'progress-paginate' %>
+</div>
 
-  <%= f.submit %>
-<% end %>
