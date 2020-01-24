@@ -1,4 +1,4 @@
-<h2>未読書籍編集画面</h2>
+<h2 class="unread-top">未読書籍編集画面</h2>
 
 <% if @unread_book.errors.present? %>
   <ul>
@@ -8,38 +8,52 @@
   </ul>
 <% end %>
 
-<%= form_with model: @unread_book, local: true do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
+<div class="unread_form_wrapper">
+  <%= form_with model: @unread_book, local: true do |f| %>
+    <div>
+      <% if @unread_book.image && @unread_book.image.url %>
+        <%= image_tag @unread_book.image.url, size: '140x200' %>
+        <p>by Google Search </p>
+      <% else %>
+        <%= image_tag "no_image.png", size: '140x200' %>
+      <% end %>
+      <%= f.hidden_field :image_cache %>
+    </div>
 
-  <div>
-    <%= f.label :author %>
-    <%= f.text_field :author %>
-  </div>
+    <div class="form-group">
+      <%= f.label :title, class: 'bmd-label-floating' %>
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
 
-  <div>
-    <%= f.label :status %>
-    <%= f.select :status, UnreadBook.statuses.keys, selected: UnreadBook.statuses[@unread_book.status] %>
-  </div>
+    <div class="form-group">
+      <%= f.label :author, class: 'bmd-label-floating' %>
+      <%= f.text_field :author, class: 'form-control' %>
+    </div>
 
-  <div>
-    <%= f.label :reading_expired %>
-    <%= f.date_select(
-                  :reading_expired,
-                  use_year_number: true,
-                  use_month_number: true,
-                  use_day_number: true,
-                  start_year: Time.now.year,
-                  end_year: Time.now.year + 10
-    ) %>
-  </div>
 
-  <div>
-    <%= f.label :tag_list %>
-    <%= text_field_tag 'unread_book[tag_list]', @unread_book.tag_list.join(",") %>
-  </div>
+    <div class="form-group select-form">
+      <%= f.label :status, class: 'bmd-label-floating' %>
+      <%= f.select :status, UnreadBook.statuses.keys.map {|k| [I18n.t("enums.unread_book.status.#{k}"), k]}, { selected: UnreadBook.statuses[@unread_book.status] }, {class: 'custom-select'} %>
+    </div>
 
-  <%= f.submit %>
-<% end %>
+    <div class="form-group select-date">
+      <%= f.label :reading_expired, class: 'bmd-label-floating' %>
+      <%= f.date_select(
+                    :reading_expired,
+                    {use_year_number: true,
+                    use_month_number: true,
+                    use_day_number: true,
+                    start_year: Time.now.year,
+                    end_year: Time.now.year + 10},
+                    {class: 'custom-select'}
+      ) %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :tag_list, class: 'bmd-label-floating' %>
+      <%= text_field_tag 'unread_book[tag_list]', @unread_book.tag_list.join(","), class: 'form-control', placeholder: 'タグを複数入力する場合は「,」で区切ってください' %>
+    </div>
+
+    <%= f.submit '登録する', class: 'btn btn-primary' %>
+  <% end %>
+</div>

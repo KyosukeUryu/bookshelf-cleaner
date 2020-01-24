@@ -71,7 +71,9 @@ class UnreadBooksController < ApplicationController
 
   def show; end
 
-  def edit; end
+  def edit
+    @unread_book.image.cache!
+  end
 
   def update
     if @unread_book.update(book_params)
