@@ -28,6 +28,7 @@ class FinishedBook < ApplicationRecord
   has_many :concern_books
   validates :title, presence: true
   validates :author, presence: true
+  acts_as_taggable
   enum status: %i[reread keep disposal_soon disposal]
   mount_uploader :image, ImageUploader
 end

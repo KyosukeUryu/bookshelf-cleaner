@@ -22,6 +22,7 @@ class FinishedBooksController < ApplicationController
     @finished_book = current_user.finished_books.new
     @finished_book.title = params[:title]
     @finished_book.author = params[:author]
+    @finished_book.tag_list = params[:tags]
     @image = params[:image]
   end
 
@@ -60,7 +61,7 @@ class FinishedBooksController < ApplicationController
   private
 
   def book_params
-    params.require(:finished_book).permit(:title, :author, :status, :desposal_expired, :impression, :unread_book, :image)
+    params.require(:finished_book).permit(:title, :author, :status, :desposal_expired, :impression, :unread_book, :image, :tag_list)
   end
 
   def set_book
