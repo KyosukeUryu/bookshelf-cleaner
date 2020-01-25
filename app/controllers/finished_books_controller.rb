@@ -38,7 +38,9 @@ class FinishedBooksController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    redirect_to root_path, danger: '他のユーザーの書籍です' if @finished_book.user != current_user
+  end
 
   def show
     @comment = @finished_book.comments.new
