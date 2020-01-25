@@ -52,7 +52,7 @@
 </div>
 
 <div class="progress-wrapper">
-  <h3 class="unread-top"><i class="material-icons progress-icon"> event_note </i>コメント一覧</h3>
+  <h3 class="unread-top"><i class="material-icons progress-icon"> comment </i>コメント一覧</h3>
   <%= form_with(model: @comment) do |f| %>
     <div class="form-group">
       <%= f.label :content, 'コメント', class: 'bmd-label-floating'  %>
@@ -68,9 +68,9 @@
     <% @comments.each do |comment| %>
       <% if comment.id.present? %>
         <i class="material-icons">
-          event_note
+          comment
         </i>
-        <li class="progress-content"><%= comment.content %></br><%= comment.comment_time %></li>
+        <li class="progress-content"><%= comment.content %></br><%= comment.comment_time %>  投稿者：<%= comment.user.name %></li>
       <% end %>
     <% end %>
   </ul>
