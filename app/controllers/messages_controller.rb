@@ -7,13 +7,13 @@ class MessagesController < ApplicationController
   def index
     @messages = @conversation.messages
 
-    if @messages.length > 15
-      @over_fifteen = true
-      @messages = Message.where(id: @messages[-1..-15].pluck(:id))
+    if @messages.length > 10
+      @over_ten = true
+      @messages = Message.where(id: @messages[-10..-1].pluck(:id))
     end
 
     if params[:m]
-      @over_fifteen = false
+      @over_ten = false
       @messages = @conversation.messages
     end
 

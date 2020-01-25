@@ -1,29 +1,52 @@
-<% if @over_fifteen %>
-  <%= link_to '以前のメッセージ', '?=all' %>
+<% if @over_ten %>
+  <%= link_to '以前のメッセージ', '?m=all' %>
 <% end %>
 
-<div class="segment">
-  <% @messages.each do |message| %>
-    <% if message.body.present? %>
-      <div class="item">
-        <div class="content">
-          <div class="header"><strong><%= message.user.name %></strong><%= message.message_time %></div>
-          <div class="item">
-            <%= message.body %>
-            <% if message.user == current_user %>
-              <%= message.read ? '既読' : '未読' %>
-            <% end %>
+<div class="container">
+  <div class="chat-box">
+    <% @messages.each do |message| %>
+      <% if message.body.present? %>
+        <% if message.user == current_user %>
+          <div class="card message-card">
+            <div class="row">
+              <div class="col-2">
+                <%= image_tag "no_image.png", size: '60x80' %>
+                <p><%= message.user.name %></br> </p>
+              </div>
+              <div class="col-8">
+                <div class="chat-hukidashi">
+                  <%= message.body %>
+                </div>
+                <p><%= message.message_time %> <%= message.read ? '既読' : '未読' %> </p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        <% else %>
+          <div class="card message-card">
+            <div class="row">
+              <div class="col-2">
+                <%= image_tag "no_image.png", size: '60x80' %>
+                <p><%= message.user.name %> </p>
+              </div>
+              <div class="col-8">
+                <div class="chat-hukidashi other-user">
+                  <%= message.body %>
+                </div><p><%= message.message_time %> </p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
     <% end %>
+  </div>
+</div>
+<div class="message-form">
+  <%= form_with(model: [@conversation, @message]) do |f| %>
+    <div class="form-group">
+      <%= f.label :content, 'メッセージ', class: 'bmd-label-floating'  %>
+      <%= f.text_area :body, class: 'form-control', rows: '3' %>
+    </div>
+    <%= f.text_field :user_id, value: current_user.id, type: 'hidden' %>
+    <%= f.submit "メッセージを送る", class: 'btn btn-primary' %>
   <% end %>
 </div>
-
-<%= form_with(model: [@conversation, @message]) do |f| %>
-  <div>
-    <%= f.text_area :body %>
-  </div>
-  <%= f.text_field :user_id, value: current_user.id, type: 'hidden' %>
-  <%= f.submit "メッセージを送る" %>
-<% end %>
