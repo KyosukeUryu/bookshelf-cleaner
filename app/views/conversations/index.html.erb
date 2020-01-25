@@ -11,7 +11,7 @@
           <li class="list-group-item list-alert">処分期限超過書籍数: <%= current_user.finished_books.where('status = ? AND desposal_expired < ?', 2, DateTime.now).count %>冊</li>
         </ul>
         <div class="card-footer">
-          <small><%= link_to 'マイページ', user_path(current_user), class: 'btn btn-primary' %> </small>
+          <small><%= link_to 'マイページ', user_path(current_user), class: 'btn btn-primary', data: {turbolinks: false} %> </small>
         </div>
       </div>
     </div>
@@ -23,7 +23,7 @@
             <div class="card">
               <li class="list-group-item conversation-content">
                 <i class="material-icons">face</i>
-                <%= link_to conversation.target_user(current_user).name, conversation_messages_path(conversation) %><%= "さんとのメッセージ" %>
+                <%= link_to conversation.target_user(current_user).name, conversation_messages_path(conversation), data: {turbolinks: false} %><%= "さんとのメッセージ" %>
               </li>
             </div>
           <% end %>
