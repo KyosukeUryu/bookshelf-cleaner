@@ -1,17 +1,34 @@
-<table>
-  <thead>
-    <h2>メッセージスレッド</h2>
-  </thead>
-  <tbody>
-    <% i = 1 %>
-    <% @conversations.each do |conversation| %>
-      <td>
-        <% if conversation.target_user(current_user).present? %>
-          <%= "#{i}. " %> <%= link_to conversation.target_user(current_user).name, conversation_messages_path(conversation) %><%= "さんとのメッセージ" %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="card top-card">
+        <div class="card-header">
+          <%= "#{current_user.name} さんのステータス" %>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">直近30日の読破数: <%= current_user.finished_books.where(created_at: DateTime.now - 30..DateTime.now).count %>冊 </li>
+          <li class="list-group-item">読破済み書籍数: <%= current_user.finished_books.count %>冊</li>
+          <li class="list-group-item list-alert">処分期限超過書籍数: <%= current_user.finished_books.where('status = ? AND desposal_expired < ?', 2, DateTime.now).count %>冊</li>
+        </ul>
+        <div class="card-footer">
+          <small><%= link_to 'マイページ', user_path(current_user), class: 'btn btn-primary' %> </small>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <h2 class="unread-top">メッセージスレッド</h2>
+      <ul class="conversation-list list-group">
+        <% @conversations.each do |conversation| %>
+          <% if conversation.target_user(current_user).present? %>
+            <div class="card">
+              <li class="list-group-item conversation-content">
+                <i class="material-icons">face</i>
+                <%= link_to conversation.target_user(current_user).name, conversation_messages_path(conversation) %><%= "さんとのメッセージ" %>
+              </li>
+            </div>
+          <% end %>
         <% end %>
-      </td>
-    <% end %>
-  </tbody>
-</table>
-
-<%= link_to 'トップページへ', root_path %>
+      </ul>
+    </div>
+  </div>
+</div>
