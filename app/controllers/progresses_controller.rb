@@ -1,4 +1,5 @@
 class ProgressesController < ApplicationController
+  before_action :authenticate_user!
   def create
     progress = current_user.progresses.new(progress_params)
     if progress.save
