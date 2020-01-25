@@ -1,4 +1,9 @@
 class ConcernBooksController < ApplicationController
+  before_action :authenticate_user!
+
+  def index
+    @concern_books = current_user.concern_books.page(params[:page]).per(10).order(created_at: :desc)
+  end
 
   def create
     current_user.concern_books.create(finished_book_id: params[:finished_book_id])

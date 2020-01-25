@@ -3,7 +3,7 @@ class UnreadBooksController < ApplicationController
   require 'uri'
   require 'json'
   before_action :set_book, only: %i[show edit update destroy]
-  before_action :authenticate_user!, except: :tops
+  before_action :authenticate_user!
 
   def index
     @q = current_user.unread_books.ransack(params[:q])

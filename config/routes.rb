@@ -21,6 +21,6 @@ Rails.application.routes.draw do
 
   resources :comments, only: :create
   resources :users, only: :show
-  resources :concern_books, only: [:create, :destroy]
+  resources :concern_books, only: [:index, :create, :destroy]
   resources :progresses, only: [:create, :destroy]
 end

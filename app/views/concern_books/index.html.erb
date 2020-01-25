@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="card top-card">
+        <div class="card-header">
+          <%= "#{current_user.name} さんのステータス" %>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">直近30日の読破数: <%= current_user.finished_books.where(created_at: DateTime.now - 30..DateTime.now).count %>冊 </li>
+          <li class="list-group-item">読破済み書籍数: <%= current_user.finished_books.count %>冊</li>
+          <li class="list-group-item list-alert">処分期限超過書籍数: <%= current_user.finished_books.where('status = ? AND desposal_expired < ?', 2, DateTime.now).count %>冊</li>
+        </ul>
+        <div class="card-footer">
+          <small><%= link_to 'マイページ', user_path(current_user), class: 'btn btn-primary' %> </small>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <h2 class="unread-top">気になる書籍一覧</h2>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th style="width: 35%">書籍名</th>
+                <th style="width: 30%">著者名</th>
+                <th style="width: 15%">ユーザー名</th>
+                <th style="width: 20%">ステータス</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @concern_books.each do |book| %>
+                <tr>
+                  <td><%= link_to book.finished_book.title, finished_book_path(book), class: 'book-info' %></td>
+                  <td><%= book.finished_book.author %></td>
+                  <td><%= book.finished_book.user.name %></td>
+                  <td><%= book.finished_book.status_i18n %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+        <%= paginate @concern_books %>
+    </div>
+  </div>
+</div>
+
