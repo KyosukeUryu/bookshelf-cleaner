@@ -12,7 +12,7 @@
 
           <div class="form-group select-form">
             <%= f.label :status_eq, 'ステータス', class: 'bmd-label-floating' %>
-            <%= f.select :status_eq, FinishedBook.statuses.map {|k, v| [I18n.t("enums.finished_books.status.#{k}"), v]}, { include_blank: true, selected: '' }, {class: 'custom-select'} %>
+            <%= f.select :status_eq, FinishedBook.statuses.map {|k, v| [I18n.t("enums.finished_book.status.#{k}"), v]}, { include_blank: true, selected: '' }, {class: 'custom-select'} %>
           </div>
 
           <%= f.submit '検索', class: 'btn btn-primary' %>
