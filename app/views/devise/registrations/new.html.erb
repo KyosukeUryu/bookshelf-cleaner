@@ -1,4 +1,4 @@
-<div class="card devise-card">
+<div class="card devise-card new-devise-card">
   <h2>Sign up</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -38,6 +38,13 @@
   <% end %>
   <div class="devise-share">
     <%= render "devise/shared/links" %>
+  </div>
+  <div class="test-user">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= f.hidden_field :email, value: 'hoge@fuga.com' %>
+      <%= f.hidden_field :password, value: 'hogefuga' %>
+      <%= f.submit "テストユーザーとしてログイン", role: 'button' , class: 'btn btn-seccondary btn-raised btn-lg' %>
+    <% end %>
   </div>
 </div>
 
