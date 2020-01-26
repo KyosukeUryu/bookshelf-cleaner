@@ -75,6 +75,9 @@ ol.breadcrumb {
   height: 35rem;
   margin: 50px auto;
 }
+.devise-card.new-devise-card {
+  height: 45rem;
+}
 .devise-card.edit-devise-card {
   height: 60rem;
 }
@@ -85,6 +88,10 @@ ol.breadcrumb {
 .devise-card h2 {
   text-align: center;
   padding-top: 20px;
+}
+.test-user {
+  text-align: center;
+  margin-top: 40px;
 }
 .form-group {
   padding: 0 30px;

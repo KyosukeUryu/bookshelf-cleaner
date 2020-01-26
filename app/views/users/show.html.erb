@@ -17,9 +17,11 @@
         <% end %>
         <ul class="user-info">
           <li>名前：<%= @user.name %></li>
-          <li>読み終わった書籍数：<%= @user.finished_books.count %></li>
+          <li>読み終わった書籍数：<%= @user.finished_books.count %>冊</li>
           <li>読破済み書籍数: <%= @user.finished_books.count %>冊</li>
-          <li>最近読んだ本: <%= link_to @user.finished_books.last.title, finished_book_path(@user.finished_books.last) %></li>
+          <% if @user.finished_books.present? %>
+            <li class="user-book-title">最近読んだ本: <%= link_to @user.finished_books.last.title, finished_book_path(@user.finished_books.last) %></li>
+          <% end %>
         </ul>
         <%= link_to '戻る', :back, data: {turbolinks: false} %>
       </div>
