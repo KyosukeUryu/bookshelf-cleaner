@@ -7,4 +7,4 @@
   <li>名前：<%= @user.name %></li>
   <li>読み終わった書籍数：<%= @user.finished_books.count %></li>
 </ul>
-<%= link_to '戻る', :back %>
+<%= link_to '戻る', :back, data: {turbolinks: false} %>

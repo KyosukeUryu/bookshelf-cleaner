@@ -10,7 +10,7 @@
             <%= f.search_field :title_or_author_cont, class: 'form-control' %>
           </div>
 
-          <%= f.submit '検索', class: 'btn btn-primary' %>
+          <%= f.submit '検索', class: 'btn btn-primary btn-raised' %>
         <% end %>
         <%= link_to '検索結果を戻す', disposal_finished_books_path, class: 'btn btn-warning', data: {turbolinks: false} %>
       </div>
@@ -35,11 +35,11 @@
                     <td><%= link_to book.title, finished_book_path(book), class: 'book-info' %></td>
                     <td><%= link_to book.user.name, user_path(book.user) %></td>
                     <td><%= book.desposal_expired %></td>
-                    <td><%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: book.user.id), method: :post, class: 'btn btn-primary btn-sm' %></td>
+                    <td><%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: book.user.id), method: :post, class: 'btn btn-primary btn-sm btn-raised' %></td>
                     <% if current_user.concerned?(book) %>
-                      <td><%= link_to '気になる書籍から外す', concern_book_path(current_user.concern_books.find_by(finished_book_id: book.id)), method: :delete, class: 'btn btn-warning btn-sm' %></td>
+                      <td><%= link_to '気になる書籍から外す', concern_book_path(current_user.concern_books.find_by(finished_book_id: book.id)), method: :delete, class: 'btn btn-warning btn-sm btn-raised' %></td>
                     <% else %>
-                      <td><%= link_to '気になる書籍に追加する', concern_books_path(finished_book_id: book.id), method: :post, class: 'btn btn-success' %></td>
+                      <td><%= link_to '気になる書籍に追加する', concern_books_path(finished_book_id: book.id), method: :post, class: 'btn btn-success btn-raised btn-sm' %></td>
                     <% end %>
                   </tr>
                 <% end %>
