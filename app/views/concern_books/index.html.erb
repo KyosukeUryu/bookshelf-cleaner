@@ -18,7 +18,7 @@
             <tbody>
               <% @concern_books.each do |book| %>
                 <tr>
-                  <td><%= link_to book.finished_book.title, finished_book_path(book), class: 'book-info' %></td>
+                  <td><%= link_to book.finished_book.title, finished_book_path(book.finished_book), class: 'book-info' %></td>
                   <td><%= book.finished_book.author %></td>
                   <td><%= book.finished_book.user.name %></td>
                   <td><%= book.finished_book.status_i18n %></td>
