@@ -7,7 +7,7 @@ class UnreadBooksController < ApplicationController
 
   def index
     @q = current_user.unread_books.ransack(params[:q])
-    @unread_books = @q.result(distinct: true).page(params[:page]).per(10).order(created_at: :desc)
+    @unread_books = @q.result(distinct: true).page(params[:page]).per(10).standard
   end
 
   def reading
@@ -23,7 +23,7 @@ class UnreadBooksController < ApplicationController
   def reading_books
     @progresses = current_user.progresses.page(params[:page]).per(5).order(created_at: :desc)
     @progress = Progress.new
-    @reading_books = current_user.unread_books.where(status: 1).page(params[:page]).per(4).order(created_at: :desc)
+    @reading_books = current_user.unread_books.where(status: 1).page(params[:page]).per(4).standard
   end
 
   def return

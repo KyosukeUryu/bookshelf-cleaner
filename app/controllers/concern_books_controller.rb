@@ -2,7 +2,7 @@ class ConcernBooksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @concern_books = current_user.concern_books.page(params[:page]).per(10).order(created_at: :desc)
+    @concern_books = current_user.concern_books.page(params[:page]).per(10).standard
   end
 
   def create

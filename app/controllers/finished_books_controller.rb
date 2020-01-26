@@ -4,17 +4,17 @@ class FinishedBooksController < ApplicationController
 
   def index
     @q = current_user.finished_books.ransack(params[:q])
-    @finished_books = @q.result(distinct: true).page(params[:page]).per(10).order(created_at: :desc)
+    @finished_books = @q.result(distinct: true).page(params[:page]).per(10).standard
   end
 
   def others
     @q = FinishedBook.where.not(user_id: current_user.id).ransack(params[:q])
-    @finished_books = @q.result(distinct: true).page(params[:page]).per(10)
+    @finished_books = @q.result(distinct: true).page(params[:page]).per(10).standard
   end
 
   def disposal
     @q = FinishedBook.where.not(user_id: current_user.id).where(status: 2).ransack(params[:q])
-    @finished_books = @q.result(distinct: true).page(params[:page]).per(10)
+    @finished_books = @q.result(distinct: true).page(params[:page]).per(10).standard
   end
 
   def new

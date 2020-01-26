@@ -29,8 +29,6 @@ class UnreadBook < ApplicationRecord
   acts_as_taggable
   mount_uploader :image, ImageUploader
 
-  #def self.search(term)
-  #  base_uri 'https://www.googleapis.com/books/v1/volumes'
-  #  maxResults
-  #end
+  scope :standard, ->  { order(created_at: :desc)}
+
 end

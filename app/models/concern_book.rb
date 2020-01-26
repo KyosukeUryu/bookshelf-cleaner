@@ -22,4 +22,6 @@
 class ConcernBook < ApplicationRecord
   belongs_to :user
   belongs_to :finished_book
+
+  scope :standard, ->  { order(created_at: :desc)}
 end
