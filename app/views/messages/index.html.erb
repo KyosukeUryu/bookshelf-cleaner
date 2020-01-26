@@ -58,7 +58,7 @@
   <%= form_with(model: [@conversation, @message]) do |f| %>
     <div class="form-group">
       <%= f.label :content, 'メッセージ', class: 'bmd-label-floating'  %>
-      <%= f.text_area :body, class: 'form-control', rows: '3' %>
+      <%= f.text_area :body, class: 'form-control textarea-form', rows: '3' %>
     </div>
     <%= f.text_field :user_id, value: current_user.id, type: 'hidden' %>
     <%= f.submit "メッセージを送る", class: 'btn btn-primary' %>

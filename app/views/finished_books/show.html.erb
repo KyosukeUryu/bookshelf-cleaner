@@ -46,7 +46,7 @@
   <%= form_with(model: @comment) do |f| %>
     <div class="form-group">
       <%= f.label :content, 'コメント', class: 'bmd-label-floating'  %>
-      <%= f.text_area :content, class: 'form-control', rows: '5' %>
+      <%= f.text_area :content, class: 'form-control textarea-form', rows: '5' %>
     </div>
     <%= f.text_field :user_id, value: current_user.id, type: 'hidden' %>
     <%= f.text_field :finished_book_id, value: @finished_book.id, type: 'hidden' %>
