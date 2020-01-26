@@ -10,8 +10,12 @@
           <div class="card message-card">
             <div class="row">
               <div class="col-2">
-                <%= image_tag "no_image.png", size: '60x80' %>
-                <p><%= message.user.name %></br> </p>
+                <div class="chat-user">
+                  <div class="chat-face">
+                    <%= image_tag "no_image.png", size: '60x60' %>
+                  </div>
+                  <p><%= message.user.name %></br> </p>
+                </div>
               </div>
               <div class="col-8">
                 <div class="chat-hukidashi">
@@ -25,7 +29,9 @@
           <div class="card message-card">
             <div class="row">
               <div class="col-2">
-                <%= image_tag "no_image.png", size: '60x80' %>
+                <div class="chat-face">
+                  <%= image_tag "no_image.png", size: '60x60' %>
+                </div>
                 <p><%= message.user.name %> </p>
               </div>
               <div class="col-8">

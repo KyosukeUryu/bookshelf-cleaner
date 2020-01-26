@@ -4,6 +4,7 @@
 #
 #  id                     :bigint           not null, primary key
 #  admin                  :boolean          default(FALSE)
+#  avater                 :text
 #  confirmation_sent_at   :datetime
 #  confirmation_token     :string
 #  confirmed_at           :datetime
@@ -41,6 +42,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :concern_books, dependent: :destroy
   has_many :progresses, dependent: :destroy
+  mount_uploader :avater, ImageUploader
 
   def concerned?(book)
     concern_books.find_by(finished_book_id: book.id)
