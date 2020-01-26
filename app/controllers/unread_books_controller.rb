@@ -36,7 +36,7 @@ class UnreadBooksController < ApplicationController
     if params[:looking_for]
       @search_term = params[:looking_for]
       @number = params[:number].to_i
-      uri = URI.parse(URI.encode("https://www.googleapis.com/books/v1/volumes?q=#{@search_term}&startIndex=#{@number}"))
+      uri = URI.parse(URI.encode("https://www.googleapis.com/books/v1/volumes?q=#{@search_term}&Country=JP&startIndex=#{@number}"))
       json = Net::HTTP.get(uri)
       result = JSON.parse(json)
       if result['totalItems'] != 0 && result['totalItems'].present?
