@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <%= render 'shared/layout/sidebar' %>
+    </div>
+    <div class="col-sm-9">
+      <h2 class="unread-top">メッセージスレッド</h2>
+      <ul class="conversation-list list-group">
+        <% @conversations.each do |conversation| %>
+          <% if conversation.target_user(current_user).present? %>
+            <div class="card">
+              <li class="list-group-item conversation-content">
+                <i class="material-icons">face</i>
+                <%= link_to conversation.target_user(current_user).name, conversation_messages_path(conversation), data: {turbolinks: false} %><%= "さんとのメッセージ" %>
+              </li>
+            </div>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

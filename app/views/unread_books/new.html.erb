@@ -1,0 +1,59 @@
+<h2 class="unread-top">新規未読書籍登録画面</h2>
+
+<% if @unread_book.errors.present? %>
+  <ul>
+    <% @unread_book.errors.full_messages.each do |msg|%>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div class="unread_form_wrapper">
+  <%= form_with model: @unread_book, local: true do |f| %>
+    <div>
+      <% if @book_image.present? %>
+        <%= image_tag @book_image, size: '140x200' %>
+        <p>by Google Search </p>
+      <% else %>
+        <%= image_tag "no_image.png", size: '140x200' %>
+      <% end %>
+      <%= f.hidden_field :image, value: @book_image %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :title, class: 'bmd-label-floating' %>
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :author, class: 'bmd-label-floating' %>
+      <%= f.text_field :author, class: 'form-control' %>
+    </div>
+
+
+    <div class="form-group select-form">
+      <%= f.label :status, class: 'bmd-label-floating' %>
+      <%= f.select :status, UnreadBook.statuses.keys.map {|k| [I18n.t("enums.unread_book.status.#{k}"), k]}, { selected: UnreadBook.statuses[@unread_book.status] }, {class: 'custom-select'} %>
+    </div>
+
+    <div class="form-group select-date">
+      <%= f.label :reading_expired, class: 'bmd-label-floating' %>
+      <%= f.date_select(
+                    :reading_expired,
+                    {use_year_number: true,
+                    use_month_number: true,
+                    use_day_number: true,
+                    start_year: Time.now.year,
+                    end_year: Time.now.year + 10},
+                    {class: 'custom-select'}
+      ) %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :tag_list, class: 'bmd-label-floating' %>
+      <%= text_field_tag 'unread_book[tag_list]', @unread_book.tag_list.join(","), class: 'form-control', placeholder: 'タグを複数入力する場合は「,」で区切ってください' %>
+    </div>
+
+    <%= f.submit '登録する', class: 'btn btn-primary' %>
+  <% end %>
+</div>

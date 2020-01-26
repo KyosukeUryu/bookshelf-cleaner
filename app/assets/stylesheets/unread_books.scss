@@ -1,0 +1,114 @@
+/* 検索画面 */
+.unread-top {
+  text-align: center;
+  font-family: "M PLUS 1p";
+  letter-spacing: 3px;
+  padding-top: 20px;
+}
+.search-info {
+  text-align: center;
+  font-family: "M PLUS 1p";
+  letter-spacing: 3px;
+  margin-top: 20px;
+}
+.google-phrase {
+  text-align: center;
+  padding-top: 10px;
+  letter-spacing: 1px;
+}
+.search-wrapper {
+  width: 450px;
+  margin: 20px auto;
+}
+.input-search {
+  width: 300px;
+}
+.form-search {
+  display: inline-flex;
+}
+.google-note {
+  display: block;
+}
+.search-link {
+  text-align: center;
+}
+.select-form > .custom-select {
+  height: 35px;
+}
+/* ここから書籍登録 */
+.unread_form_wrapper {
+  text-align: center;
+  margin: 30px auto;
+  width: 500px;
+}
+.select-form {
+  width: 160px;
+  margin: 20px auto;
+}
+.select-date {
+  width: 150px;
+  margin: 20px auto;
+}
+.search-index-form {
+  padding-top: 50px;
+}
+.index-search-title {
+  font-size: 1rem;
+  letter-spacing: 2px;
+  border-left: solid 3px #de5a35;
+  padding-left: 5px;
+}
+.row > .index-table {
+  min-height: 720px;
+  border-left: solid 2px #def2dc;
+}
+.index-table-content {
+  padding-left: 30px;
+}
+td {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 0;
+}
+.pagination {
+  justify-content: center;
+}
+/* ここから詳細画面 */
+.unread-list {
+  list-style: none;
+}
+.unread-card {
+  padding: 30px 0;
+}
+.unread-content {
+  font-size: 1.2rem;
+  margin: 20px 0;
+  letter-spacing: 2px;
+}
+.book-tag.badge{
+  font-weight: normal;
+}
+/* ここから読書中画面 */
+.progress-wrapper {
+  margin: 0 auto;
+  text-align: center;
+  width: 500px;
+}
+.progress-list {
+  list-style: none;
+}
+.progress-content {
+  white-space: pre-wrap;
+  word-wrap:  break-word;
+  background-color: #fffee8;
+  border-radius: 5%;
+  border: 2px solid #fcfac2;
+  margin-bottom: 20px;
+}
+.progress-icon {
+  padding-right: 8px;
+}
+.progress-paginate {
+  color: #6298f5;
+}

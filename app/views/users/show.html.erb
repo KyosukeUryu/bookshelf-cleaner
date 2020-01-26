@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <%= render 'shared/layout/sidebar' %>
+    </div>
+    <div class="offset-sm-1 col-sm-8">
+      <div class="user-page">
+        <% if @user == current_user %>
+          <h2 class="user-top">マイページ</h1>
+        <% else %>
+          <h2 class="user-top"><%= @user.name %>さんのページ</h1>
+        <% end %>
+        <% if @user.avater && @user.avater.url %>
+          <%= image_tag @user.avater.url, size: '100x100', class: 'user-avater' %>
+        <% else %>
+          <%= image_tag 'no_image.png', size: '100x100', class: 'user-avater' %>
+        <% end %>
+        <ul class="user-info">
+          <li>名前：<%= @user.name %></li>
+          <li>読み終わった書籍数：<%= @user.finished_books.count %>冊</li>
+          <li>読破済み書籍数: <%= @user.finished_books.count %>冊</li>
+          <% if @user.finished_books.present? %>
+            <li class="user-book-title">最近読んだ本: <%= link_to @user.finished_books.last.title, finished_book_path(@user.finished_books.last) %></li>
+          <% end %>
+        </ul>
+        <%= link_to '戻る', :back, data: {turbolinks: false} %>
+      </div>
+    </div>
+  </div>
+</div>

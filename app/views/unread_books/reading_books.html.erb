@@ -1,0 +1,54 @@
+<h2 class="unread-top">読書中書籍一覧</h2>
+<div class="container">
+  <div class="row">
+      <% @reading_books.each do |book| %>
+        <div class="col-sm-6 mb-5">
+          <div class="card">
+            <div class="row">
+              <div class="image-wrapper col-4">
+                <% if book.image.present? %>
+                  <%= image_tag book.image.url ,size: '140x200', class: 'mr-3 search-image' %>
+                  <span class="google-note">by Google Search</span>
+                <% else %>
+                  <%= image_tag "no_image.png", size: '140x200', class: 'mr-3 search-image' %>
+                <% end %>
+              </div>
+              <div class="media-body col-8">
+                <h6 class="mt-2 mb-1">書籍名：<%= book.title %></h6>
+                <h6 class="mt-2 mb-1">著者名：<%= book.author %></h6>
+                <h6 class="mt-2 mb-1">読破期限：<%= book.reading_expired %></h6>
+                <%= link_to '未読に戻す', return_unread_book_path(book), method: :patch, data: { confirm: '本当に未読に戻しますか？'}, class: 'btn btn-warning'  %>
+                <%= link_to '書籍読破', new_finished_book_path(params: { id: book.id, title: book.title, author: book.author, image: book.image, tags: book.tag_list  }), class: 'btn btn-success btn-lg btn-raised'  %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div>
+<%= paginate @reading_books %>
+
+<div class="progress-wrapper">
+  <h3 class="unread-top"><i class="material-icons progress-icon"> event_note </i>進捗メモ一覧</h3>
+  <%= form_with(model: @progress) do |f| %>
+    <div class="form-group">
+      <%= f.label :content, '進捗メモ', class: 'bmd-label-floating'  %>
+      <%= f.text_area :content, class: 'form-control', rows: '5' %>
+    </div>
+
+    <%= f.submit '追加', class: 'btn btn-primary' %>
+  <% end %>
+
+  <ul class="progress-list">
+    <% @progresses.each do |progress| %>
+      <% if progress.id.present? %>
+        <i class="material-icons">
+          event_note
+        </i>
+        <li class="progress-content"><%= progress.content %></br><%= progress.content_time %><%= link_to '削除', progress_path(progress), method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'btn btn-danger btn-sm' %></li>
+      <% end %>
+    <% end %>
+  </ul>
+  <%= paginate @progresses, class: 'progress-paginate' %>
+</div>
+

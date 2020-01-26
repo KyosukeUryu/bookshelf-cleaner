@@ -1,0 +1,40 @@
+ja:
+  activerecord:
+    models:
+      unread_book: 未読書籍
+      user: ユーザー
+      finished_book: 既読書籍
+    attributes:
+      unread_book:
+        title: タイトル
+        author: 著者名
+        status: ステータス
+        reading_expired: 読破期限
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+      finished_book:
+        title: タイトル
+        author: 著者名
+        status: ステータス
+        desposal_expired: 処分期限
+        impression: 感想等
+      comment:
+        content: コメント
+      message:
+        body: メッセージ
+      progress:
+        content: 進捗情報
+  enums:
+    unread_book:
+      status:
+        not_yet: 積読
+        reading: 読書中
+    finished_book:
+      status:
+        reread: 要再読
+        keep: 要保管
+        disposal_soon: 処分予定
+        disposal: 処分済み
