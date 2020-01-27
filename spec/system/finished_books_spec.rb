@@ -5,6 +5,7 @@ describe '既読書籍の管理機能', type: :system do
   let(:user_b) { FactoryBot.create(:user, email: 'b@example.com') }
   let!(:unread_book_a) { FactoryBot.create(:unread_book, title: '最初の本', user: user_a) }
   let!(:finished_book_a) { FactoryBot.create(:finished_book, title: '最初に読み終わった本', user: user_a) }
+  let!(:finished_book_b) { FactoryBot.create(:finished_book, title: '処分予定の本', status: 2, user: user_b) }
   let!(:comment_a) { FactoryBot.create(:comment, content: '最初のコメント', user: user_a, finished_book: finished_book_a) }
 
 
@@ -163,7 +164,7 @@ describe '既読書籍の管理機能', type: :system do
       end
     end
 
-    context 'ユーザーAがログインしている時' do
+    context 'ユーザーBがログインしている時' do
       let(:login_user) { user_b }
       before do
         visit others_finished_books_path
@@ -178,6 +179,37 @@ describe '既読書籍の管理機能', type: :system do
         click_button '検索'
         expect(page).not_to have_content '最初に読み終わった本'
       end
+    end
+  end
+
+  describe '処分予定書籍一覧' do
+    context 'ユーザーAがログインしている時' do
+      let(:login_user) { user_a }
+      before do
+        visit disposal_finished_books_path
+      end
+
+      it '他のユーザーの処分予定書籍が表示される' do
+        expect(page).to have_content '処分予定の本'
+      end
+
+      it '検索ワードが違う時書籍が表示されない' do
+        fill_in 'キーワード', with: '違う本'
+        click_button '検索'
+        expect(page).not_to have_content '処分予定の本'
+      end
+    end
+
+    context 'ユーザーBがログインしている時' do
+      let(:login_user) { user_b }
+      before do
+        visit disposal_finished_books_path
+      end
+
+      it '自分の書籍は表示されない' do
+        expect(page).not_to have_content '処分予定の本'
+      end
+
     end
   end
 end
