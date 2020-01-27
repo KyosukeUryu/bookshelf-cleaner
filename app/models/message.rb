@@ -30,4 +30,6 @@ class Message < ApplicationRecord
   def message_time
     created_at.strftime("%m月%d日 %l:%M %p")
   end
+
+  scope :pick_up, -> { order(created_at: :asc)}
 end

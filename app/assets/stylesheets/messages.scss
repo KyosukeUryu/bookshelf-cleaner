@@ -19,7 +19,6 @@
   padding: 15px 20px;
   margin-left: 20px;
   margin-top: 8px;
-  /* border: 1px solid gray; ←削除 */
   border-radius: 10px;
   position: relative; /*追記*/
   background-color: #D9F0FF; /*追記*/
@@ -56,7 +55,7 @@
   height: 0px;
   border-style: solid;
   border-width: 10px 10px 10px 0;
-  border-color: transparent #d0f593 transparent transparent;
+  border-color: transparent #dff7b7 transparent transparent;
 }
 .message-form {
   width: 700px;

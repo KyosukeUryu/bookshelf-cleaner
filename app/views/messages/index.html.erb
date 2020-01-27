@@ -1,8 +1,9 @@
-<% if @over_ten %>
-  <%= link_to '以前のメッセージ', '?m=all', data: {turbolinks: false} %>
-<% end %>
-
 <div class="container">
+  <h2 class="unread-top"><%= @conversation.target_user(current_user).name %>さんとのメッセージ</h2>
+  <% if @over_ten %>
+    <%= link_to '以前のメッセージ', '?m=all', data: {turbolinks: false} %>
+  <% end %>
+
   <div class="chat-box">
     <% @messages.each do |message| %>
       <% if message.body.present? %>
