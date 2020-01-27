@@ -4,6 +4,7 @@ describe '未読書籍の管理機能', type: :system do
   let(:user_a) { FactoryBot.create(:user, email: 'a@example.com') }
   let(:user_b) { FactoryBot.create(:user, email: 'b@example.com') }
   let!(:unread_book_a) { FactoryBot.create(:unread_book, title: '最初の本', user: user_a) }
+  let!(:progress_a) { FactoryBot.create(:progress, content: '最初のメモ', user: user_a) }
 
   before do
     visit new_user_session_path
@@ -31,8 +32,14 @@ describe '未読書籍の管理機能', type: :system do
         expect(page).to have_content '最初の本'
       end
 
-      it '検索ワードが違うとき' do
+      it '検索ワードが違うとき表示されない' do
         fill_in 'キーワード', with: '違う本'
+        click_button '検索'
+        expect(page).not_to have_content '最初の本'
+      end
+
+      it 'ステータス検索が不適切な時表示されない' do
+        select '積読', from: 'ステータス'
         click_button '検索'
         expect(page).not_to have_content '最初の本'
       end
@@ -58,6 +65,45 @@ describe '未読書籍の管理機能', type: :system do
     it_behaves_like 'ユーザーAが登録した書籍が表示される'
   end
 
+  describe '読書中書籍機能' do
+    let(:login_user) { user_a }
+    before do
+      visit reading_books_unread_books_path
+    end
+
+    context 'ユーザーAがログインしている時' do
+      it_behaves_like 'ユーザーAが登録した書籍が表示される'
+
+      it 'ユーザーAが入力したメモが表示される' do
+        expect(page).to have_content '最初のメモ'
+      end
+
+      describe '進捗メモ作成機能' do
+        before do
+          fill_in '進捗メモ', with: progress_content
+          click_button '追加'
+        end
+
+        context '正しく入力されている時' do
+          let(:progress_content) { '次のメモ' }
+
+          it 'メモが追加される' do
+            expect(page).to have_content '次のメモ'
+          end
+        end
+
+        context '入力されていない時' do
+          let(:progress_content) { '' }
+
+          it 'エラーが発生する' do
+            expect(page).to have_content 'メモを入力してください'
+          end
+        end
+      end
+    end
+
+  end
+
   describe '未読書籍作成機能' do
     let(:login_user) { user_a }
 
@@ -65,7 +111,7 @@ describe '未読書籍の管理機能', type: :system do
       visit new_unread_book_path
       fill_in 'タイトル', with: book_name
       fill_in '著者名', with: book_author
-      select 'reading', from: 'ステータス'
+      select '読書中', from: 'ステータス'
       click_button '登録する'
     end
 
@@ -74,7 +120,7 @@ describe '未読書籍の管理機能', type: :system do
       let(:book_author) { '正しい著者' }
 
       it '書籍情報が登録される' do
-        expect(page).to have_content '未読書籍を登録しました'
+        expect(page).to have_content '正しい書籍を未読書籍に登録しました'
       end
     end
 
@@ -88,6 +134,10 @@ describe '未読書籍の管理機能', type: :system do
     end
   end
 
+  describe '未読書籍作成機能' do
+    let(:login_user) { user_a }
+  end
+
   describe '未読書籍編集機能' do
     let(:login_user) { user_a }
 
@@ -95,7 +145,7 @@ describe '未読書籍の管理機能', type: :system do
       visit edit_unread_book_path(unread_book_a)
       fill_in 'タイトル', with: book_name
       fill_in '著者名', with: book_author
-      select 'reading', from: 'ステータス'
+      select '読書中', from: 'ステータス'
       click_button '更新する'
     end
 

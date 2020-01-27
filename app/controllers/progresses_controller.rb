@@ -5,7 +5,7 @@ class ProgressesController < ApplicationController
     if progress.save
       redirect_to reading_books_unread_books_path
     else
-      redirect_to reading_books_unread_books_path
+      redirect_to reading_books_unread_books_path, danger: 'メモを入力してください'
     end
   end
 
