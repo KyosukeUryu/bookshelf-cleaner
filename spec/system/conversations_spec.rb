@@ -29,7 +29,7 @@ describe '会話機能', type: :system do
   describe 'メッセージ投稿機能' do
     let(:login_user) { user_a }
     before do
-      visit conversation_messages_path
+      visit conversation_messages_path(conversation_a)
       fill_in 'メッセージ', with: message_body
       click_button 'メッセージを送る'
     end
