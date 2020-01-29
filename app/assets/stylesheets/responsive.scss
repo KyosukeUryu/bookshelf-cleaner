@@ -15,22 +15,22 @@
     font-size: 1.6rem;
   }
   .top-image > .btn.btn-lg.btn-primary {
-    top: 40%;
-    left: 24%;
-    width: 70px;
-    height: 30px;
-    font-size: 0.5rem;
+    top: 35%;
+    left: 33%;
+    width: 130px;
+    height: 55px;
+    font-size: 1.4rem;
     letter-spacing: 0;
-    padding-top: 8px;
+    padding-top: 10px;
   }
   .top-image > .btn.btn-lg.btn-success {
-    top: 40%;
-    left: 61%;
-    width: 70px;
-    height: 30px;
-    font-size: 0.5rem;
+    top: 55%;
+    left: 33%;
+    width: 130px;
+    height: 55px;
+    font-size: 1.4rem;
     letter-spacing: 0;
-    padding-top: 8px;
+    padding-top: 10px;
   }
   .devise-card {
     width: 20rem;
@@ -38,4 +38,28 @@
   .devise-card > h2 {
     font-size: 1.5rem;
   }
+  .search-info {
+    font-size: 1.4rem;
+  }
+  .google-phrase {
+    font-size: 0.9rem;
+  }
+  .form-search > .btn {
+    width: 50px;
+    height: 30px;
+    font-size: 0.8rem;
+    padding-left: 13px;
+    padding-top: 6px;
+  }
+  .search-info {
+    font-size: 1.1rem;
+  }
+  .search-book {
+    margin-left: 20px;
+    font-size: 0.8rem;
+  }
+  .google-note {
+    font-size: 0.7rem;
+  }
+
 }
