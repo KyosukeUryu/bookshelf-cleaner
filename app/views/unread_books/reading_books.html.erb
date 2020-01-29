@@ -5,7 +5,7 @@
         <div class="col-sm-6 mb-5">
           <div class="card">
             <div class="row">
-              <div class="image-wrapper col-4">
+              <div class="image-wrapper col-sm-4">
                 <% if book.image.present? %>
                   <%= image_tag book.image.url ,size: '140x200', class: 'mr-3 search-image' %>
                   <span class="google-note">by Google Search</span>
@@ -13,7 +13,7 @@
                   <%= image_tag "no_image.png", size: '140x200', class: 'mr-3 search-image' %>
                 <% end %>
               </div>
-              <div class="media-body col-8">
+              <div class="media-body col-sm-8">
                 <h6 class="mt-2 mb-1">書籍名：<%= book.title %></h6>
                 <h6 class="mt-2 mb-1">著者名：<%= book.author %></h6>
                 <h6 class="mt-2 mb-1">読破期限：<%= book.reading_expired %></h6>
