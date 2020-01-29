@@ -56,6 +56,40 @@ describe 'ユーザー設定機能', type: :system do
       end
     end
   end
+
+  describe 'ユーザー情報編集機能' do
+    before do
+      visit new_user_session_path
+      fill_in 'メールアドレス', with: login_user.email
+      fill_in 'パスワード', with: login_user.password
+      click_button 'Log in'
+      visit edit_user_registration_path
+      fill_in '名前', with: edit_user_name
+      fill_in 'メールアドレス', with: edit_user_email
+      fill_in '現在のパスワード', with: edit_user_password
+      click_button 'Update'
+    end
+
+    let(:login_user) { user_a }
+
+    context '変更情報を正しく入力する' do
+      let(:edit_user_name) { 'hogefuga' }
+      let(:edit_user_email) { 'c@example.com' }
+      let(:edit_user_password) { 'password' }
+      it 'ユーザー情報が更新される' do
+        expect(page).to have_content 'アカウント情報を変更しました。'
+      end
+    end
+
+    context '誤った情報を入力する' do
+      let(:edit_user_name) { 'hogefuga' }
+      let(:edit_user_email) { 'c@example.com' }
+      let(:edit_user_password) { 'miss_pass' }
+      it 'ログインに失敗する' do
+        expect(page).to have_content '現在のパスワードは不正な値です'
+      end
+    end
+  end
 end
 
 
