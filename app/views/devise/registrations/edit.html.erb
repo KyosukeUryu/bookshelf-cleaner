@@ -1,9 +1,9 @@
+<%= render "devise/shared/error_messages", resource: resource %>
 <div class="card devise-card edit-devise-card">
   <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
   <div class="avater-form">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
       <% if current_user.avater && current_user.avater.url %>
         <%= image_tag  current_user.avater.url, size: '80x80' %>
       <% else %>
