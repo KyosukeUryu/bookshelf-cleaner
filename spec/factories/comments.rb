@@ -5,4 +5,3 @@ FactoryBot.define do
     finished_book
   end
 end
-
