@@ -32,6 +32,7 @@
 
 FactoryBot.define do
   factory :user do
+    name { 'test sample' }
     email { 'test@hoge.com' }
     password { 'password' }
     confirmed_at { Date.today }

@@ -26,24 +26,33 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th style="width: 25%">書籍名</th>
-                  <th style="width: 20%">著者名</th>
-                  <th style="width: 13%">ユーザー名</th>
-                  <th style="width: 20%">メッセージを送る</th>
-                  <th style="width: 22%">お気に入り</th>
+                  <th class="book-title" style="width: 25%">書籍名</th>
+                  <th class="book-description" style="width: 20%">著者名</th>
+                  <th class="book-description" style="width: 13%">ユーザー名</th>
+                  <th class="book-description" style="width: 20%">メッセージを送る</th>
+                  <th class="book-description" style="width: 22%">お気に入り</th>
                 </tr>
               </thead>
               <tbody>
                 <% @finished_books.each do |book| %>
                   <tr>
-                    <td><%= link_to book.title, finished_book_path(book), class: 'book-info' %></td>
-                    <td><%= book.author %></td>
-                    <td><%= link_to book.user.name, user_path(book.user) %></td>
-                    <td><%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: book.user.id), method: :post, class: 'btn btn-primary btn-raised btn-sm' %></td>
+                    <td class="book-title"><%= link_to book.title, finished_book_path(book), class: 'book-info' %>
+                      <div class="only-responsive">
+                        <%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: book.user.id), method: :post, class: 'btn btn-primary btn-sm' %>
+                        <% if current_user.concerned?(book) %>
+                          <%= link_to '気になる書籍から外す', concern_book_path(current_user.concern_books.find_by(finished_book_id: book.id)), method: :delete, class: 'btn btn-warning btn-sm' %>
+                        <% else %>
+                          <%= link_to '気になる書籍に追加する', concern_books_path(finished_book_id: book.id), method: :post, class: 'btn btn-success btn-sm' %>
+                        <% end %>
+                      </div>
+                    </td>
+                    <td class="book-description"><%= book.author %></td>
+                    <td class="book-description"><%= link_to book.user.name, user_path(book.user) %></td>
+                    <td class="book-description"><%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: book.user.id), method: :post, class: 'btn btn-primary btn-raised btn-sm' %></td>
                     <% if current_user.concerned?(book) %>
-                      <td><%= link_to '気になる書籍から外す', concern_book_path(current_user.concern_books.find_by(finished_book_id: book.id)), method: :delete, class: 'btn btn-warning btn-sm btn-raised' %></td>
+                      <td class="book-description"><%= link_to '気になる書籍から外す', concern_book_path(current_user.concern_books.find_by(finished_book_id: book.id)), method: :delete, class: 'btn btn-warning btn-sm btn-raised' %></td>
                     <% else %>
-                      <td><%= link_to '気になる書籍に追加する', concern_books_path(finished_book_id: book.id), method: :post, class: 'btn btn-success btn-raised btn-sm' %></td>
+                      <td class="book-description"><%= link_to '気になる書籍に追加する', concern_books_path(finished_book_id: book.id), method: :post, class: 'btn btn-success btn-raised btn-sm' %></td>
                     <% end %>
                   </tr>
                 <% end %>

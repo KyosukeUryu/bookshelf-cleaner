@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
 
     if @messages.length > 10
       @over_ten = true
-      @messages = Message.where(id: @messages[-10..-1].pluck(:id))
+      @messages = Message.where(id: @messages.pick_up[-10..-1].pluck(:id))
     end
 
     if params[:m]
@@ -21,7 +21,7 @@ class MessagesController < ApplicationController
       @messages.where.not(user_id: current_user.id).update_all(read: true)
     end
 
-    @messages = @messages.order(:created_at)
+    @messages = @messages.pick_up
     @message= @conversation.messages.build
   end
 

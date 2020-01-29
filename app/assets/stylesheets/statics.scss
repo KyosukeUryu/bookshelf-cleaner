@@ -1,5 +1,5 @@
 .main {
-  min-height: 720px;
+  min-height: 900px;
 }
 div.alert {
   margin: 0;
@@ -13,12 +13,12 @@ ol.breadcrumb {
 .top-image {
   background: #151515 image-url('bookshelf.jpg');
   background-size: cover;
-  height: 720px;
+  height: 900px;
   position: relative;
 }
 .top-image::before {
   content: "";
-  height: 720px;
+  height: 900px;
   background-color: rgba(0, 0, 0, 0.7);
   display: block;
 }

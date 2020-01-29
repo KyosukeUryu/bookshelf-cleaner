@@ -1,0 +1,126 @@
+@media (max-width: 768px) {
+  .main {
+    min-height: 600px;
+  }
+  .top-image {
+    height: 600px;
+  }
+  .top-image::before {
+    height: 600px;
+  }
+  .top-image > h1 {
+    top: 10%;
+    left: 7%;
+    line-height: 5rem;
+    font-size: 1.6rem;
+  }
+  .top-image > .btn.btn-lg.btn-primary {
+    top: 35%;
+    left: 33%;
+    width: 130px;
+    height: 55px;
+    font-size: 1.4rem;
+    letter-spacing: 0;
+    padding-top: 10px;
+  }
+  .top-image > .btn.btn-lg.btn-success {
+    top: 55%;
+    left: 33%;
+    width: 130px;
+    height: 55px;
+    font-size: 1.4rem;
+    letter-spacing: 0;
+    padding-top: 10px;
+  }
+  .devise-card {
+    width: 20rem;
+  }
+  .devise-card > h2 {
+    font-size: 1.5rem;
+  }
+  .search-info {
+    font-size: 1.4rem;
+  }
+  .google-phrase {
+    font-size: 0.9rem;
+  }
+  .form-search > .btn {
+    width: 50px;
+    height: 30px;
+    font-size: 0.8rem;
+    padding-left: 13px;
+    padding-top: 6px;
+  }
+  .search-info {
+    font-size: 1.1rem;
+  }
+  .search-book {
+    margin-left: 20px;
+    font-size: 0.8rem;
+  }
+  .google-note {
+    font-size: 0.7rem;
+  }
+  .unread-top {
+    font-size: 1.3rem;
+  }
+  .unread_form_wrapper {
+    width: 300px;
+  }
+  .select-date {
+    margin-left: 75px;
+  }
+  #unread_book_reading_expired {
+    width: 120px;
+  }
+  .row > .index-table {
+    min-height: 600px;
+    border-left: none;
+  }
+  .book-description {
+    display: none;
+  }
+  .book-title {
+    width: 70%;
+  }
+  .book-user {
+    width: 30%;
+  }
+  .book-flag {
+    width: 30%;
+  }
+  .book-flag > .btn {
+    font-size: 0.5rem;
+  }
+  .responsive-show {
+    padding: 20px;
+  }
+  .unread-content {
+    font-size: 0.9rem;
+  }
+  .unread-card {
+    margin-bottom: 20px;
+  }
+  .image-wrapper {
+    text-align: center;
+  }
+  .media-body {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.8rem;
+  }
+  .progress-wrapper {
+    width: 300px;
+  }
+  .list-group-item {
+    font-size: 1rem;
+  }
+  .message-form {
+    width: 300px;
+  }
+  .only-responsive {
+    display: block;
+    margin-top: 10px;
+  }
+
+}
