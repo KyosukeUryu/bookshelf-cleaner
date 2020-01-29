@@ -134,8 +134,12 @@ describe '未読書籍の管理機能', type: :system do
     end
   end
 
-  describe '未読書籍作成機能' do
+  describe '未読書籍の検索機能' do
     let(:login_user) { user_a }
+
+    before do
+      visit search_unread_book_path
+    end
   end
 
   describe '未読書籍編集機能' do
