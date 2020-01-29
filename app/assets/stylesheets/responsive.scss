@@ -73,5 +73,21 @@
   #unread_book_reading_expired {
     width: 120px;
   }
+  .row > .index-table {
+    min-height: 600px;
+    border-left: none;
+  }
+  .book-discription {
+    display: none;
+  }
+  .book-title {
+    width: 70%;
+  }
+  .book-flag {
+    width: 30%;
+  }
+  .book-flag > .btn {
+    font-size: 0.5rem;
+  }
 
 }
