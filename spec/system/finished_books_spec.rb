@@ -160,7 +160,7 @@ describe '既読書籍の管理機能', type: :system do
       end
 
       it '自分の書籍は表示されない' do
-        expect(page).not_to have_content '最初の本'
+        expect(page).not_to have_content '最初に読み終わった本'
       end
     end
 
@@ -171,6 +171,12 @@ describe '既読書籍の管理機能', type: :system do
       end
 
       it '他ユーザーの書籍が表示される' do
+        expect(page).to have_content '最初に読み終わった本'
+      end
+
+      it '気になる書籍に追加すると気になる書籍一覧に表示される' do
+        click_on '気になる書籍に追加する'
+        visit concern_books_path
         expect(page).to have_content '最初に読み終わった本'
       end
 
