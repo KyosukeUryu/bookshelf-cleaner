@@ -1,0 +1,41 @@
+@media (max-width: 768px) {
+  .main {
+    min-height: 600px;
+  }
+  .top-image {
+    height: 600px;
+  }
+  .top-image::before {
+    height: 600px;
+  }
+  .top-image > h1 {
+    top: 10%;
+    left: 7%;
+    line-height: 5rem;
+    font-size: 1.6rem;
+  }
+  .top-image > .btn.btn-lg.btn-primary {
+    top: 40%;
+    left: 24%;
+    width: 70px;
+    height: 30px;
+    font-size: 0.5rem;
+    letter-spacing: 0;
+    padding-top: 8px;
+  }
+  .top-image > .btn.btn-lg.btn-success {
+    top: 40%;
+    left: 61%;
+    width: 70px;
+    height: 30px;
+    font-size: 0.5rem;
+    letter-spacing: 0;
+    padding-top: 8px;
+  }
+  .devise-card {
+    width: 20rem;
+  }
+  .devise-card > h2 {
+    font-size: 1.5rem;
+  }
+}
