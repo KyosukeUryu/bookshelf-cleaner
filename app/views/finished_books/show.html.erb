@@ -6,34 +6,36 @@
     <div class="col-sm-9">
       <h2 class="unread-top">書籍詳細画面</h2>
       <div class="card unread-card">
-        <div class="row">
-          <div class="col-4">
-            <% if @finished_book.image.present? %>
-              <%= image_tag @finished_book.image.url, size: '140x200' %><br>
-              <span class="google-note">by Google Search</span>
-            <% else %>
-              <%= image_tag "no_image.png", size: '140x200' %>
-            <% end %>
-          </div>
-          <div class="col-8">
-            <ul class="unread-list">
-              <li class="unread-content">書籍名：<%= @finished_book.title %></li>
-              <li class="unread-content">著者名：<%= @finished_book.author %></li>
-              <li class="unread-content">処分予定日：<%= @finished_book.desposal_expired %></li>
-              <li class="unread-content">ステータス：<%= I18n.t("enums.finished_book.status")[:"#{@finished_book.status}"] %></li>
-              <% if @finished_book.tags.present? %>
-                <li class="unread-content">
-                  タグ：<% @finished_book.tags.each do |tag|%>
+        <div class="responsive-show">
+          <div class="row">
+            <div class="col-sm-4">
+              <% if @finished_book.image.present? %>
+                <%= image_tag @finished_book.image.url, size: '140x200' %><br>
+                <span class="google-note">by Google Search</span>
+              <% else %>
+                <%= image_tag "no_image.png", size: '140x200' %>
+              <% end %>
+            </div>
+            <div class="col-sm-8">
+              <ul class="unread-list">
+                <li class="unread-content">書籍名：<%= @finished_book.title %></li>
+                <li class="unread-content">著者名：<%= @finished_book.author %></li>
+                <li class="unread-content">処分予定日：<%= @finished_book.desposal_expired %></li>
+                <li class="unread-content">ステータス：<%= I18n.t("enums.finished_book.status")[:"#{@finished_book.status}"] %></li>
+                <% if @finished_book.tags.present? %>
+                  <li class="unread-content">
+                    タグ：<% @finished_book.tags.each do |tag|%>
                     <span class="book-tag badge badge-pill badge-primary"><%= tag %></span>
                   <% end %>
-                </li>
+                  </li>
+                <% end %>
+                <li class="unread-content">感想：<%= @finished_book.impression %></li>
+              </ul>
+              <% if current_user == @finished_book.user %>
+                <%= link_to '編集する', edit_finished_book_path(@finished_book), class: 'btn btn-info' %>
+                <%= link_to '削除する', finished_book_path(@finished_book), method: :delete, data: {confirm: '本当に削除しますか？'}, class: 'btn btn-danger' %>
               <% end %>
-              <li class="unread-content">感想：<%= @finished_book.impression %></li>
-            </ul>
-            <% if current_user == @finished_book.user %>
-              <%= link_to '編集する', edit_finished_book_path(@finished_book), class: 'btn btn-info' %>
-              <%= link_to '削除する', finished_book_path(@finished_book), method: :delete, data: {confirm: '本当に削除しますか？'}, class: 'btn btn-danger' %>
-            <% end %>
+            </div>
           </div>
         </div>
       </div>
