@@ -62,7 +62,7 @@
         <i class="material-icons">
           comment
         </i>
-        <li class="progress-content"><%= comment.content %></br><%= comment.comment_time %>  投稿者：<%= comment.user.name %></li>
+        <%= react_component("Comment", { content: comment.content, time: comment.comment_time, user: comment.user.name }) %>
       <% end %>
     <% end %>
   </ul>
