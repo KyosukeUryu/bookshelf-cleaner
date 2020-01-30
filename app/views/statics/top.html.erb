@@ -5,6 +5,7 @@
         <%= render 'shared/layout/sidebar' %>
       </div>
       <div class="offset-sm-1 col-sm-8 top-main">
+        <%= react_component("HelloWorld", { greeting: "Hello from react-rails." }) %>
         <div class="card top-main-card">
           <div class="card-body main-card">
             <h5 class="card-title">Step1 購入した書籍の登録</h5>
