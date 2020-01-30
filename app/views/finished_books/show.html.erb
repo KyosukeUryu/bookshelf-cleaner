@@ -62,7 +62,7 @@
         <i class="material-icons">
           comment
         </i>
-        <%= react_component("Comment", { content: comment.content, time: comment.comment_time, user: comment.user.name }) %>
+        <%= react_component("Comment", { content: comment.content, time: comment.created_at, user: comment.user.name }) %>
       <% end %>
     <% end %>
   </ul>
