@@ -35,6 +35,7 @@ gem 'kaminari'
 gem 'enum_help'
 gem 'webpacker'
 gem 'react-rails'
+gem 'date_validator'
 
 # Use ActiveStorage variant
 gem 'carrierwave'

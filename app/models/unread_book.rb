@@ -26,6 +26,7 @@ class UnreadBook < ApplicationRecord
   enum status: %i[not_yet reading]
   validates :title, presence: true
   validates :author, presence: true
+  validates :reading_expired, date: true
   acts_as_taggable
   mount_uploader :image, ImageUploader
 
