@@ -15,7 +15,7 @@ Rails 5.2.4.1
 
 ## 利用方法
 初めて利用される方向けにテストユーザーを用意しております。
-「ログインへ」から「テストユーザーとしてログイン」をクリックして
+「ログイン」から「テストユーザーとしてログイン」をクリックして
 いただくことでテスト利用が可能です。
 
 ## 機能一覧
@@ -66,7 +66,7 @@ https://docs.google.com/spreadsheets/d/1vpbeY-X3w0Qf0KAufQdF1JF0Nr1tizwA8exRgMM9
 * ransack
 * rails_admin
 * cancancan
-* dotenv_rails
+* dotenv_rails(予定)
 * unicorn(予定)
 * capistrano(予定)
 * rubocop(予定)
@@ -76,3 +76,5 @@ https://docs.google.com/spreadsheets/d/1vpbeY-X3w0Qf0KAufQdF1JF0Nr1tizwA8exRgMM9
 * chartkick(予定)
 * Annotate
 * aws-fog(予定)
+* react-rails
+* webpacker

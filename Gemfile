@@ -33,6 +33,8 @@ gem 'ransack'
 gem 'acts-as-taggable-on'
 gem 'kaminari'
 gem 'enum_help'
+gem 'webpacker'
+gem 'react-rails'
 
 # Use ActiveStorage variant
 gem 'carrierwave'
