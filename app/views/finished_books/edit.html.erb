@@ -1,4 +1,4 @@
-<h2 class="unread-top">読破書籍登録画面</h2>
+<h2 class="unread-top">読破書籍編集画面</h2>
 
 <% if @finished_book.errors.present? %>
   <ul>
@@ -38,15 +38,7 @@
 
     <div class="form-group select-date">
       <%= f.label :desposal_expired, class: 'bmd-label-floating' %>
-      <%= f.date_select(
-                    :desposal_expired,
-                    {use_year_number: true,
-                    use_month_number: true,
-                    use_day_number: true,
-                    start_year: Time.now.year,
-                    end_year: Time.now.year + 10},
-                    {class: 'custom-select'}
-      ) %>
+      <%= f.date_field :desposal_expired %>
     </div>
 
     <div class="form-group">
