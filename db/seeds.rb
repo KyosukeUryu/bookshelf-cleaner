@@ -1,7 +1,7 @@
 User.create!(
   name: "test_admin",
-  email: "test@admin.com",
-  password: "password",
+  email: "test@example.com",
+  password: "hogefuga",
   admin: true,
   confirmed_at: DateTime.now
 )
