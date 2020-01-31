@@ -29,7 +29,7 @@ class FinishedBook < ApplicationRecord
   validates :title, presence: true
   validates :author, presence: true
   validates :impression, length: { maximum: 300 }
-  validates :desposal_expired, date: true
+  validates :desposal_expired, date: { allow_blank: true }
   acts_as_taggable
   enum status: %i[reread keep disposal_soon disposal]
   mount_uploader :image, ImageUploader

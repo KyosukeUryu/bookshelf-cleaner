@@ -14,6 +14,7 @@
       <% if @book_image.present? %>
         <%= image_tag @book_image, size: '140x200' %>
         <p>by Google Search </p>
+        <%= f.hidden_field :image_cache %>
       <% else %>
         <%= image_tag "no_image.png", size: '140x200' %>
       <% end %>
