@@ -60,8 +60,9 @@ class UnreadBooksController < ApplicationController
   end
 
   def create
+    @book_image = params[:unread_book][:image]
     @unread_book = current_user.unread_books.new(book_params)
-    @unread_book.remote_image_url = params[:unread_book][:image]
+    @unread_book.remote_image_url = @book_image
     if @unread_book.save
       redirect_to unread_books_path, success: "#{@unread_book.title}を未読書籍に登録しました"
     else
