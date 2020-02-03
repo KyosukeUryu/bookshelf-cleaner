@@ -27,7 +27,7 @@ describe 'ユーザー設定機能', type: :system do
       let(:new_user_email) { '' }
       let(:new_user_password) { '' }
       it 'エラーメッセージが表示される' do
-        expect(page).to have_content '2 件のエラーが発生したため ユーザー は保存されませんでした。'
+        expect(page).to have_content '3 件のエラーが発生したため ユーザー は保存されませんでした。'
       end
     end
   end
