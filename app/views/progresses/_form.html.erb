@@ -1,0 +1,16 @@
+<%= form_with model: progress do |f| %>
+  <% if progress.errors.present? %>
+    <ul class="form-errors">
+      <% progress.errors.full_messages.each do |msg|%>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :content, '進捗メモ', class: 'bmd-label-floating'  %>
+    <%= f.text_area :content, class: 'form-control textarea-form', rows: '5' %>
+  </div>
+
+  <%= f.submit '追加', class: 'btn btn-primary' %>
+<% end %>
+

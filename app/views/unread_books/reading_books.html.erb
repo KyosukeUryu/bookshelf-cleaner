@@ -17,8 +17,8 @@
                 <h6 class="mt-2 mb-1">書籍名：<%= book.title %></h6>
                 <h6 class="mt-2 mb-1">著者名：<%= book.author %></h6>
                 <h6 class="mt-2 mb-1">読破期限：<%= book.reading_expired %></h6>
-                <%= link_to '未読に戻す', return_unread_book_path(book), method: :patch, data: { confirm: '本当に未読に戻しますか？'}, class: 'btn btn-warning'  %>
-                <%= link_to '書籍読破', new_finished_book_path(params: { id: book.id, title: book.title, author: book.author, image: book.image, tags: book.tag_list  }), class: 'btn btn-success btn-lg btn-raised'  %>
+                <%= link_to '未読に戻す', return_unread_book_path(book), method: :patch, data: { confirm: '本当に未読に戻しますか？', turbolinks: false}, class: 'btn btn-warning'  %>
+                <%= link_to '書籍読破', new_finished_book_path(params: { id: book.id, title: book.title, author: book.author, image: book.image, tags: book.tag_list  }), data: { turbolinks: false }, class: 'btn btn-success btn-lg btn-raised'  %>
               </div>
             </div>
           </div>
@@ -30,25 +30,14 @@
 
 <div class="progress-wrapper">
   <h3 class="unread-top"><i class="material-icons progress-icon"> event_note </i>進捗メモ一覧</h3>
-  <%= form_with(model: @progress) do |f| %>
-    <div class="form-group">
-      <%= f.label :content, '進捗メモ', class: 'bmd-label-floating'  %>
-      <%= f.text_area :content, class: 'form-control textarea-form', rows: '5' %>
-    </div>
 
-    <%= f.submit '追加', class: 'btn btn-primary' %>
-  <% end %>
+  <div id="progress-form">
+    <%= render partial: 'progresses/form', locals: { progress: @progress } %>
+  </div>
 
-  <ul class="progress-list">
-    <% @progresses.each do |progress| %>
-      <% if progress.id.present? %>
-        <i class="material-icons">
-          event_note
-        </i>
-        <li class="progress-content"><%= progress.content %></br><%= progress.content_time %><%= link_to '削除', progress_path(progress), method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'btn btn-danger btn-sm' %></li>
-      <% end %>
-    <% end %>
-  </ul>
-  <%= paginate @progresses, class: 'progress-paginate' %>
+  <div id="progress-view">
+    <%= render partial: 'progresses/index', locals: { progresses: @progresses } %>
+  </div>
+
 </div>
 

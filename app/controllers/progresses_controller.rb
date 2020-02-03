@@ -1,18 +1,17 @@
 class ProgressesController < ApplicationController
   before_action :authenticate_user!
+  respond_to? :js
+
   def create
-    progress = current_user.progresses.new(progress_params)
-    if progress.save
-      redirect_to reading_books_unread_books_path
-    else
-      redirect_to reading_books_unread_books_path, danger: 'メモを入力してください'
-    end
+    @progress = current_user.progresses.new(progress_params)
+    @progress.save
+    render :index
   end
 
   def destroy
-    progress = Progress.find(params[:id])
-    progress.destroy
-    redirect_to reading_books_unread_books_path
+    @progress = Progress.find(params[:id])
+    @progress.destroy
+    render :index
   end
 
   private
