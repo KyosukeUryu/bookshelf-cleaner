@@ -4,7 +4,7 @@
       <i class="material-icons">
         event_note
       </i>
-      <li id="progress_list_<%= progress.id %>" class="progress-content"><%= progress.content %></br><%= progress.content_time %><%= link_to '削除', progress_path(progress), method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'btn btn-danger btn-sm' %></li>
+      <li id="progress_list_<%= progress.id %>" class="progress-content"><%= progress.content %></br><%= progress.content_time %><%= link_to '削除', progress_path(progress), method: :delete, remote: true, class: 'btn btn-danger btn-sm' %></li>
     <% end %>
   <% end %>
 </ul>
