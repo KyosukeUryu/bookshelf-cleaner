@@ -4,11 +4,8 @@ class ProgressesController < ApplicationController
 
   def create
     @progress = current_user.progresses.new(progress_params)
-    if @progress.save
-      render :index
-    else
-      render :error
-    end
+    @progress.save
+    render :index
   end
 
   def destroy

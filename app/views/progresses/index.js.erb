@@ -1,2 +1,7 @@
-$("#progress-view").html("<%= j(render 'progresses/index', { progresses: @progress.user.progresses.order(created_at: :desc).first(10) }) %>")
-$("textarea").val("")
+if (<%= @progress.errors.present? %>) {
+  $("#progress-form").html("<%= j(render 'progresses/form', { progress: @progress}) %>")
+} else {
+  $("#progress-view").html("<%= j(render 'progresses/index', { progresses: @progress.user.progresses.order(created_at: :desc).first(10) }) %>")
+  $("textarea").val("")
+  $(".form-errors").remove();
+}
