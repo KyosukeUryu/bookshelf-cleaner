@@ -7,7 +7,7 @@ class ProgressesController < ApplicationController
     if @progress.save
       render :index
     else
-      format.html { redirect_to reading_books_unread_books_path, danger: 'メモを入力してください' }
+      render :error
     end
   end
 

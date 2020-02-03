@@ -45,7 +45,7 @@
 
 <div class="progress-wrapper">
   <h3 class="unread-top"><i class="material-icons progress-icon"> comment </i>コメント一覧</h3>
-  <%= form_with(model: @comment) do |f| %>
+  <%= form_with model: @comment, local: true do |f| %>
     <div class="form-group">
       <%= f.label :content, 'コメント', class: 'bmd-label-floating'  %>
       <%= f.text_area :content, class: 'form-control textarea-form', rows: '5' %>
