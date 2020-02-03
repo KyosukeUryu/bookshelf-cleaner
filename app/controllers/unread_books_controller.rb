@@ -21,7 +21,7 @@ class UnreadBooksController < ApplicationController
   end
 
   def reading_books
-    @progresses = current_user.progresses.page(params[:page]).per(5).order(created_at: :desc)
+    @progresses = current_user.progresses.order(created_at: :desc).first(10)
     @progress = Progress.new
     @reading_books = current_user.unread_books.where(status: 1).page(params[:page]).per(4).standard
   end

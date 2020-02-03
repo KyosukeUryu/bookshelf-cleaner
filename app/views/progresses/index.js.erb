@@ -1,0 +1,2 @@
+$("#progress-view").html("<%= j(render 'progresses/index', { progresses: @progress.user.progresses.order(created_at: :desc).first(10) }) %>")
+$("textarea").val("")
