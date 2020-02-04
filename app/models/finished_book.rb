@@ -24,8 +24,8 @@
 
 class FinishedBook < ApplicationRecord
   belongs_to :user
-  has_many :comments
-  has_many :concern_books
+  has_many :comments, dependent: :destroy
+  has_many :concern_books, dependent: :destroy
   validates :title, presence: true
   validates :author, presence: true
   validates :impression, length: { maximum: 300 }
