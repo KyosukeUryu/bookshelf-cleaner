@@ -31,12 +31,12 @@
 
     <div class="form-group select-form">
       <%= f.label :status, class: 'bmd-label-floating' %>
-      <%= f.select :status, FinishedBook.statuses.keys.map {|k| [I18n.t("enums.finished_book.status.#{k}"), k]}, { selected: FinishedBook.statuses[@finished_book.status] }, {class: 'custom-select'} %>
+      <%= f.select :status, FinishedBook.statuses.keys.map {|k| [I18n.t("enums.finished_book.status.#{k}"), k]}, { selected: FinishedBook.statuses[@finished_book.status] }, {class: 'custom-select', id: 'finish_status'} %>
     </div>
 
     <div class="form-group select-date">
       <%= f.label :desposal_expired, class: 'bmd-label-floating' %>
-      <%= f.date_field :desposal_expired %>
+      <%= f.date_field :desposal_expired, id: 'disposal_disabled', disabled: true %>
     </div>
 
     <div class="form-group">
