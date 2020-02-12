@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :unread_books do
     patch :reading, on: :member
+    patch :cancel_reading, on: :member
     get :reading_books, on: :collection
     patch :return, on: :member
     get :search, on: :collection
