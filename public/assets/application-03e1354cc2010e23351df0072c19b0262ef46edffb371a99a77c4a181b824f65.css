@@ -1,0 +1,781 @@
+@charset "UTF-8";
+/**
+ * html5doctor.com Reset Stylesheet v1.6.1 (http://html5doctor.com/html-5-reset-stylesheet/)
+ * Richard Clark (http://richclarkdesign.com)
+ * http://cssreset.com
+ */
+/* line 6, app/assets/stylesheets/reset.css */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* line 26, app/assets/stylesheets/reset.css */
+body {
+  line-height: 1;
+}
+
+/* line 29, app/assets/stylesheets/reset.css */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 33, app/assets/stylesheets/reset.css */
+nav ul {
+  list-style: none;
+}
+
+/* line 36, app/assets/stylesheets/reset.css */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 39, app/assets/stylesheets/reset.css */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 44, app/assets/stylesheets/reset.css */
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* change colours to suit your needs */
+/* line 52, app/assets/stylesheets/reset.css */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/* change colours to suit your needs */
+/* line 58, app/assets/stylesheets/reset.css */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+/* line 64, app/assets/stylesheets/reset.css */
+del {
+  text-decoration: line-through;
+}
+
+/* line 67, app/assets/stylesheets/reset.css */
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+/* line 71, app/assets/stylesheets/reset.css */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* change border colour to suit your needs */
+/* line 76, app/assets/stylesheets/reset.css */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/* line 84, app/assets/stylesheets/reset.css */
+input, select {
+  vertical-align: middle;
+}
+
+/* line 1, app/assets/stylesheets/statics.scss */
+.main {
+  min-height: 900px;
+}
+
+/* line 4, app/assets/stylesheets/statics.scss */
+div.alert {
+  margin: 0;
+}
+
+/* line 7, app/assets/stylesheets/statics.scss */
+ol.breadcrumb {
+  margin-bottom: 0;
+}
+
+/* line 10, app/assets/stylesheets/statics.scss */
+.footer-name {
+  margin: 0 auto;
+}
+
+/* line 13, app/assets/stylesheets/statics.scss */
+.top-image {
+  background: #151515 url(/assets/bookshelf-9bc77db756956fdfab644dc37d04810dd5a2e9b66fa10ab1bb79113684f6ff4b.jpg);
+  background-size: cover;
+  height: 900px;
+  position: relative;
+}
+
+/* line 19, app/assets/stylesheets/statics.scss */
+.top-image::before {
+  content: "";
+  height: 900px;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: block;
+}
+
+/* line 25, app/assets/stylesheets/statics.scss */
+.top-image > h1 {
+  position: absolute;
+  top: 30%;
+  left: 22%;
+  color: #fff;
+  font-size: 4.2rem;
+  letter-spacing: 5px;
+  opacity: 0;
+  font-family: "M PLUS 1p";
+  animation: example 0.5s ease 0.5s 1 forwards;
+}
+
+@keyframes example {
+  100% {
+    opacity: 1;
+  }
+}
+
+/* line 41, app/assets/stylesheets/statics.scss */
+.login-image {
+  background: #151515 url(/assets/library-638ed14ba7e30e1bfea50e85758fd3d6c1021c17a7760baf756830eb03846acc.jpg);
+  background-size: cover;
+  height: 300px;
+  position: relative;
+}
+
+/* line 47, app/assets/stylesheets/statics.scss */
+.top-image > .btn.btn-lg.btn-primary {
+  position: absolute;
+  top: 60%;
+  left: 27%;
+  display: block;
+  width: 250px;
+  height: 80px;
+  font-size: 2rem;
+  padding-top: 15px;
+  letter-spacing: 2px;
+  padding: auto;
+  border-radius: 8%;
+}
+
+/* line 60, app/assets/stylesheets/statics.scss */
+.top-image > .btn.btn-lg.btn-success {
+  position: absolute;
+  top: 60%;
+  left: 55%;
+  display: block;
+  width: 250px;
+  height: 80px;
+  font-size: 2rem;
+  padding-top: 15px;
+  letter-spacing: 4px;
+  padding: auto;
+  border-radius: 8%;
+}
+
+/* line 73, app/assets/stylesheets/statics.scss */
+.devise-card {
+  width: 35rem;
+  height: 35rem;
+  margin: 50px auto;
+}
+
+/* line 78, app/assets/stylesheets/statics.scss */
+.devise-card.new-devise-card {
+  height: 45rem;
+}
+
+/* line 81, app/assets/stylesheets/statics.scss */
+.devise-card.edit-devise-card {
+  height: 60rem;
+}
+
+/* line 84, app/assets/stylesheets/statics.scss */
+.cancel-account {
+  text-align: center;
+  padding: 20px;
+}
+
+/* line 88, app/assets/stylesheets/statics.scss */
+.devise-card h2 {
+  text-align: center;
+  padding-top: 20px;
+}
+
+/* line 92, app/assets/stylesheets/statics.scss */
+.test-user {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* line 96, app/assets/stylesheets/statics.scss */
+.form-group {
+  padding: 0 30px;
+}
+
+/* line 99, app/assets/stylesheets/statics.scss */
+.checkbox {
+  padding-left: 20px;
+}
+
+/* line 102, app/assets/stylesheets/statics.scss */
+.actions {
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+/* line 106, app/assets/stylesheets/statics.scss */
+.devise-share {
+  margin-left: 30px;
+}
+
+/* ログイン画面*/
+/* line 110, app/assets/stylesheets/statics.scss */
+.top-card {
+  margin-top: 30px;
+}
+
+/* line 113, app/assets/stylesheets/statics.scss */
+.list-alert {
+  color: #EA1D4E;
+  font-weight: bold;
+}
+
+/* line 117, app/assets/stylesheets/statics.scss */
+.top-main > .top-main-card:first-child {
+  margin-top: 50px;
+}
+
+/* line 120, app/assets/stylesheets/statics.scss */
+.top-main > .top-main-card:last-child {
+  margin-bottom: 50px;
+}
+
+/* line 123, app/assets/stylesheets/statics.scss */
+.main-card > .card-title {
+  border-left: solid 5px #4946e3;
+  padding-left: 8px;
+}
+
+/* line 127, app/assets/stylesheets/statics.scss */
+.avater-form {
+  margin: 20px auto;
+}
+
+/* 検索画面 */
+/* line 2, app/assets/stylesheets/unread_books.scss */
+.unread-top {
+  text-align: center;
+  font-family: "M PLUS 1p";
+  letter-spacing: 3px;
+  padding-top: 20px;
+}
+
+/* line 8, app/assets/stylesheets/unread_books.scss */
+.search-info {
+  text-align: center;
+  font-family: "M PLUS 1p";
+  letter-spacing: 3px;
+  margin-top: 20px;
+}
+
+/* line 14, app/assets/stylesheets/unread_books.scss */
+.google-phrase {
+  text-align: center;
+  padding-top: 10px;
+  letter-spacing: 1px;
+}
+
+/* line 19, app/assets/stylesheets/unread_books.scss */
+.search-wrapper {
+  width: 450px;
+  margin: 20px auto;
+}
+
+/* line 23, app/assets/stylesheets/unread_books.scss */
+.input-search {
+  width: 300px;
+}
+
+/* line 26, app/assets/stylesheets/unread_books.scss */
+.form-search {
+  display: inline-flex;
+}
+
+/* line 29, app/assets/stylesheets/unread_books.scss */
+.google-note {
+  display: block;
+}
+
+/* line 32, app/assets/stylesheets/unread_books.scss */
+.search-link {
+  text-align: center;
+}
+
+/* line 35, app/assets/stylesheets/unread_books.scss */
+.select-form > .custom-select {
+  height: 35px;
+}
+
+/* ここから書籍登録 */
+/* line 39, app/assets/stylesheets/unread_books.scss */
+.unread_form_wrapper {
+  text-align: center;
+  margin: 30px auto;
+  width: 500px;
+}
+
+/* line 44, app/assets/stylesheets/unread_books.scss */
+.select-form {
+  width: 160px;
+  margin: 20px auto;
+}
+
+/* line 48, app/assets/stylesheets/unread_books.scss */
+.select-date {
+  width: 150px;
+  margin-top: 20px;
+  margin-left: 140px;
+}
+
+/* line 53, app/assets/stylesheets/unread_books.scss */
+.search-index-form {
+  padding-top: 50px;
+}
+
+/* line 56, app/assets/stylesheets/unread_books.scss */
+.index-search-title {
+  font-size: 1rem;
+  letter-spacing: 2px;
+  border-left: solid 3px #de5a35;
+  padding-left: 5px;
+}
+
+/* line 62, app/assets/stylesheets/unread_books.scss */
+.row > .index-table {
+  min-height: 900px;
+  border-left: solid 2px #def2dc;
+}
+
+/* line 66, app/assets/stylesheets/unread_books.scss */
+.index-table-content {
+  padding-left: 30px;
+}
+
+/* line 69, app/assets/stylesheets/unread_books.scss */
+td {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 0;
+}
+
+/* line 75, app/assets/stylesheets/unread_books.scss */
+.pagination {
+  justify-content: center;
+}
+
+/* ここから詳細画面 */
+/* line 79, app/assets/stylesheets/unread_books.scss */
+.unread-list {
+  list-style: none;
+}
+
+/* line 82, app/assets/stylesheets/unread_books.scss */
+.unread-card {
+  padding: 30px 0;
+}
+
+/* line 85, app/assets/stylesheets/unread_books.scss */
+.unread-content {
+  font-size: 1.2rem;
+  margin: 20px 0;
+  letter-spacing: 2px;
+}
+
+/* line 90, app/assets/stylesheets/unread_books.scss */
+.book-tag.badge {
+  font-weight: normal;
+}
+
+/* ここから読書中画面 */
+/* line 94, app/assets/stylesheets/unread_books.scss */
+.progress-wrapper {
+  margin: 0 auto;
+  text-align: center;
+  width: 500px;
+}
+
+/* line 99, app/assets/stylesheets/unread_books.scss */
+.progress-list {
+  list-style: none;
+}
+
+/* line 102, app/assets/stylesheets/unread_books.scss */
+.progress-content {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  background-color: #fff;
+  border-radius: 5%;
+  border: 2px solid #dae3c3;
+  margin-bottom: 20px;
+}
+
+/* line 110, app/assets/stylesheets/unread_books.scss */
+.progress-icon {
+  padding-right: 8px;
+}
+
+/* line 113, app/assets/stylesheets/unread_books.scss */
+.progress-paginate {
+  color: #6298f5;
+}
+
+/* line 116, app/assets/stylesheets/unread_books.scss */
+.only-responsive {
+  display: none;
+}
+
+/* line 119, app/assets/stylesheets/unread_books.scss */
+.form-errors {
+  background-color: #db2518;
+  list-style: none;
+  color: #f5e0df;
+}
+
+/* line 1, app/assets/stylesheets/conversations.scss */
+.conversation-list {
+  list-style: none;
+}
+
+/* line 4, app/assets/stylesheets/conversations.scss */
+.conversation-content {
+  font-size: 1.3rem;
+}
+
+/* line 1, app/assets/stylesheets/messages.scss */
+.message-card {
+  width: 750px;
+  margin: 0 auto;
+}
+
+/* line 5, app/assets/stylesheets/messages.scss */
+.chat-box {
+  margin-top: 30px;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  /*floatの解除*/
+  margin-bottom: 20px;
+}
+
+/* line 12, app/assets/stylesheets/messages.scss */
+.chat-face img {
+  border: 1px solid #ccc;
+  box-shadow: 0 0 4px #ddd;
+  border-radius: 50%;
+}
+
+/* line 17, app/assets/stylesheets/messages.scss */
+.chat-hukidashi {
+  display: inline-block;
+  /*コメントの文字数に合わせて可変*/
+  padding: 15px 20px;
+  margin-left: 20px;
+  margin-top: 8px;
+  border-radius: 10px;
+  position: relative;
+  /*追記*/
+  background-color: #D9F0FF;
+  /*追記*/
+}
+
+/* ↓追記↓ */
+/* line 27, app/assets/stylesheets/messages.scss */
+.chat-hukidashi:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  margin-top: -10px;
+  display: block;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent #D9F0FF transparent transparent;
+}
+
+/* line 39, app/assets/stylesheets/messages.scss */
+.someone {
+  background-color: #BCF5A9;
+}
+
+/* line 42, app/assets/stylesheets/messages.scss */
+.someone:after {
+  border-color: transparent #BCF5A9 transparent transparent;
+}
+
+/* line 45, app/assets/stylesheets/messages.scss */
+.other-user {
+  background-color: #dff7b7;
+}
+
+/* line 48, app/assets/stylesheets/messages.scss */
+.other-user:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  margin-top: -10px;
+  display: block;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent #dff7b7 transparent transparent;
+}
+
+/* line 60, app/assets/stylesheets/messages.scss */
+.message-form {
+  width: 700px;
+  margin: 20px auto;
+}
+
+/* line 64, app/assets/stylesheets/messages.scss */
+.form-group > .textarea-form.form-control {
+  border-top: solid 1px #d8d9ca;
+  border-left: solid 1px #d8d9ca;
+  border-right: solid 1px #d8d9ca;
+}
+
+/* line 1, app/assets/stylesheets/users.scss */
+.user-page {
+  text-align: center;
+}
+
+/* line 4, app/assets/stylesheets/users.scss */
+.user-top {
+  margin-top: 20px;
+}
+
+/* line 7, app/assets/stylesheets/users.scss */
+.user-avater {
+  border-radius: 50%;
+  border: solid 1px #f0efe1;
+}
+
+/* line 11, app/assets/stylesheets/users.scss */
+.user-info {
+  padding-top: 30px;
+  list-style: none;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  letter-spacing: 1px;
+}
+
+/* line 18, app/assets/stylesheets/users.scss */
+.user-book-title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* line 23, app/assets/stylesheets/users.scss */
+#error_explanation {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  /* line 2, app/assets/stylesheets/responsive.scss */
+  .main {
+    min-height: 600px;
+  }
+  /* line 5, app/assets/stylesheets/responsive.scss */
+  .top-image {
+    height: 600px;
+  }
+  /* line 8, app/assets/stylesheets/responsive.scss */
+  .top-image::before {
+    height: 600px;
+  }
+  /* line 11, app/assets/stylesheets/responsive.scss */
+  .top-image > h1 {
+    top: 10%;
+    left: 7%;
+    line-height: 5rem;
+    font-size: 1.6rem;
+  }
+  /* line 17, app/assets/stylesheets/responsive.scss */
+  .top-image > .btn.btn-lg.btn-primary {
+    top: 35%;
+    left: 33%;
+    width: 130px;
+    height: 55px;
+    font-size: 1.4rem;
+    letter-spacing: 0;
+    padding-top: 10px;
+  }
+  /* line 26, app/assets/stylesheets/responsive.scss */
+  .top-image > .btn.btn-lg.btn-success {
+    top: 55%;
+    left: 33%;
+    width: 130px;
+    height: 55px;
+    font-size: 1.4rem;
+    letter-spacing: 0;
+    padding-top: 10px;
+  }
+  /* line 35, app/assets/stylesheets/responsive.scss */
+  .devise-card {
+    width: 20rem;
+  }
+  /* line 38, app/assets/stylesheets/responsive.scss */
+  .devise-card > h2 {
+    font-size: 1.5rem;
+  }
+  /* line 41, app/assets/stylesheets/responsive.scss */
+  .search-info {
+    font-size: 1.4rem;
+  }
+  /* line 44, app/assets/stylesheets/responsive.scss */
+  .google-phrase {
+    font-size: 0.9rem;
+  }
+  /* line 47, app/assets/stylesheets/responsive.scss */
+  .form-search > .btn {
+    width: 50px;
+    height: 30px;
+    font-size: 0.8rem;
+    padding-left: 13px;
+    padding-top: 6px;
+  }
+  /* line 54, app/assets/stylesheets/responsive.scss */
+  .search-info {
+    font-size: 1.1rem;
+  }
+  /* line 57, app/assets/stylesheets/responsive.scss */
+  .search-book {
+    margin-left: 20px;
+    font-size: 0.8rem;
+  }
+  /* line 61, app/assets/stylesheets/responsive.scss */
+  .google-note {
+    font-size: 0.7rem;
+  }
+  /* line 64, app/assets/stylesheets/responsive.scss */
+  .unread-top {
+    font-size: 1.3rem;
+  }
+  /* line 67, app/assets/stylesheets/responsive.scss */
+  .unread_form_wrapper {
+    width: 300px;
+  }
+  /* line 70, app/assets/stylesheets/responsive.scss */
+  .select-date {
+    margin-left: 75px;
+  }
+  /* line 73, app/assets/stylesheets/responsive.scss */
+  #unread_book_reading_expired {
+    width: 120px;
+  }
+  /* line 76, app/assets/stylesheets/responsive.scss */
+  .row > .index-table {
+    min-height: 600px;
+    border-left: none;
+  }
+  /* line 80, app/assets/stylesheets/responsive.scss */
+  .book-description {
+    display: none;
+  }
+  /* line 83, app/assets/stylesheets/responsive.scss */
+  .book-title {
+    width: 70%;
+  }
+  /* line 86, app/assets/stylesheets/responsive.scss */
+  .book-user {
+    width: 30%;
+  }
+  /* line 89, app/assets/stylesheets/responsive.scss */
+  .book-flag {
+    width: 30%;
+  }
+  /* line 92, app/assets/stylesheets/responsive.scss */
+  .book-flag > .btn {
+    font-size: 0.5rem;
+  }
+  /* line 95, app/assets/stylesheets/responsive.scss */
+  .responsive-show {
+    padding: 20px;
+  }
+  /* line 98, app/assets/stylesheets/responsive.scss */
+  .unread-content {
+    font-size: 0.9rem;
+  }
+  /* line 101, app/assets/stylesheets/responsive.scss */
+  .unread-card {
+    margin-bottom: 20px;
+  }
+  /* line 104, app/assets/stylesheets/responsive.scss */
+  .image-wrapper {
+    text-align: center;
+  }
+  /* line 107, app/assets/stylesheets/responsive.scss */
+  .media-body {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.8rem;
+  }
+  /* line 112, app/assets/stylesheets/responsive.scss */
+  .progress-wrapper {
+    width: 300px;
+  }
+  /* line 115, app/assets/stylesheets/responsive.scss */
+  .list-group-item {
+    font-size: 1rem;
+  }
+  /* line 118, app/assets/stylesheets/responsive.scss */
+  .message-form {
+    width: 300px;
+  }
+  /* line 121, app/assets/stylesheets/responsive.scss */
+  .only-responsive {
+    display: block;
+    margin-top: 10px;
+  }
+}

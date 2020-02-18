@@ -2,7 +2,7 @@
 lock '3.6.0'
 
 set :application, 'bookshelf-cleaner'
-set :repo_url, 'https://github.com/KyosukeUryu/book_management_app'
+set :repo_url, 'https://github.com/KyosukeUryu/bookshelf-cleaner'
 
 set :branch, ENV['BRANCH'] || 'master'
 
