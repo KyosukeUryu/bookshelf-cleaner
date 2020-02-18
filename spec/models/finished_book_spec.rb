@@ -12,7 +12,7 @@ RSpec.describe FinishedBook, type: :model do
     expect(finished_book_a).to be_invalid
   end
 
-  it 'authorが空ならバリデーションが通らない' do
+  it '感想が３００文字超の時はバリデーションが通らない' do
     long_impression = 'a' * 301
     finished_book_a.impression = long_impression
     expect(finished_book_a).to be_invalid

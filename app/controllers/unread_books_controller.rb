@@ -20,6 +20,16 @@ class UnreadBooksController < ApplicationController
     end
   end
 
+  def cancel_reading
+    @reading_book = UnreadBook.find(params[:id])
+    if @reading_book.reading?
+      @reading_book.update(status: 0)
+      redirect_to unread_books_path, info: "#{@reading_book.title}を積読に戻しました"
+    else
+      redirect_to unread_books_path, warning: '積読書籍です'
+    end
+  end
+
   def reading_books
     @progresses = current_user.progresses.order(created_at: :desc).first(10)
     @progress = Progress.new

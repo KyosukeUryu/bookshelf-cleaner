@@ -42,6 +42,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :concern_books, dependent: :destroy
   has_many :progresses, dependent: :destroy
+  has_many :sender_conversations, class_name: 'Conversation', foreign_key: 'sender_id', dependent: :destroy
+  has_many :recipient_conversations, class_name: 'Conversation', foreign_key: 'recipient_id', dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 40 }
   validates :email, length: { maximum: 255 }
