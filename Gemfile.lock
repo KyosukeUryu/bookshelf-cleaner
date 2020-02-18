@@ -63,6 +63,7 @@ GEM
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
     bcrypt (3.1.13)
+    bcrypt_pbkdf (1.0.1)
     bindex (0.8.1)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
@@ -130,6 +131,7 @@ GEM
     dotenv-rails (2.7.5)
       dotenv (= 2.7.5)
       railties (>= 3.2, < 6.1)
+    ed25519 (1.2.4)
     enum_help (0.0.17)
       activesupport (>= 3.0.0)
     erubi (1.9.0)
@@ -419,6 +421,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on
   annotate
+  bcrypt_pbkdf
   bootsnap (>= 1.1.0)
   byebug
   cancancan
@@ -434,6 +437,7 @@ DEPENDENCIES
   date_validator
   devise
   dotenv-rails
+  ed25519
   enum_help
   factory_bot_rails (~> 4.11)
   fog-aws

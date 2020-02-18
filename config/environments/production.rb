@@ -65,12 +65,12 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "book_manage_app_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { host: 'bookshelf-cleaner.herokuapp.com/' }
+  config.action_mailer.default_url_options = { host: 'bookshelf-cleaner.info/' }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     user_name: ENV['SENDGRID_USERNAME'],
     password: ENV['SENDGRID_PASSWORD'],
-    domain: 'heroku.com',
+    domain: 'bookshelf-cleaner.info',
     address: 'smtp.SendGrid.net',
     port: 587,
     authentication: :plain,
