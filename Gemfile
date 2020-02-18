@@ -36,6 +36,8 @@ gem 'enum_help'
 gem 'webpacker'
 gem 'react-rails'
 gem 'date_validator'
+gem 'fog-aws'
+gem 'dotenv-rails'
 
 # Use ActiveStorage variant
 gem 'carrierwave'
