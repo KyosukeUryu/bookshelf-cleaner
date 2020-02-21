@@ -1,12 +1,11 @@
 .message-card {
   width: 750px;
-  margin: 0 auto;
 }
 .chat-box {
-  margin-top: 30px;
-  width: 100%;
-  height: auto;
-  overflow: hidden; /*floatの解除*/
+  margin: 30px auto;
+  width: 750px;
+  height: 900px;
+  overflow: scroll; /*floatの解除*/
   margin-bottom: 20px;
 }
 .chat-face img{

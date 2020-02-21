@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container" id="message-box">
   <h2 class="unread-top"><%= @conversation.target_user(current_user).name %>さんとのメッセージ</h2>
   <% if @over_ten %>
     <%= link_to '以前のメッセージ', '?m=all', data: {turbolinks: false} %>
   <% end %>
 
-  <div class="chat-box">
+  <div class="chat-box" id="chat-box">
     <% @messages.each do |message| %>
       <% if message.body.present? %>
         <% if message.user == current_user %>
@@ -67,3 +67,4 @@
     <%= f.submit "メッセージを送る", class: 'btn btn-primary' %>
   <% end %>
 </div>
+<%= javascript_include_tag 'messages.js' %>
