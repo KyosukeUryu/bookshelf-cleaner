@@ -16,8 +16,9 @@
 
     <div class="form-group">
       <%= f.label :avater, class: 'bmd-label-floating' %><br />
-      <%= f.file_field :avater, class: 'form-control-file'  %>
+      <%= f.file_field :avater, class: 'form-control-file', id: 'user-file'  %>
     </div>
+    <div id="image" class="new-avater"></div>
 
     <div class="form-group">
       <%= f.label :password, class: 'bmd-label-floating' %>
@@ -47,4 +48,4 @@
     <% end %>
   </div>
 </div>
-
+<%= javascript_include_tag 'users.js' %>
