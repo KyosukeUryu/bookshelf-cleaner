@@ -11,7 +11,7 @@ describe '会話機能', type: :system do
     visit new_user_session_path
     fill_in 'メールアドレス', with: login_user.email
     fill_in 'パスワード', with: login_user.password
-    click_button 'Log in'
+    click_button 'ログイン'
   end
 
   describe '他ユーザーの既読書籍一覧からメッセージ画面に遷移' do
