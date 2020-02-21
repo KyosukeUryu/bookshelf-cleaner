@@ -34,14 +34,16 @@
           <div class="card message-card">
             <div class="row">
               <div class="col-2">
-                <div class="chat-face">
-                  <% if message.user.avater && message.user.avater.url %>
-                    <%= image_tag message.user.avater.url, size: '60x60' %>
-                  <% else %>
-                    <%= image_tag "no_image.png", size: '60x60' %>
-                  <% end %>
+                <div class="chat-user">
+                  <div class="chat-face">
+                    <% if message.user.avater && message.user.avater.url %>
+                      <%= image_tag message.user.avater.url, size: '60x60' %>
+                    <% else %>
+                      <%= image_tag "no_image.png", size: '60x60' %>
+                    <% end %>
+                  </div>
+                  <p><%= message.user.name %> </p>
                 </div>
-                <p><%= message.user.name %> </p>
               </div>
               <div class="col-8">
                 <div class="chat-hukidashi other-user">
