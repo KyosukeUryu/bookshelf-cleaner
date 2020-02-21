@@ -40,7 +40,11 @@
                     <td class="book-title"><%= link_to book.title, unread_book_path(book), class: 'book-info' %></td>
                     <td class="book-description" ><%= book.author %></td>
                     <td class="book-description"><%= book.status_i18n %></td>
-                    <td class="book-description"><%= book.reading_expired %></td>
+                    <% if book.reading_expired.present? %>
+                      <td class="book-description"><%= book.reading_expired %></td>
+                    <% else %>
+                      <td class="book-description"><%= "未設定" %></td>
+                    <% end %>
                     <% if book.reading? %>
                       <td class="book-flag"><%= link_to '積読へ', cancel_reading_unread_book_path(book), method: :patch, class: 'btn btn-secondary btn-raised' %></td>
                     <% else %>

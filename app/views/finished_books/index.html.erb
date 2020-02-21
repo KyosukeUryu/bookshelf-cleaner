@@ -39,7 +39,11 @@
                     <td class="book-title"><%= link_to book.title, finished_book_path(book), class: 'book-info', data: {turbolinks: false} %></td>
                     <td class="book-description"><%= book.author %></td>
                     <td class="book-description"><%= book.status_i18n %></td>
-                    <td class="book-description"><%= book.desposal_expired %></td>
+                    <% if book.desposal_expired.present? %>
+                      <td class="book-description"><%= book.desposal_expired %></td>
+                    <% else %>
+                      <td class="book-description"><%= '未設定' %></td>
+                    <% end %>
                   </tr>
                 <% end %>
               </tbody>

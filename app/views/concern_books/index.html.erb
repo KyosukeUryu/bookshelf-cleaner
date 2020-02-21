@@ -20,7 +20,7 @@
                 <tr>
                   <td class="book-title"><%= link_to book.finished_book.title, finished_book_path(book.finished_book), class: 'book-info' %></td>
                   <td class="book-description"><%= book.finished_book.author %></td>
-                  <td class="book-user"><%= book.finished_book.user.name %></td>
+                  <td class="book-user"><%= book.user.name %></td>
                   <td class="book-description"><%= book.finished_book.status_i18n %></td>
                 </tr>
               <% end %>
