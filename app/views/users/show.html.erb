@@ -3,7 +3,7 @@
     <div class="col-sm-3">
       <%= render 'shared/layout/sidebar' %>
     </div>
-    <div class="offset-sm-1 col-sm-8">
+    <div class="col-sm-6">
       <div class="user-page">
         <% if @user == current_user %>
           <h2 class="user-top">マイページ</h1>
@@ -23,6 +23,17 @@
           <% end %>
         </ul>
         <%= link_to '戻る', :back, data: {turbolinks: false} %>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="tag-graph">
+        <h4>書籍傾向</h4>
+        <% if @user.finished_books.all_tags.present? %>
+          <% @user.finished_books.all_tags.each do |tag| %>
+            <% @hash[tag.name] = tag.taggings_count %>
+          <% end %>
+          <%= pie_chart @hash %>
+        <% end %>
       </div>
     </div>
   </div>

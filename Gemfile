@@ -44,6 +44,7 @@ gem 'ed25519'
 gem 'bcrypt_pbkdf'
 gem 'annotate'
 gem 'listen', '>= 3.0.5', '< 3.2'
+gem 'chartkick'
 
 # Use ActiveStorage variant
 gem 'carrierwave'
