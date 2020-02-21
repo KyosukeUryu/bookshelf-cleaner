@@ -77,6 +77,7 @@ td {
 /* ここから詳細画面 */
 .unread-list {
   list-style: none;
+  padding-right: 20px;
 }
 .unread-card {
   padding: 30px 0;
@@ -119,4 +120,7 @@ td {
   background-color: #db2518;
   list-style: none;
   color: #f5e0df;
+}
+.book-show-img {
+  padding-left: 20px;
 }

@@ -21,18 +21,24 @@
         <div class="responsive-show">
           <div class="row">
             <div class="col-sm-4">
-              <% if @unread_book.image.present? %>
-                <%= image_tag @unread_book.image.url, size: '140x200' %><br>
-                <span class="google-note">by Google Search</span>
-              <% else %>
-                <%= image_tag "no_image.png", size: '140x200' %>
-              <% end %>
+              <div class="book-show-img">
+                <% if @unread_book.image.present? %>
+                  <%= image_tag @unread_book.image.url, size: '140x200' %><br>
+                  <span class="google-note">by Google Search</span>
+                <% else %>
+                  <%= image_tag "no_image.png", size: '140x200' %>
+                <% end %>
+              </div>
             </div>
             <div class="col-sm-8">
               <ul class="unread-list">
                 <li class="unread-content">書籍名：<%= @unread_book.title %></li>
                 <li class="unread-content">著者名：<%= @unread_book.author %></li>
-                <li class="unread-content">読破期限：<%= @unread_book.reading_expired %></li>
+                <% if @unread_book.reading_expired.present? %>
+                  <li class="unread-content">読破期限：<%= @unread_book.reading_expired %></li>
+                <% else %>
+                  <li class="unread-content">読破期限：未設定</li>
+                <% end %>
                 <li class="unread-content">ステータス：<%= I18n.t("enums.unread_book.status")[:"#{@unread_book.status}"] %></li>
                 <% if @unread_book.tags.present? %>
                   <li class="unread-content">
@@ -42,7 +48,7 @@
                   </li>
                 <% end %>
               </ul>
-              <%= link_to '編集する', edit_unread_book_path(@unread_book), class: 'btn btn-info' %>
+              <%= link_to '編集する', edit_unread_book_path(@unread_book), class: 'btn btn-info', data: {turbolinks: false} %>
               <%= link_to '削除する', unread_book_path(@unread_book), method: :delete, data: {confirm: '本当に削除しますか？'}, class: 'btn btn-danger' %>
             </div>
           </div>

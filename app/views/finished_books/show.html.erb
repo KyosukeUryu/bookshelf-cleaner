@@ -9,18 +9,22 @@
         <div class="responsive-show">
           <div class="row">
             <div class="col-sm-4">
-              <% if @finished_book.image.present? %>
-                <%= image_tag @finished_book.image.url, size: '140x200' %><br>
-                <span class="google-note">by Google Search</span>
-              <% else %>
-                <%= image_tag "no_image.png", size: '140x200' %>
-              <% end %>
+              <div class="book-show-img">
+                <% if @finished_book.image.present? %>
+                  <%= image_tag @finished_book.image.url, size: '140x200' %><br>
+                  <span class="google-note">by Google Search</span>
+                <% else %>
+                  <%= image_tag "no_image.png", size: '140x200' %>
+                <% end %>
+              </div>
             </div>
             <div class="col-sm-8">
               <ul class="unread-list">
                 <li class="unread-content">書籍名：<%= @finished_book.title %></li>
                 <li class="unread-content">著者名：<%= @finished_book.author %></li>
-                <li class="unread-content">処分予定日：<%= @finished_book.desposal_expired %></li>
+                <% if @finished_book.desposal_expired.present? %>
+                  <li class="unread-content">処分予定日：<%= @finished_book.desposal_expired %></li>
+                <% end %>
                 <li class="unread-content">ステータス：<%= I18n.t("enums.finished_book.status")[:"#{@finished_book.status}"] %></li>
                 <% if @finished_book.tags.present? %>
                   <li class="unread-content">
@@ -29,7 +33,9 @@
                   <% end %>
                   </li>
                 <% end %>
-                <li class="unread-content">感想：<%= @finished_book.impression %></li>
+                <% if @finished_book.impression.present? %>
+                  <li class="unread-content">感想：<%= @finished_book.impression %></li>
+                <% end %>
               </ul>
               <% if current_user == @finished_book.user %>
                 <%= link_to '編集する', edit_finished_book_path(@finished_book), class: 'btn btn-info', data: {turbolinks: false} %>

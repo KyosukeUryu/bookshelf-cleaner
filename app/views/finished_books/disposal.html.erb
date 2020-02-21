@@ -32,7 +32,7 @@
               <tbody>
                 <% @finished_books.each do |book| %>
                   <tr>
-                    <td class="book-title"><%= link_to book.title, finished_book_path(book), class: 'book-info' %>
+                    <td class="book-title"><%= link_to book.title, finished_book_path(book), class: 'book-info', data: {turbolinks: false} %>
                       <div class="only-responsive">
                         <%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: book.user.id), method: :post, class: 'btn btn-primary btn-sm' %>
                         <% if current_user.concerned?(book) %>
@@ -42,7 +42,7 @@
                         <% end %>
                       </div>
                     </td>
-                    <td class="book-description"><%= link_to book.user.name, user_path(book.user) %></td>
+                    <td class="book-description"><%= link_to book.user.name, user_path(book.user), data: {turbolinks: false} %></td>
                     <td class="book-description"><%= book.desposal_expired %></td>
                     <td class="book-description"><%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: book.user.id), method: :post, class: 'btn btn-primary btn-sm btn-raised' %></td>
                     <% if current_user.concerned?(book) %>
