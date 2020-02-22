@@ -41,7 +41,7 @@ Rails 5.2.4.1
 - google api等によるOauthのログイン機能(予定)
 - Rspecによる各機能のテスト実装
 - CircleCI導入によるテスト、rubocopのコードチェック実施(予定)
-- awsのEC2によるデプロイ、S3利用による画像情報管理のクラウド化(予定)
+- awsのEC2によるデプロイ、S3利用による画像情報管理のクラウド化
 - carrierwave利用による書籍の画像投稿機能
 
 ## カタログ設計
@@ -66,15 +66,15 @@ https://docs.google.com/spreadsheets/d/1vpbeY-X3w0Qf0KAufQdF1JF0Nr1tizwA8exRgMM9
 * ransack
 * rails_admin
 * cancancan
-* dotenv_rails(予定)
-* unicorn(予定)
-* capistrano(予定)
+* dotenv_rails
+* unicorn
+* capistrano
 * rubocop(予定)
 * kaminari
 * acts-as-taggable-on
 * simple_calender(予定)
 * chartkick(予定)
 * Annotate
-* aws-fog(予定)
+* aws-fog
 * react-rails
 * webpacker

@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container" id="message-box">
   <h2 class="unread-top"><%= @conversation.target_user(current_user).name %>さんとのメッセージ</h2>
   <% if @over_ten %>
     <%= link_to '以前のメッセージ', '?m=all', data: {turbolinks: false} %>
   <% end %>
 
-  <div class="chat-box">
+  <div class="chat-box" id="chat-box">
     <% @messages.each do |message| %>
       <% if message.body.present? %>
         <% if message.user == current_user %>
@@ -34,14 +34,16 @@
           <div class="card message-card">
             <div class="row">
               <div class="col-2">
-                <div class="chat-face">
-                  <% if message.user.avater && message.user.avater.url %>
-                    <%= image_tag message.user.avater.url, size: '60x60' %>
-                  <% else %>
-                    <%= image_tag "no_image.png", size: '60x60' %>
-                  <% end %>
+                <div class="chat-user">
+                  <div class="chat-face">
+                    <% if message.user.avater && message.user.avater.url %>
+                      <%= image_tag message.user.avater.url, size: '60x60' %>
+                    <% else %>
+                      <%= image_tag "no_image.png", size: '60x60' %>
+                    <% end %>
+                  </div>
+                  <p><%= message.user.name %> </p>
                 </div>
-                <p><%= message.user.name %> </p>
               </div>
               <div class="col-8">
                 <div class="chat-hukidashi other-user">
@@ -65,3 +67,4 @@
     <%= f.submit "メッセージを送る", class: 'btn btn-primary' %>
   <% end %>
 </div>
+<%= javascript_include_tag 'messages.js' %>

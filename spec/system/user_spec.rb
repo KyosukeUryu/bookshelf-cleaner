@@ -10,7 +10,7 @@ describe 'ユーザー設定機能', type: :system do
       fill_in 'メールアドレス', with: new_user_email
       fill_in 'パスワード', with: new_user_password
       fill_in '確認用パスワード', with: new_user_password
-      click_button 'Sign up'
+      click_button '新規登録'
     end
 
     context 'ユーザー情報が正しく入力される' do
@@ -37,7 +37,7 @@ describe 'ユーザー設定機能', type: :system do
       visit new_user_session_path
       fill_in 'メールアドレス', with: user_email
       fill_in 'パスワード', with: user_password
-      click_button 'Log in'
+      click_button 'ログイン'
     end
 
     context '正しいログイン情報を入力する' do
@@ -62,12 +62,12 @@ describe 'ユーザー設定機能', type: :system do
       visit new_user_session_path
       fill_in 'メールアドレス', with: login_user.email
       fill_in 'パスワード', with: login_user.password
-      click_button 'Log in'
+      click_button 'ログイン'
       visit edit_user_registration_path
       fill_in '名前', with: edit_user_name
       fill_in 'メールアドレス', with: edit_user_email
       fill_in '現在のパスワード', with: edit_user_password
-      click_button 'Update'
+      click_button '更新する'
     end
 
     let(:login_user) { user_a }

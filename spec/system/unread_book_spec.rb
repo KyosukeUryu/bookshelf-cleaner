@@ -10,7 +10,7 @@ describe '未読書籍の管理機能', type: :system do
     visit new_user_session_path
     fill_in 'メールアドレス', with: login_user.email
     fill_in 'パスワード', with: login_user.password
-    click_button 'Log in'
+    click_button 'ログイン'
   end
 
   shared_examples_for 'ユーザーAが登録した書籍が表示される' do
@@ -96,7 +96,7 @@ describe '未読書籍の管理機能', type: :system do
           let(:progress_content) { '' }
 
           it 'エラーが発生する' do
-            expect(page).to have_content 'メモを入力してください'
+            expect(page).to have_content '進捗情報を入力してください'
           end
         end
       end

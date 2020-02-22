@@ -36,7 +36,7 @@
               <tbody>
                 <% @finished_books.each do |book| %>
                   <tr>
-                    <td class="book-title"><%= link_to book.title, finished_book_path(book), class: 'book-info' %>
+                    <td class="book-title"><%= link_to book.title, finished_book_path(book), class: 'book-info', data: {turbolinks: false} %>
                       <div class="only-responsive">
                         <%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: book.user.id), method: :post, class: 'btn btn-primary btn-sm' %>
                         <% if current_user.concerned?(book) %>
@@ -47,7 +47,7 @@
                       </div>
                     </td>
                     <td class="book-description"><%= book.author %></td>
-                    <td class="book-description"><%= link_to book.user.name, user_path(book.user) %></td>
+                    <td class="book-description"><%= link_to book.user.name, user_path(book.user), data: {turbolinks: false} %></td>
                     <td class="book-description"><%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: book.user.id), method: :post, class: 'btn btn-primary btn-raised btn-sm' %></td>
                     <% if current_user.concerned?(book) %>
                       <td class="book-description"><%= link_to '気になる書籍から外す', concern_book_path(current_user.concern_books.find_by(finished_book_id: book.id)), method: :delete, class: 'btn btn-secondary btn-sm btn-raised' %></td>
