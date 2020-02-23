@@ -23,10 +23,7 @@
           <% end %>
         </ul>
         <div class="tag-graph">
-          <% if @user.finished_books.all_tags.present? %>
-            <% @user.finished_books.all_tags.each do |tag| %>
-              <% @hash[tag.name] = tag.taggings_count %>
-            <% end %>
+          <% if @user.has_tags? %>
             <%= pie_chart @hash, donut: true, library: {pieSliceText:
 'value-and-percentage'} %>
           <% end %>
