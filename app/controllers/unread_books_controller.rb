@@ -45,6 +45,7 @@ class UnreadBooksController < ApplicationController
   def search
     if params[:looking_for]
       @search_term = params[:looking_for]
+      # 書籍のページ送り用
       @number = params[:number].to_i
       uri = URI.parse(URI.encode("https://www.googleapis.com/books/v1/volumes?q=#{@search_term}&Country=JP&startIndex=#{@number}"))
       json = Net::HTTP.get(uri)
@@ -101,6 +102,7 @@ class UnreadBooksController < ApplicationController
 
   private
 
+  # 検索した書籍の情報を登録画面に許可するため
   def search_params
     params.permit(:title, :author)
   end
