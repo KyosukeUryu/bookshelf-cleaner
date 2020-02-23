@@ -20,9 +20,7 @@ class FinishedBooksController < ApplicationController
   def new
     @unread_book = current_user.unread_books.find(params[:id])
     @finished_book = current_user.finished_books.new
-    @finished_book.title = params[:title]
-    @finished_book.author = params[:author]
-    @finished_book.tag_list = params[:tags]
+    @finished_book.assign_attributes(title: params[:title],author: params[:author], tag_list: params[:tags])
     @image = params[:image]
   end
 
