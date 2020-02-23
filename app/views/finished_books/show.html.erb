@@ -34,7 +34,7 @@
                   </li>
                 <% end %>
                 <% if @finished_book.impression.present? %>
-                  <li class="unread-content">感想：<%= @finished_book.impression %></li>
+                  <li class="unread-content">感想：<%= simple_format(@finished_book.impression) %></li>
                 <% end %>
               </ul>
               <% if current_user == @finished_book.user %>
