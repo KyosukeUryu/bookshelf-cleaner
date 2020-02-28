@@ -24,7 +24,7 @@
               </div>
               <div class="col-8">
                 <div class="chat-hukidashi">
-                  <%= message.body %>
+                  <%= simple_format(message.body) %>
                 </div>
                 <p><%= message.message_time %> <%= message.read ? '既読' : '未読' %> </p>
               </div>

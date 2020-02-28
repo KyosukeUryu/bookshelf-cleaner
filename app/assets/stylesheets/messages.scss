@@ -4,7 +4,7 @@
 .chat-box {
   margin: 30px auto;
   width: 750px;
-  height: 900px;
+  max-height: 600px;
   overflow: scroll; /*floatの解除*/
   margin-bottom: 20px;
 }
@@ -34,6 +34,9 @@
   border-style: solid;
   border-width: 10px 10px 10px 0;
   border-color: transparent #D9F0FF transparent transparent;
+}
+.chat-hukidashi > p {
+  margin-bottom: 0;
 }
 .someone {
   background-color: #BCF5A9;

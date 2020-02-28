@@ -52,4 +52,8 @@ class User < ApplicationRecord
   def concerned?(book)
     concern_books.find_by(finished_book_id: book.id)
   end
+
+  def has_tags?
+    finished_books.all_tags.present? ? true : false
+  end
 end
